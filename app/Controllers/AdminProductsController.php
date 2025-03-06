@@ -6,6 +6,7 @@ use App\Models\ProductModel;
 use App\Models\BrandModel;
 use App\Models\ColourModel;
 use App\Models\SizeModel;
+use App\Models\ProductImageModel;
 
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
@@ -16,6 +17,7 @@ class AdminProductsController extends BaseController
     protected $brandModel;
     protected $colourModel;
     protected $sizeModel;
+    protected $productImageModel;
 
     public function __construct()
     {
@@ -23,6 +25,7 @@ class AdminProductsController extends BaseController
         $this->brandModel = new BrandModel();
         $this->colourModel = new ColourModel();
         $this->sizeModel = new SizeModel();
+        $this->productImageModel = new ProductImageModel();
     }
 
     public function create()
@@ -89,6 +92,7 @@ class AdminProductsController extends BaseController
         //dd($productData);
 
         $this->productModel->insert($productData);
+        $productId = $this->productModel->getInsertID();
         //$productId = $this->productModel->getInsertID();
 
         // Upload dan simpan gambar
@@ -107,7 +111,29 @@ class AdminProductsController extends BaseController
             }
         } */
 
-        return redirect()->to('/admin/product/create')->with('success', 'Produk berhasil ditambahkan.');
+        //return redirect()->to('/admin/product/create')->with('success', 'Produk berhasil ditambahkan.');
+        return $this->response->setJSON(['success' => true, 'product_id' => $productId]);
         //echo 'Sukses';
+    }
+
+    public function uploadGallery($productId)
+    {
+        $images = $this->request->getFiles();
+
+        if ($images && isset($images['file'])) {
+            foreach ($images['file'] as $image) {
+                if ($image->isValid() && !$image->hasMoved()) {
+                    $newName = $image->getRandomName();
+                    $image->move('assets/media/products', $newName);
+                    
+                    $this->productImageModel->insert([
+                        'product_id' => $productId,
+                        'image_url'  => 'media/products/' . $newName,
+                    ]);
+                }
+            }
+        }
+
+        return $this->response->setJSON(['success' => true]);
     }
 }

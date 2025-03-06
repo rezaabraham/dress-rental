@@ -2505,8 +2505,6 @@
     <script src="<?= base_url() ?>assets/js/scripts.bundle.js"></script>
     <!--end::Global Javascript Bundle-->
     <!--begin::Vendors Javascript(used for this page only)-->
-    <script src="<?= base_url() ?>assets/plugins/custom/datatables/datatables.bundle.js"></script>
-    <script src="<?= base_url() ?>assets/plugins/custom/formrepeater/formrepeater.bundle.js"></script>
     <script src="<?= base_url() ?>assets/plugins/custom/ckeditor/ckeditor-classic.bundle.js"></script>
     <!--end::Vendors Javascript-->
     <!--begin::Custom Javascript(used for this page only)-->
@@ -2521,28 +2519,80 @@
             });
     </script>
     <script>
-        <?php if(session()->has('success')):?>
+        <?php if (session()->has('success')): ?>
             Swal.fire({
-            title: "<?= session()->get('success') ?>",
-            icon: "success",
-            buttonsStyling: false,
-            confirmButtonText: "Ok, got it!",
-            customClass: {
-                confirmButton: "btn btn-primary"
+                title: "<?= session()->get('success') ?>",
+                icon: "success",
+                buttonsStyling: false,
+                confirmButtonText: "Ok, got it!",
+                customClass: {
+                    confirmButton: "btn btn-primary"
+                }
+            });
+        <?php endif ?>
+        <?php if (session()->has('error')): ?>
+            Swal.fire({
+                title: "<?= session()->get('error') ?>",
+                icon: "error",
+                buttonsStyling: false,
+                confirmButtonText: "Ok, got it!",
+                customClass: {
+                    confirmButton: "btn btn-primary"
+                }
+            });
+        <?php endif ?>
+    </script>
+    <script>
+        Dropzone.autoDiscover = false;
+
+        var galleryDropzone = new Dropzone("#gallery", {
+            url: "#", // di-set dinamis setelah produk dibuat
+            autoProcessQueue: false,
+            uploadMultiple: true,
+            parallelUploads: 10,
+            maxFilesize: 2, // MB
+            acceptedFiles: "image/*",
+            addRemoveLinks: true,
+            init: function() {
+                var dz = this;
+                document.getElementById("form-product").addEventListener("submit", function(e) {
+                    e.preventDefault();
+                    var formData = new FormData(this);
+
+                    fetch("<?= site_url('admin/product/store') ?>", {
+                            method: "POST",
+                            body: formData
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                if (dz.getQueuedFiles().length > 0) {
+                                    dz.options.url = "<?= site_url('admin/product/upload-gallery') ?>/" + data.product_id;
+                                    dz.processQueue();
+                                } else {
+                                    alert("Produk berhasil disimpan.");
+                                    window.location.reload();
+                                }
+                            } else {
+                                alert("Gagal menyimpan produk.");
+                            }
+                        });
+                });
+
+                dz.on('sending', function(file, xhr, formData) {
+                    formData.append("product_id", dz.options.url.split('/').pop());
+                });
+
+                // dz.on("uploadprogress", function(file, progress) {
+                //     document.getElementById("progress-bar").style.width = progress + "%";
+                // });
+
+                dz.on("queuecomplete", function() {
+                    alert("Galeri berhasil diupload.");
+                    window.location.reload();
+                });
             }
         });
-        <?php endif?>
-        <?php if(session()->has('error')):?>
-            Swal.fire({
-            title: "<?= session()->get('error') ?>",
-            icon: "error",
-            buttonsStyling: false,
-            confirmButtonText: "Ok, got it!",
-            customClass: {
-                confirmButton: "btn btn-primary"
-            }
-        });
-        <?php endif?>
     </script>
     <!--end::Custom Javascript-->
     <!--end::Javascript-->

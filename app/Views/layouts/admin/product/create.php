@@ -1,6 +1,6 @@
 <?= $this->extend('layouts/admin/main') ?>
 <?= $this->section('content') ?>
-<form id="kt_ecommerce_add_product_form" class="form d-flex flex-column flex-lg-row" action="<?= site_url('admin/product/store') ?>" method="post" enctype="multipart/form-data">
+<form id="form-product" class="form d-flex flex-column flex-lg-row" action="<?= site_url('admin/product/store') ?>" method="post" enctype="multipart/form-data">
     <!--begin::Aside column-->
     <div class="d-flex flex-column gap-7 gap-lg-10 w-100 w-lg-300px mb-7 me-lg-10">
         <!--begin::Thumbnail settings-->
@@ -195,7 +195,7 @@
                             <!--begin::Input group-->
                             <div class="fv-row mb-2">
                                 <!--begin::Dropzone-->
-                                <div class="dropzone" id="kt_ecommerce_add_product_media">
+                                <div class="dropzone" id="gallery">
                                     <!--begin::Message-->
                                     <div class="dz-message needsclick">
                                         <!--begin::Icon-->

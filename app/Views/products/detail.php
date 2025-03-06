@@ -9,7 +9,7 @@
             <?php if (!empty($product['images'])): ?>
                 <?php foreach ($product['images'] as $index => $image): ?>
                     <div class="carousel-item <?= $index === 0 ? 'active' : '' ?>">
-                        <img src="<?= base_url('assets/media/').$image ?>" class="d-block w-100 rounded" alt="<?= esc($product['product_name']) ?>">
+                        <img src="<?= base_url('assets/').$image ?>" class="d-block w-100 rounded" alt="<?= esc($product['product_name']) ?>">
                     </div>
                 <?php endforeach; ?>
             <?php else: ?>
