@@ -32,25 +32,10 @@
 <div class="col-md-8">
     <h2><?= $product['product_name'] ?></h2>
     <p class="text-muted">By <?= $product['brand_name'] ?></p>
-    <h4 class="text-primary"><?= 'Rp. ' . number_format($product['product_price'], 0, ',', '.') ?> <small class="text-muted">/ 1-3 Days</small></h4>
+    <h4 class="text-primary"><?= 'Rp. ' . number_format($product['product_price'], 0, ',', '.') ?> <small class="text-muted">/ <?= $product['product_rental_period'].' Days'?></small></h4>
     <span class="badge bg-success">Hijab Friendly</span>
     <p class="mt-3"><strong>Fit:</strong> <?= $product['size_name'] ?></p>
-    <p><strong>Includes:</strong> Inner, Outer, Flare Satin Skirt, Belt + Laundry</p>
-
-    <h5>Size & Measurement:</h5>
-    <ul>
-        <li><strong>Inner:</strong> Bust 92 cm, Length Lining 55 cm, Outer 63 cm</li>
-        <li><strong>Skirt:</strong> LP 70-78 cm, Hips 96 cm, Length 90 cm</li>
-    </ul>
-
-    <h5>Pricing & Stock:</h5>
-    <p><strong>Deposit:</strong> Rp 120.000</p>
-    <p><strong>Extra Days:</strong> Rp 50.000 / Day</p>
-    <p><strong>Stock:</strong> 1 / 1</p>
-
-    <h5>Product Details:</h5>
-    <p><strong>Code:</strong> TC059</p>
-    <p><strong>Color:</strong> Red/Maroon/Terracotta</p>
+    <p><?= $product['product_desc'] ?></p>
 
     <button class="btn btn-primary mt-3">Rent Now</button>
 </div>
