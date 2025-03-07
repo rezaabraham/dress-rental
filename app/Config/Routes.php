@@ -10,9 +10,14 @@ use CodeIgniter\Router\RouteCollection;
 //$routes->get('product', 'ProductsController::show');
 
 $routes->get('/', 'CatalogController::index');
+
+$routes->get('dashboard', 'DashboardController::index');
+
 $routes->get('/catalog/(:num)', 'CatalogController::show/$1');
 
 $routes->get('/product/(:segment)', 'ProductsController::show/$1');
+
+$routes->get('admin/product/', 'AdminProductsController::index');
 
 $routes->get('admin/product/create', 'AdminProductsController::create');
 
