@@ -133,7 +133,7 @@
                             <!--begin::Theme mode-->
                             <div class="app-navbar-item ms-1 ms-md-4">
                                 <!--begin::Menu toggle-->
-                                <button class="btn btn-primary">Check Jadwal</button>
+                                <button class="btn btn-primary" onclick="alert('Fitur belum tersedia');return false;">Check Jadwal</button>
                                 <!--begin::Menu toggle-->
                             </div>
                             <!--end::Theme mode-->
@@ -178,7 +178,7 @@
                                 <div class="m-0">
                                     <!--begin::Menu toggle-->
                                     <a href="#" class="btn btn-sm btn-flex btn-secondary fw-bold" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                                        <i class="ki-outline ki-filter fs-6 text-muted me-1"></i>Filter</a>
+                                        <i class="ki-outline ki-filter fs-6 text-muted me-1" onclick="alert('Fitur belum tersedia');return false;"></i>Filter</a>
                                     <!--end::Menu toggle-->
                                     <!--begin::Menu 1-->
                                     <div class="menu menu-sub menu-sub-dropdown w-250px w-md-300px" data-kt-menu="true" id="kt_menu_673c0c93de9e8">
@@ -261,7 +261,7 @@
                                 <!--begin::Secondary button-->
                                 <!--end::Secondary button-->
                                 <!--begin::Primary button-->
-                                <a href="#" class="btn btn-sm fw-bold btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_create_app">Create</a>
+                                <a href="#" class="btn btn-sm fw-bold btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_create_app" onclick="alert('Fitur belum tersedia');return false;">Search</a>
                                 <!--end::Primary button-->
                             </div>
                             <!--end::Actions-->
@@ -293,31 +293,7 @@
                     <!--end::Content wrapper-->
 
                     <!--begin::Footer-->
-                    <div id="kt_app_footer" class="app-footer">
-                        <!--begin::Footer container-->
-                        <div class="app-container container-xxl d-flex flex-column flex-md-row flex-center flex-md-stack py-3">
-                            <!--begin::Copyright-->
-                            <div class="text-gray-900 order-2 order-md-1">
-                                <span class="text-muted fw-semibold me-1">2024&copy;</span>
-                                <a href="https://keenthemes.com" target="_blank" class="text-gray-800 text-hover-primary">Keenthemes</a>
-                            </div>
-                            <!--end::Copyright-->
-                            <!--begin::Menu-->
-                            <ul class="menu menu-gray-600 menu-hover-primary fw-semibold order-1">
-                                <li class="menu-item">
-                                    <a href="https://keenthemes.com" target="_blank" class="menu-link px-2">About</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="https://devs.keenthemes.com" target="_blank" class="menu-link px-2">Support</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="https://1.envato.market/Vm7VRE" target="_blank" class="menu-link px-2">Purchase</a>
-                                </li>
-                            </ul>
-                            <!--end::Menu-->
-                        </div>
-                        <!--end::Footer container-->
-                    </div>
+                    
                     <!--end::Footer-->
                 </div>
                 <!--end:::Main-->

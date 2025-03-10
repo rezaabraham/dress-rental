@@ -2,19 +2,22 @@
 <?= $this->section('content') ?>
 
 <div class="card card-flush">
+
     <!--begin::Card header-->
     <div class="card-header align-items-center py-5 gap-2 gap-md-5">
         <!--begin::Card title-->
         <div class="card-title">
+            <form action="<?= site_url('admin/product') ?>" method="get">
             <!--begin::Search-->
             <div class="d-flex align-items-center position-relative my-1">
                 <i class="ki-duotone ki-magnifier fs-3 position-absolute ms-4">
                     <span class="path1"></span>
                     <span class="path2"></span>
                 </i>
-                <input type="text" data-kt-ecommerce-product-filter="search" class="form-control form-control-solid w-250px ps-12" placeholder="Search Product" />
+                <input type="text" data-kt-ecommerce-product-filter="search" class="form-control form-control-solid w-250px ps-12" placeholder="Search Product" name="keyword" />
             </div>
             <!--end::Search-->
+            </form>
         </div>
         <!--end::Card title-->
         <!--begin::Card toolbar-->
