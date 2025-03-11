@@ -11,7 +11,7 @@ class AuthController extends BaseController
 {
     public function index()
     {
-        return view('layouts/admin/login');
+        return view('auth/login');
     }
 
     public function doLogin()

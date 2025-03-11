@@ -1,4 +1,4 @@
-<?= $this->extend('layouts/admin/main') ?>
+<?= $this->extend('_layouts/_admin/_main') ?>
 <?= $this->section('content') ?>
 
 <div class="card card-flush">

@@ -1,4 +1,4 @@
-<?= $this->extend('layouts/admin/main') ?>
+<?= $this->extend('_layouts/_admin/_main') ?>
 <?= $this->section('content') ?>
 <form id="form-product" class="form d-flex flex-column flex-lg-row" action="<?= site_url('admin/product/store') ?>" method="post" enctype="multipart/form-data">
     <!--begin::Aside column-->

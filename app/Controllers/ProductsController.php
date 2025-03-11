@@ -43,6 +43,6 @@ class ProductsController extends BaseController
             ->where('product_id', $product['product_id'])
             ->findColumn('image_url') ?? [];
 
-        return view('products/detail', ['product' => $product]);
+        return view('catalog/product', ['product' => $product]);
     }
 }

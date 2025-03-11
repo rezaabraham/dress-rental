@@ -61,7 +61,7 @@ class AdminProductsController extends BaseController
 
         //return view('catalog', ['products' => $products]);
 
-        return view('layouts/admin/product/list',['products' => $products]);
+        return view('products/list',['products' => $products]);
     }
 
     public function create()
@@ -76,7 +76,7 @@ class AdminProductsController extends BaseController
             'sizes' => $sizes
         ];
 
-        return view('layouts/admin/product/create',$viewData);
+        return view('products/create',$viewData);
     }
 
     public function store()

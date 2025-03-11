@@ -1,4 +1,4 @@
-<?= $this->extend('layouts/main') ?>
+<?= $this->extend('_layouts/_catalog/_main') ?>
 <?= $this->section('content') ?>
 
 <!-- Gambar Produk -->
