@@ -47,11 +47,10 @@
             <thead>
                 <tr class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
                     <th class="min-w-200px">Product</th>
-                    <th class="text-end min-w-100px">SKU</th>
-                    <th class="text-end min-w-70px">Qty</th>
+                    <th class="min-w-100px">Code</th>
+                    <th class="min-w-100px">Colour</th>
+                    <th class="min-w-100px">Size</th>
                     <th class="text-end min-w-100px">Price</th>
-                    <th class="text-end min-w-100px">Rating</th>
-                    <th class="text-end min-w-100px">Status</th>
                     <th class="text-end min-w-70px">Actions</th>
                 </tr>
             </thead>
@@ -61,7 +60,6 @@
                 <?php else: ?>
                     <?php foreach ($products as $product): ?>
                         <tr>
-
                             <td>
                                 <div class="d-flex align-items-center">
                                     <!--begin::Thumbnail-->
@@ -76,37 +74,19 @@
                                     </div>
                                 </div>
                             </td>
-                            <td class="text-end pe-0">
+                            <td class="pe-0">
                                 <span class="fw-bold"><?= $product['product_code'] ?></span>
                             </td>
-                            <td class="text-end pe-0" data-order="22">
-                                <span class="fw-bold ms-3">22</span>
+                            <td class="pe-0">
+                                <span class="fw-bold"><?= $product['colour_name'] ?></span>
                             </td>
+                            <td class="pe-0">
+                                <span class="fw-bold"><?= $product['size_name'] ?></span>
+                            </td>
+                            
                             <td class="text-end pe-0"><?= 'Rp. ' . number_format($product['product_price'], 0, ',', '.') ?></td>
-                            <td class="text-end pe-0" data-order="rating-4">
-                                <div class="rating justify-content-end">
-                                    <div class="rating-label checked">
-                                        <i class="ki-duotone ki-star fs-6"></i>
-                                    </div>
-                                    <div class="rating-label checked">
-                                        <i class="ki-duotone ki-star fs-6"></i>
-                                    </div>
-                                    <div class="rating-label checked">
-                                        <i class="ki-duotone ki-star fs-6"></i>
-                                    </div>
-                                    <div class="rating-label checked">
-                                        <i class="ki-duotone ki-star fs-6"></i>
-                                    </div>
-                                    <div class="rating-label">
-                                        <i class="ki-duotone ki-star fs-6"></i>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="text-end pe-0" data-order="Inactive">
-                                <!--begin::Badges-->
-                                <div class="badge badge-light-danger">Inactive</div>
-                                <!--end::Badges-->
-                            </td>
+                            
+                            
                             <td class="text-end">
                                 <a href="#" class="btn btn-sm btn-light btn-flex btn-center btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
                                     <i class="ki-duotone ki-down fs-5 ms-1"></i></a>
