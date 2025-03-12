@@ -28,7 +28,7 @@
                     <div class="m-0">
                         <!--begin::Menu toggle-->
                         <a href="#" class="btn btn-sm btn-flex btn-secondary fw-bold" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                            <i class="ki-outline ki-filter fs-6 text-muted me-1" onclick="alert('Fitur belum tersedia');return false;"></i>Filter</a>
+                            <i class="ki-outline ki-filter fs-6 text-muted me-1"></i>Filter</a>
                         <!--end::Menu toggle-->
                         <!--begin::Menu 1-->
                         <div class="menu menu-sub menu-sub-dropdown w-250px w-md-300px" data-kt-menu="true" id="kt_menu_673c0c93de9e8">
@@ -45,55 +45,20 @@
                                 <!--begin::Input group-->
                                 <div class="mb-10">
                                     <!--begin::Label-->
-                                    <label class="form-label fw-semibold">Status:</label>
+                                    <label class="form-label fw-semibold">Brand:</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
                                     <div>
-                                        <select class="form-select form-select-solid" multiple="multiple" data-kt-select2="true" data-close-on-select="false" data-placeholder="Select option" data-dropdown-parent="#kt_menu_673c0c93de9e8" data-allow-clear="true">
-                                            <option></option>
-                                            <option value="1">Approved</option>
-                                            <option value="2">Pending</option>
-                                            <option value="2">In Process</option>
-                                            <option value="2">Rejected</option>
+                                        <select name="brand" class="form-select form-select-solid" data-kt-select2="true">
+                                            <option disabled>-- Pilih brand --</option>
+                                            <?php if(! empty($brands)):?>
+                                                <?php foreach($brands as $brand):?>
+                                                    <option value="<?=$brand['brand_id']?>"><?=$brand['brand_name']?></option>
+                                                <?php endforeach?>
+                                            <?php endif?>
                                         </select>
                                     </div>
                                     <!--end::Input-->
-                                </div>
-                                <!--end::Input group-->
-                                <!--begin::Input group-->
-                                <div class="mb-10">
-                                    <!--begin::Label-->
-                                    <label class="form-label fw-semibold">Member Type:</label>
-                                    <!--end::Label-->
-                                    <!--begin::Options-->
-                                    <div class="d-flex">
-                                        <!--begin::Options-->
-                                        <label class="form-check form-check-sm form-check-custom form-check-solid me-5">
-                                            <input class="form-check-input" type="checkbox" value="1" />
-                                            <span class="form-check-label">Author</span>
-                                        </label>
-                                        <!--end::Options-->
-                                        <!--begin::Options-->
-                                        <label class="form-check form-check-sm form-check-custom form-check-solid">
-                                            <input class="form-check-input" type="checkbox" value="2" checked="checked" />
-                                            <span class="form-check-label">Customer</span>
-                                        </label>
-                                        <!--end::Options-->
-                                    </div>
-                                    <!--end::Options-->
-                                </div>
-                                <!--end::Input group-->
-                                <!--begin::Input group-->
-                                <div class="mb-10">
-                                    <!--begin::Label-->
-                                    <label class="form-label fw-semibold">Notifications:</label>
-                                    <!--end::Label-->
-                                    <!--begin::Switch-->
-                                    <div class="form-check form-switch form-switch-sm form-check-custom form-check-solid">
-                                        <input class="form-check-input" type="checkbox" value="" name="notifications" checked="checked" />
-                                        <label class="form-check-label">Enabled</label>
-                                    </div>
-                                    <!--end::Switch-->
                                 </div>
                                 <!--end::Input group-->
                                 <!--begin::Actions-->

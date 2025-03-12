@@ -53,6 +53,6 @@
 		<!--end::Col-->
 	<?php endforeach ?>
 <?php else: ?>
-	<?= "Tidak ada" ?>
+	<div><?= "Tidak ada" ?></div>
 <?php endif ?>
 <?= $this->endSection() ?>

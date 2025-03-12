@@ -25,6 +25,7 @@ class CatalogController extends BaseController
     public function index()
     {
         $keyword = $this->request->getGet('keyword',FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $brand = $this->request->getGet('brand');
 
         $query = $this->productModel
         ->select('master_products.*, master_brands.brand_name,master_sizes.size_name')
@@ -35,7 +36,13 @@ class CatalogController extends BaseController
             $query->like('master_products.product_name', $keyword);
         }
 
+        if (!empty($brand)) {
+            $query->where('master_products.product_brand', $brand);
+        }
+
         $products = $query->findAll();
+
+        $brands = $this->brandModel->findAll();
 
         /* $products = $this->productModel
             ->select('master_products.*, master_brands.brand_name,master_sizes.size_name')
@@ -49,6 +56,6 @@ class CatalogController extends BaseController
                 ->findColumn('image_url') ?? [];
         } */
 
-        return view('catalog/index', ['products' => $products]);
+        return view('catalog/index', ['products' => $products,'brands' => $brands]);
     }
 }
