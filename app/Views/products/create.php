@@ -427,8 +427,6 @@
             return;
         }
 
-
-
         fetch("<?= site_url('brand/store') ?>", {
                 method: "POST",
                 headers: {
@@ -471,12 +469,12 @@
                 }
             })
             .catch(error => {
-        Swal.fire({
-            icon: 'error',
-            title: 'Terjadi Kesalahan',
-            text: 'Gagal terhubung ke server!',
-        });
-    });
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Terjadi Kesalahan',
+                    text: 'Gagal terhubung ke server!',
+                });
+            });
     });
 </script>
 
