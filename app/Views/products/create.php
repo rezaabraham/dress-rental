@@ -85,10 +85,10 @@
             <div class="card-body pt-0">
                 <!--begin::Input group-->
                 <!--begin::Label-->
-                <label class="form-label">Brands</label>
+                <label class="form-label">Brand</label>
                 <!--end::Label-->
                 <!--begin::Select2-->
-                <select class="form-select mb-2" name="product_brand" data-placeholder="Select an option">
+                <select class="form-select mb-2" id="productBrand" name="product_brand" data-placeholder="Select an option">
                     <option disabled selected>-- Pilih Brand --</option>
                     <?php foreach ($brands as $brand): ?>
                         <option value=<?= $brand['brand_id'] ?>><?= $brand['brand_name'] ?></option>
@@ -96,12 +96,11 @@
                 </select>
                 <!--end::Select2-->
                 <!--begin::Description-->
-                <div class="text-muted fs-7 mb-7">Add product to a category.</div>
+                <div class="text-muted fs-7 mb-7"></div>
                 <!--end::Description-->
                 <!--end::Input group-->
                 <!--begin::Button-->
-                <a href="apps/ecommerce/catalog/add-category.html" class="btn btn-light-primary btn-sm mb-10">
-                    <i class="ki-duotone ki-plus fs-2"></i>Create new category</a>
+                <button type="button" class="btn btn-light-primary btn-sm mb-10" data-bs-toggle="modal" data-bs-target="#addBrandModal"><i class="ki-duotone ki-plus fs-2"></i>Brand</button>
                 <!--end::Button-->
                 <!--begin::Input group-->
                 <!--begin::Label-->
@@ -279,7 +278,7 @@
                                         <div class="d-flex gap-3">
                                             <select class="form-select" name="product_colour" data-placeholder="Select a variation" data-kt-ecommerce-catalog-add-product="product_option">
                                                 <option>-- Pilih Warna --</option>
-                                                <?php foreach($colours as $colour):?>
+                                                <?php foreach ($colours as $colour): ?>
                                                     <option value="<?= $colour['colour_id'] ?>"><?= $colour['colour_name'] ?></option>
                                                 <?php endforeach ?>
                                             </select>
@@ -298,8 +297,8 @@
                                         <!--begin::Input-->
                                         <div class="d-flex gap-3">
                                             <select class="form-select" name="product_size" data-placeholder="Select a variation" data-kt-ecommerce-catalog-add-product="product_option">
-                                            <option>-- Pilih Size --</option>
-                                            <?php foreach($sizes as $size):?>
+                                                <option>-- Pilih Size --</option>
+                                                <?php foreach ($sizes as $size): ?>
                                                     <option value="<?= $size['size_id'] ?>"><?= $size['size_name'] ?></option>
                                                 <?php endforeach ?>
                                             </select>
@@ -315,8 +314,6 @@
                         <!--end::Card header-->
                     </div>
                     <!--end::Inventory-->
-                    
-                   
                     <!--begin::Meta options-->
                     <div class="card card-flush py-4">
                         <!--begin::Card header-->
@@ -341,7 +338,7 @@
                                 <!--end::Description-->
                             </div>
                             <!--end::Input group-->
-                            
+
                             <!--begin::Input group-->
                             <div>
                                 <!--begin::Label-->
@@ -368,7 +365,7 @@
         <!--end::Tab content-->
         <div class="d-flex justify-content-end">
             <!--begin::Button-->
-            <a href="<?=site_url('admin/product')?>" id="kt_ecommerce_add_product_cancel" class="btn btn-light me-5">Cancel</a>
+            <a href="<?= site_url('admin/product') ?>" id="kt_ecommerce_add_product_cancel" class="btn btn-light me-5">Cancel</a>
             <!--end::Button-->
             <!--begin::Button-->
             <button type="submit" id="kt_ecommerce_add_product_submit" class="btn btn-primary">
@@ -381,4 +378,107 @@
     </div>
     <!--end::Main column-->
 </form>
+
+<!-- Modal Tambah Brand -->
+<div class="modal fade" id="addBrandModal" tabindex="-1" aria-labelledby="addBrandModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addBrandModalLabel">Tambah Brand Baru</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <div>
+                    <label for="brandName">Nama Brand</label>
+                    <input type="text" id="brandName" class="form-control" placeholder="Masukkan nama brand baru">
+                </div>
+                <div>
+                    <label for="brandName">Kode Brand</label>
+                    <input type="text" id="brandCode" class="form-control" placeholder="Masukkan kode brand baru">
+                </div>
+                <div id="brandError" class="text-danger mt-2"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                <button type="button" class="btn btn-primary" id="saveBrand">Simpan</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById("saveBrand").addEventListener("click", function() {
+        let brandName = document.getElementById("brandName").value.trim();
+        let brandCode = document.getElementById("brandCode").value.trim();
+        let errorDiv = document.getElementById("brandError");
+
+        Swal.fire({
+            title: 'Menyimpan...',
+            text: 'Mohon tunggu sebentar',
+            allowOutsideClick: false,
+            didOpen: () => {
+                Swal.showLoading();
+            }
+        });
+
+        if (brandName === "" || brandCode === "") {
+            errorDiv.textContent = "Nama dan kode brand tidak boleh kosong!";
+            return;
+        }
+
+
+
+        fetch("<?= site_url('brand/store') ?>", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-Requested-With": "XMLHttpRequest"
+                },
+                body: JSON.stringify({
+                    brand_name: brandName,
+                    brand_code: brandCode
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    let newOption = document.createElement("option");
+                    newOption.value = data.brand_id;
+                    newOption.textContent = brandName;
+                    document.getElementById("productBrand").appendChild(newOption);
+                    document.getElementById("productBrand").value = data.brand_id;
+                    document.getElementById("brandName").value = "";
+                    document.getElementById("brandCode").value = "";
+                    errorDiv.textContent = "";
+
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Brand Ditambahkan',
+                        text: 'Brand berhasil ditambahkan ke daftar!',
+                        timer: 2000,
+                        showConfirmButton: false
+                    });
+
+                    let modal = bootstrap.Modal.getInstance(document.getElementById("addBrandModal"));
+                    modal.hide();
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Gagal Menambahkan Brand',
+                        html: Object.values(data.message).join("<br>"),
+                    });
+                }
+            })
+            .catch(error => {
+        Swal.fire({
+            icon: 'error',
+            title: 'Terjadi Kesalahan',
+            text: 'Gagal terhubung ke server!',
+        });
+    });
+    });
+</script>
+
+
 <?= $this->endSection() ?>

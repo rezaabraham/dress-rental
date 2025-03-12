@@ -35,4 +35,10 @@ class AuthController extends BaseController
             return redirect()->back()->with('error', 'Username atau password salah.');
         }
     }
+
+    public function logout()
+    {
+        session()->destroy();
+        return redirect()->to('admin');
+    }
 }

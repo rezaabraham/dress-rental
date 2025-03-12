@@ -26,4 +26,7 @@ $routes->post('admin/product/upload-gallery/(:num)', 'AdminProductsController::u
 
 
 $routes->get('admin', 'AuthController::index');
+$routes->get('auth/logout', 'AuthController::logout');
 $routes->post('admin/do-login', 'AuthController::doLogin');
+
+$routes->post('brand/store', 'BrandController::store');
