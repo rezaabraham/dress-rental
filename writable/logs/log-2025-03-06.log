@@ -1,0 +1,178 @@
+DEBUG - 2025-03-06 11:02:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-03-06 11:02:29 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'rental_dress' in C:\wamp64\www\rental-dress\system\Database\MySQLi\Connection.php:201
+Stack trace:
+#0 C:\wamp64\www\rental-dress\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'rental_dress', 3306, '', 0)
+#1 C:\wamp64\www\rental-dress\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\wamp64\www\rental-dress\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\wamp64\www\rental-dress\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `master_...', Array, false)
+#4 C:\wamp64\www\rental-dress\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\rental-dress\system\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\wamp64\www\rental-dress\app\Controllers\CatalogController.php(31): CodeIgniter\BaseModel->findAll()
+#7 C:\wamp64\www\rental-dress\system\CodeIgniter.php(933): App\Controllers\CatalogController->index()
+#8 C:\wamp64\www\rental-dress\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CatalogController))
+#9 C:\wamp64\www\rental-dress\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\wamp64\www\rental-dress\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#11 C:\wamp64\www\rental-dress\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\wamp64\www\rental-dress\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'rental_dress' in C:\wamp64\www\rental-dress\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\wamp64\www\rental-dress\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\wamp64\www\rental-dress\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\wamp64\www\rental-dress\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `master_...', Array, false)
+#3 C:\wamp64\www\rental-dress\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\wamp64\www\rental-dress\system\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\wamp64\www\rental-dress\app\Controllers\CatalogController.php(31): CodeIgniter\BaseModel->findAll()
+#6 C:\wamp64\www\rental-dress\system\CodeIgniter.php(933): App\Controllers\CatalogController->index()
+#7 C:\wamp64\www\rental-dress\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CatalogController))
+#8 C:\wamp64\www\rental-dress\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\wamp64\www\rental-dress\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#10 C:\wamp64\www\rental-dress\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\wamp64\www\rental-dress\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2025-03-06 11:02:29 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Unknown database 'rental_dress'
+[Method: GET, Route: /]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `master_products`.*, `master_brands`.`brand_name`, `master_sizes`.`size_name`
+FROM `master_products`
+LEFT JOIN `master_brands` ON `master_products`.`product_brand` = `master_brands`.`brand_id`
+LEFT JOIN `master_sizes` ON `master_products`.`product_size` = `master_sizes`.`size_id`', [], false)
+ 3 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\CatalogController.php(31): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\CatalogController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CatalogController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-03-06 11:04:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-03-06 11:04:23 --> mysqli_sql_exception: Table 'rental_dress.master_products' doesn't exist in C:\wamp64\www\rental-dress\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\wamp64\www\rental-dress\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `master_...', 0)
+#1 C:\wamp64\www\rental-dress\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `master_...')
+#2 C:\wamp64\www\rental-dress\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `master_...')
+#3 C:\wamp64\www\rental-dress\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `master_...', Array, false)
+#4 C:\wamp64\www\rental-dress\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\wamp64\www\rental-dress\system\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\wamp64\www\rental-dress\app\Controllers\CatalogController.php(31): CodeIgniter\BaseModel->findAll()
+#7 C:\wamp64\www\rental-dress\system\CodeIgniter.php(933): App\Controllers\CatalogController->index()
+#8 C:\wamp64\www\rental-dress\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CatalogController))
+#9 C:\wamp64\www\rental-dress\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\wamp64\www\rental-dress\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#11 C:\wamp64\www\rental-dress\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\wamp64\www\rental-dress\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+CRITICAL - 2025-03-06 11:04:23 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'rental_dress.master_products' doesn't exist
+[Method: GET, Route: /]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `master_products`.*, `master_brands`.`brand_name`, `master_sizes`.`size_name`
+FROM `master_products`
+LEFT JOIN `master_brands` ON `master_products`.`product_brand` = `master_brands`.`brand_id`
+LEFT JOIN `master_sizes` ON `master_products`.`product_size` = `master_sizes`.`size_id`', [], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\CatalogController.php(31): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\CatalogController->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CatalogController))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-06 11:04:23 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'rental_dress.master_products' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `master_products`.*, `master_brands`.`brand_name`, `master_sizes`.`size_name`
+FROM `master_products`
+LEFT JOIN `master_brands` ON `master_products`.`product_brand` = `master_brands`.`brand_id`
+LEFT JOIN `master_sizes` ON `master_products`.`product_size` = `master_sizes`.`size_id`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `master_products`.*, `master_brands`.`brand_name`, `master_sizes`.`size_name`
+FROM `master_products`
+LEFT JOIN `master_brands` ON `master_products`.`product_brand` = `master_brands`.`brand_id`
+LEFT JOIN `master_sizes` ON `master_products`.`product_size` = `master_sizes`.`size_id`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `master_products`.*, `master_brands`.`brand_name`, `master_sizes`.`size_name`
+FROM `master_products`
+LEFT JOIN `master_brands` ON `master_products`.`product_brand` = `master_brands`.`brand_id`
+LEFT JOIN `master_sizes` ON `master_products`.`product_size` = `master_sizes`.`size_id`', [], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\CatalogController.php(31): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\CatalogController->index()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CatalogController))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-03-06 11:04:23 --> [Caused by] mysqli_sql_exception: Table 'rental_dress.master_products' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `master_products`.*, `master_brands`.`brand_name`, `master_sizes`.`size_name`
+FROM `master_products`
+LEFT JOIN `master_brands` ON `master_products`.`product_brand` = `master_brands`.`brand_id`
+LEFT JOIN `master_sizes` ON `master_products`.`product_size` = `master_sizes`.`size_id`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `master_products`.*, `master_brands`.`brand_name`, `master_sizes`.`size_name`
+FROM `master_products`
+LEFT JOIN `master_brands` ON `master_products`.`product_brand` = `master_brands`.`brand_id`
+LEFT JOIN `master_sizes` ON `master_products`.`product_size` = `master_sizes`.`size_id`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `master_products`.*, `master_brands`.`brand_name`, `master_sizes`.`size_name`
+FROM `master_products`
+LEFT JOIN `master_brands` ON `master_products`.`product_brand` = `master_brands`.`brand_id`
+LEFT JOIN `master_sizes` ON `master_products`.`product_size` = `master_sizes`.`size_id`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `master_products`.*, `master_brands`.`brand_name`, `master_sizes`.`size_name`
+FROM `master_products`
+LEFT JOIN `master_brands` ON `master_products`.`product_brand` = `master_brands`.`brand_id`
+LEFT JOIN `master_sizes` ON `master_products`.`product_size` = `master_sizes`.`size_id`', [], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(675): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\CatalogController.php(31): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\CatalogController->index()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CatalogController))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-03-06 11:04:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-06 11:06:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-06 11:06:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-06 11:07:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-06 11:07:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-06 11:07:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-06 11:07:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-06 11:07:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-06 11:07:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-06 11:07:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-06 11:07:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-06 11:07:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-06 11:08:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-06 11:09:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-06 11:10:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-06 11:10:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-06 11:10:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-06 11:11:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-06 11:14:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-06 11:14:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-06 11:15:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-06 11:16:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-06 11:17:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-06 11:19:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-06 11:19:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-06 11:21:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-06 11:22:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-06 11:22:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-06 11:27:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-06 11:30:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-06 11:35:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-06 11:37:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-06 11:37:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-06 11:37:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-06 11:37:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-06 11:37:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-06 11:37:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-06 11:37:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-06 11:40:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-06 11:41:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-06 11:41:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-06 11:41:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-06 11:42:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-03-06 11:42:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

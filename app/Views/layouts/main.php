@@ -16,17 +16,17 @@
     <meta property="og:url" content="https://keenthemes.com/metronic" />
     <meta property="og:site_name" content="Metronic by Keenthemes" />
     <link rel="canonical" href="http://preview.keenthemes.comlayouts/light-header.html" />
-    <link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
+    <link rel="shortcut icon" href="<?=base_url()?>assets/media/logos/favicon.ico" />
     <!--begin::Fonts(mandatory for all pages)-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700" />
     <!--end::Fonts-->
     <!--begin::Vendor Stylesheets(used for this page only)-->
-    <link href="assets/plugins/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
-    <link href="assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="<?=base_url()?>assets/plugins/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="<?=base_url()?>assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
     <!--end::Vendor Stylesheets-->
     <!--begin::Global Stylesheets Bundle(mandatory for all pages)-->
-    <link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="<?=base_url()?>assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="<?=base_url()?>assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
     <!--end::Global Stylesheets Bundle-->
     <script>
         // Frame-busting to prevent site from being loaded within a frame without permission (click-jacking) if (window.top != window.self) { window.top.location.replace(window.self.location.href); }
@@ -70,8 +70,8 @@
                     <!--begin::Logo-->
                     <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0 me-lg-15">
                         <a href="<?= base_url('/')?>">
-                            <img alt="Logo" src="assets/media/logos/rent-a-dress-logo-v2.png" class="h-40px h-lg-50px app-sidebar-logo-default theme-light-show" />
-                            <img alt="Logo" src="assets/media/logos/rent-a-dress-logo-v2.png" class="h-40px h-lg-50px app-sidebar-logo-default theme-dark-show" />
+                            <img alt="Logo" src="<?=base_url()?>assets/media/logos/rent-a-dress-logo-v2.png" class="h-40px h-lg-50px app-sidebar-logo-default theme-light-show" />
+                            <img alt="Logo" src="<?=base_url()?>assets/media/logos/rent-a-dress-logo-v2.png" class="h-40px h-lg-50px app-sidebar-logo-default theme-dark-show" />
                         </a>
                     </div>
                     <!--end::Logo-->
@@ -336,15 +336,15 @@
 
     <!--begin::Javascript-->
     <script>
-        var hostUrl = "assets/";
+        var hostUrl = "<?=base_url()?>assets/";
     </script>
     <!--begin::Global Javascript Bundle(mandatory for all pages)-->
-    <script src="assets/plugins/global/plugins.bundle.js"></script>
-    <script src="assets/js/scripts.bundle.js"></script>
+    <script src="<?=base_url()?>assets/plugins/global/plugins.bundle.js"></script>
+    <script src="<?=base_url()?>assets/js/scripts.bundle.js"></script>
     <!--end::Global Javascript Bundle-->
     <!--begin::Vendors Javascript(used for this page only)-->
-    <script src="assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
-    <script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
+    <script src="<?=base_url()?>assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
+    <script src="<?=base_url()?>assets/plugins/custom/datatables/datatables.bundle.js"></script>
     <!--end::Vendors Javascript-->
     <!--begin::Custom Javascript(used for this page only)-->
     <!--end::Custom Javascript-->
