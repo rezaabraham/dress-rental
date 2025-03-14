@@ -30,3 +30,5 @@ $routes->get('auth/logout', 'AuthController::logout');
 $routes->post('admin/do-login', 'AuthController::doLogin');
 
 $routes->post('brand/store', 'BrandController::store');
+
+$routes->post('products/delete/(:num)', 'ProductsController::delete/$1');

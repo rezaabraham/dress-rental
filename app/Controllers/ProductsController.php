@@ -45,4 +45,27 @@ class ProductsController extends BaseController
 
         return view('catalog/product', ['product' => $product]);
     }
+
+    public function delete($id = null)
+    {
+        $productModel = new ProductModel();
+
+        if ($productModel->find($id)) {
+            $productModel->update($id, ['product_isactive' => 'n']);
+            return $this->response->setJSON(['success' => true, 'message' => 'Produk berhasil dinonaktifkan.']);
+        }
+
+        return $this->response->setJSON(['success' => false, 'message' => 'Produk tidak ditemukan.']);
+    }
+
+    /* public function delete($id = null)
+    {
+        $product = $this->productModel->find($id);
+        if (!$product) {
+            return redirect()->to('admin/product')->with('error', 'Produk tidak ditemukan.');
+        }
+
+        $this->productModel->delete($id);
+        return redirect()->to('admin/product')->with('success', 'Produk berhasil dihapus.');
+    } */
 }

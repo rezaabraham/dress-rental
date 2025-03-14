@@ -44,17 +44,6 @@ class CatalogController extends BaseController
 
         $brands = $this->brandModel->findAll();
 
-        /* $products = $this->productModel
-            ->select('master_products.*, master_brands.brand_name,master_sizes.size_name')
-            ->join('master_brands', 'master_products.product_brand = master_brands.brand_id', 'left')
-            ->join('master_sizes', 'master_products.product_size = master_sizes.size_id', 'left')
-            ->findAll(); */
-
-        /* foreach ($products as &$product) {
-            $product['images'] = $this->productImageModel
-                ->where('product_id', $product['product_id'])
-                ->findColumn('image_url') ?? [];
-        } */
 
         return view('catalog/index', ['products' => $products,'brands' => $brands]);
     }

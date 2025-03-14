@@ -42,7 +42,8 @@ class AdminProductsController extends BaseController
         ->select('master_products.*, master_brands.brand_name,master_sizes.size_name,master_colours.colour_name')
         ->join('master_brands', 'master_products.product_brand = master_brands.brand_id', 'left')
         ->join('master_sizes', 'master_products.product_size = master_sizes.size_id', 'left')
-        ->join('master_colours','master_products.product_colour = master_colours.colour_id', 'left');
+        ->join('master_colours','master_products.product_colour = master_colours.colour_id', 'left')
+        ->where('master_products.product_isactive','y');
 
         if (!empty($keyword)) {
             $query->like('master_products.product_name', $keyword);

@@ -89,7 +89,7 @@
                                     <!--end::Menu item-->
                                     <!--begin::Menu item-->
                                     <div class="menu-item px-3">
-                                        <a href="#" class="menu-link px-3" data-kt-ecommerce-product-filter="delete_row" onclick="alert('Belum Tersedia');return false;">Delete</a>
+                                        <a href="#" class="menu-link px-3" data-kt-ecommerce-product-filter="delete_row" onclick="confirmDelete(<?=$product['product_id']?>)">Hapus</a>
                                     </div>
                                     <!--end::Menu item-->
                                 </div>
@@ -104,4 +104,43 @@
     </div>
     <!--end::Card body-->
 </div>
+<script>
+
+function confirmDelete(productId) {
+    event.preventDefault();
+    //alert(productId);
+    Swal.fire({
+        title: 'Apakah Anda yakin?',
+        //text: 'Produk ini akan dinonaktifkan, bukan dihapus permanen!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Ya, hapus!',
+        cancelButtonText: 'Batal'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            fetch("<?= site_url('products/delete/') ?>" + productId, {
+                method: "POST",
+                headers: {
+                    "X-Requested-With": "XMLHttpRequest"
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    Swal.fire('Dinonaktifkan!', data.message, 'success').then(() => {
+                        location.reload();
+                    });
+                } else {
+                    Swal.fire('Gagal!', data.message, 'error');
+                }
+            })
+            .catch(error => {
+                Swal.fire('Error!', 'Terjadi kesalahan saat memproses.', 'error');
+            });
+        }
+    });
+}
+</script>
 <?= $this->endSection() ?>
