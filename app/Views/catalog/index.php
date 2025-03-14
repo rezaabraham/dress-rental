@@ -1,4 +1,4 @@
-<?= $this->extend('layouts/main') ?>
+<?= $this->extend('_layouts/_catalog/_main') ?>
 <?= $this->section('content') ?>
 
 <?php if (!empty($products)): ?>
@@ -53,6 +53,6 @@
 		<!--end::Col-->
 	<?php endforeach ?>
 <?php else: ?>
-	<?= "Tidak ada" ?>
+	<div><?= "Tidak ada" ?></div>
 <?php endif ?>
 <?= $this->endSection() ?>

@@ -6,6 +6,7 @@ use App\Models\ProductModel;
 use App\Models\BrandModel;
 use App\Models\ColourModel;
 use App\Models\SizeModel;
+use App\Models\ProductImageModel;
 
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
@@ -16,6 +17,7 @@ class AdminProductsController extends BaseController
     protected $brandModel;
     protected $colourModel;
     protected $sizeModel;
+    protected $productImageModel;
 
     public function __construct()
     {
@@ -23,6 +25,48 @@ class AdminProductsController extends BaseController
         $this->brandModel = new BrandModel();
         $this->colourModel = new ColourModel();
         $this->sizeModel = new SizeModel();
+        $this->productImageModel = new ProductImageModel();
+    }
+
+    public function index()
+    {
+        $keyword = esc($this->request->getGet('keyword'));
+
+        /* $products = $this->productModel
+            ->select('master_products.*, master_brands.brand_name,master_sizes.size_name')
+            ->join('master_brands', 'master_products.product_brand = master_brands.brand_id', 'left')
+            ->join('master_sizes', 'master_products.product_size = master_sizes.size_id', 'left')
+            ->findAll(); */
+
+        $query = $this->productModel
+        ->select('master_products.*, master_brands.brand_name,master_sizes.size_name,master_colours.colour_name')
+        ->join('master_brands', 'master_products.product_brand = master_brands.brand_id', 'left')
+        ->join('master_sizes', 'master_products.product_size = master_sizes.size_id', 'left')
+        ->join('master_colours','master_products.product_colour = master_colours.colour_id', 'left');
+
+        if (!empty($keyword)) {
+            $query->like('master_products.product_name', $keyword);
+        }
+
+        
+
+
+
+        $products = $query->findAll();
+
+
+        //dd($products);
+        //dd($products);
+
+        /* foreach ($products as &$product) {
+            $product['images'] = $this->productImageModel
+                ->where('product_id', $product['product_id'])
+                ->findColumn('image_url') ?? [];
+        } */
+
+        //return view('catalog', ['products' => $products]);
+
+        return view('products/list',['products' => $products]);
     }
 
     public function create()
@@ -37,7 +81,7 @@ class AdminProductsController extends BaseController
             'sizes' => $sizes
         ];
 
-        return view('layouts/admin/product/create',$viewData);
+        return view('products/create',$viewData);
     }
 
     public function store()
@@ -89,6 +133,7 @@ class AdminProductsController extends BaseController
         //dd($productData);
 
         $this->productModel->insert($productData);
+        $productId = $this->productModel->getInsertID();
         //$productId = $this->productModel->getInsertID();
 
         // Upload dan simpan gambar
@@ -107,7 +152,29 @@ class AdminProductsController extends BaseController
             }
         } */
 
-        return redirect()->to('/admin/product/create')->with('success', 'Produk berhasil ditambahkan.');
+        //return redirect()->to('/admin/product/create')->with('success', 'Produk berhasil ditambahkan.');
+        return $this->response->setJSON(['success' => true, 'product_id' => $productId]);
         //echo 'Sukses';
+    }
+
+    public function uploadGallery($productId)
+    {
+        $images = $this->request->getFiles();
+
+        if ($images && isset($images['file'])) {
+            foreach ($images['file'] as $image) {
+                if ($image->isValid() && !$image->hasMoved()) {
+                    $newName = $image->getRandomName();
+                    $image->move('assets/media/products', $newName);
+                    
+                    $this->productImageModel->insert([
+                        'product_id' => $productId,
+                        'image_url'  => 'media/products/' . $newName,
+                    ]);
+                }
+            }
+        }
+
+        return $this->response->setJSON(['success' => true]);
     }
 }
