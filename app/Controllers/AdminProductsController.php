@@ -32,12 +32,6 @@ class AdminProductsController extends BaseController
     {
         $keyword = esc($this->request->getGet('keyword'));
 
-        /* $products = $this->productModel
-            ->select('master_products.*, master_brands.brand_name,master_sizes.size_name')
-            ->join('master_brands', 'master_products.product_brand = master_brands.brand_id', 'left')
-            ->join('master_sizes', 'master_products.product_size = master_sizes.size_id', 'left')
-            ->findAll(); */
-
         $query = $this->productModel
         ->select('master_products.*, master_brands.brand_name,master_sizes.size_name,master_colours.colour_name')
         ->join('master_brands', 'master_products.product_brand = master_brands.brand_id', 'left')
@@ -49,23 +43,7 @@ class AdminProductsController extends BaseController
             $query->like('master_products.product_name', $keyword);
         }
 
-        
-
-
-
         $products = $query->findAll();
-
-
-        //dd($products);
-        //dd($products);
-
-        /* foreach ($products as &$product) {
-            $product['images'] = $this->productImageModel
-                ->where('product_id', $product['product_id'])
-                ->findColumn('image_url') ?? [];
-        } */
-
-        //return view('catalog', ['products' => $products]);
 
         return view('products/list',['products' => $products]);
     }

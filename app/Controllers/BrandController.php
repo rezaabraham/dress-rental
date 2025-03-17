@@ -9,9 +9,19 @@ use CodeIgniter\HTTP\ResponseInterface;
 
 class BrandController extends BaseController
 {
+
+    protected $brandModel;
+
+    public function __construct()
+    {
+        $this->brandModel = new BrandModel();
+    }
+
     public function index()
     {
-        //
+        $brands = $this->brandModel->findAll();
+
+        return view('brands/list',['brands' => $brands]);
     }
 
     public function store()
