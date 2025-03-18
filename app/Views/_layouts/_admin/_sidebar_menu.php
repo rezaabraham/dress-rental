@@ -41,6 +41,54 @@
                 <!--begin:Menu item-->
                 <div class="menu-item">
                     <!--begin:Menu link-->
+                    <a class="menu-link" href="<?= site_url('brand') ?>">
+                        <span class="menu-icon">
+                            <i class="ki-duotone ki-abstract-13 fs-2">
+                                <span class="path1"></span>
+                                <span class="path2"></span>
+                            </i>
+                        </span>
+                        <span class="menu-title">Brands</span>
+                    </a>
+                    <!--end:Menu link-->
+                </div>
+                <!--end:Menu item-->
+
+                <!--begin:Menu item-->
+                <div class="menu-item">
+                    <!--begin:Menu link-->
+                    <a class="menu-link" href="<?= site_url('colour') ?>">
+                        <span class="menu-icon">
+                            <i class="ki-duotone ki-abstract-13 fs-2">
+                                <span class="path1"></span>
+                                <span class="path2"></span>
+                            </i>
+                        </span>
+                        <span class="menu-title">Colours</span>
+                    </a>
+                    <!--end:Menu link-->
+                </div>
+                <!--end:Menu item-->
+
+                <!--begin:Menu item-->
+                <div class="menu-item">
+                    <!--begin:Menu link-->
+                    <a class="menu-link" href="<?= site_url('size') ?>">
+                        <span class="menu-icon">
+                            <i class="ki-duotone ki-abstract-13 fs-2">
+                                <span class="path1"></span>
+                                <span class="path2"></span>
+                            </i>
+                        </span>
+                        <span class="menu-title">Sizes</span>
+                    </a>
+                    <!--end:Menu link-->
+                </div>
+                <!--end:Menu item-->
+
+                <!--begin:Menu item-->
+                <div class="menu-item">
+                    <!--begin:Menu link-->
                     <a class="menu-link" href="https://preview.keenthemes.com/metronic8/demo1/layout-builder.html">
                         <span class="menu-icon">
                             <i class="ki-duotone ki-abstract-13 fs-2">
