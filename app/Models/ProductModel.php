@@ -22,4 +22,12 @@ class ProductModel extends Model
         'product_rental_period',
         'product_isactive'
     ];
+
+    public function generateProductCode()
+    {
+        $query = $this->select('LPAD(IFNULL(MAX(product_id),0) + 1, 3, "0") AS new_code', false)
+                      ->first();
+        
+        return $query ? $query['new_code'] : '001';
+    }
 }

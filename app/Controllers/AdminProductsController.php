@@ -93,11 +93,13 @@ class AdminProductsController extends BaseController
             }
         }
 
+        $product_code = $this->productModel->generateProductCode();
+
         // Simpan produk
         $productData = [
             'product_name'          => $this->request->getPost('product_name'),
             'product_thumbnail'     => $thumbnailUrl,
-            'product_code'          => 'BB-'.date('is'),
+            'product_code'          => $product_code,
             'product_brand'         => $this->request->getPost('product_brand'),
             'product_desc'          => $this->request->getPost('product_description'),
             'product_colour'        => $this->request->getPost('product_colour'),
@@ -105,35 +107,13 @@ class AdminProductsController extends BaseController
             'product_price'         => $this->request->getPost('product_price'),
             'product_extra_days_price' => $this->request->getPost('product_extra_days_price'),
             'product_rental_period' => $this->request->getPost('product_rental_period')
-            // 'product_rent_days' => $this->request->getPost('product_rent_days'),
-            // 'product_desc'      => $this->request->getPost('product_desc'),
         ];
-
-        //dd($productData);
 
         $this->productModel->insert($productData);
         $productId = $this->productModel->getInsertID();
-        //$productId = $this->productModel->getInsertID();
+        
 
-        // Upload dan simpan gambar
-        /* $images = $this->request->getFiles();
-        if ($images && isset($images['images'])) {
-            foreach ($images['images'] as $image) {
-                if ($image->isValid() && !$image->hasMoved()) {
-                    $newName = $image->getRandomName();
-                    $image->move('uploads/products', $newName);
-
-                    $this->productImageModel->insert([
-                        'product_id' => $productId,
-                        'image_url'  => 'uploads/products/' . $newName,
-                    ]);
-                }
-            }
-        } */
-
-        //return redirect()->to('/admin/product/create')->with('success', 'Produk berhasil ditambahkan.');
         return $this->response->setJSON(['success' => true, 'product_id' => $productId]);
-        //echo 'Sukses';
     }
 
     public function uploadGallery($productId)
