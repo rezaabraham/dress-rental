@@ -4,12 +4,14 @@
 <!--begin::Head-->
 
 <head>
+
+
     <base href="../" />
     <title>CHARINA STUDIO</title>
     <meta charset="utf-8" />
     <meta name="description" content="The most advanced Tailwind CSS & Bootstrap 5 Admin Theme with 40 unique prebuilt layouts on Themeforest trusted by 100,000 beginners and professionals. Multi-demo, Dark Mode, RTL support and complete React, Angular, Vue, Asp.Net Core, Rails, Spring, Blazor, Django, Express.js, Node.js, Flask, Symfony & Laravel versions. Grab your copy now and get life-time updates for free." />
     <meta name="keywords" content="tailwind, tailwindcss, metronic, bootstrap, bootstrap 5, angular, VueJs, React, Asp.Net Core, Rails, Spring, Blazor, Django, Express.js, Node.js, Flask, Symfony & Laravel starter kits, admin themes, web design, figma, web development, free templates, free admin themes, bootstrap theme, bootstrap template, bootstrap dashboard, bootstrap dak mode, bootstrap button, bootstrap datepicker, bootstrap timepicker, fullcalendar, datatables, flaticon" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="article" />
     <meta property="og:title" content="Metronic - The World's #1 Selling Tailwind CSS & Bootstrap Admin Template by KeenThemes" />
@@ -64,7 +66,7 @@
         <!--begin::Page-->
         <div class="app-page flex-column flex-column-fluid" id="kt_app_page">
             <!--begin::Header-->
-            <?= $this->include('_layouts/_catalog/_header');?>
+            <?= $this->include('_layouts/_catalog/_header'); ?>
             <!--end::Header-->
             <!--begin::Wrapper-->
             <div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
@@ -73,7 +75,7 @@
                     <!--begin::Content wrapper-->
                     <div class="d-flex flex-column flex-column-fluid">
                         <!--begin::Toolbar-->
-                        <?= $this->include('_layouts/_catalog/_toolbar');?>
+                        <?= $this->include('_layouts/_catalog/_toolbar'); ?>
                         <!--end::Toolbar-->
                     </div>
                     <!--begin::Content-->
@@ -108,6 +110,21 @@
     </div>
     <!--end::App-->
 
+    
+
+<!--begin::Engage-->
+<div class="app-engage" id="kt_app_engage">
+    <!--begin::Prebuilts toggle-->
+    <a href="https://wa.me/6285117001667?text=Halo,%20saya%20tertarik%20dengan%20dress%20Anda." target="_blank" class="app-engage-btn hover-success">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="Chat via WhatsApp">
+    </a>
+    <!--end::Prebuilts toggle-->
+</div>
+<!--end::Engage-->
+
+
+   
+
     <!--begin::Scrolltop-->
     <div id="kt_scrolltop" class="scrolltop" data-kt-scrolltop="true">
         <i class="ki-outline ki-arrow-up"></i>
@@ -129,6 +146,16 @@
     <!--begin::Custom Javascript(used for this page only)-->
     <!--end::Custom Javascript-->
     <!--end::Javascript-->
+     <!--begin::Engage-->
+     <div class="app-engage " id="kt_app_engage">
+        <!--begin::Prebuilts toggle-->
+        <a href="https://wa.me/6285117001667?text=Halo,%20saya%20tertarik%20dengan%20dress%20Anda." target="_blank" class="app-engage-btn hover-success">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="50px" alt="Chat via WhatsApp">
+        </a>
+        <!--end::Prebuilts toggle-->
+    </div>
+    <!--end::Engage-->
+
 </body>
 <!--end::Body-->
 
