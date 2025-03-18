@@ -110,20 +110,34 @@
     </div>
     <!--end::App-->
 
-    
-
-<!--begin::Engage-->
-<div class="app-engage" id="kt_app_engage">
-    <!--begin::Prebuilts toggle-->
-    <a href="https://wa.me/6285117001667?text=Halo,%20saya%20tertarik%20dengan%20dress%20Anda." target="_blank" class="app-engage-btn hover-success">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="Chat via WhatsApp">
-    </a>
-    <!--end::Prebuilts toggle-->
-</div>
-<!--end::Engage-->
+    <!--begin::Engage-->
+    <div class="app-engage " id="kt_app_engage">
 
 
-   
+        <!--begin::Prebuilts toggle-->
+        <a href="https://www.tiktok.com/@charina.studio" target="_blank" class="app-engage-btn hover-dark">
+            <i class="ki-duotone ki-tiktok fs-1 pt-1 mb-2"><span class="path1"></span><span class="path2"></span></i> TikTok
+            <!-- <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/TikTok_logo.svg" width="50px" alt="TikTok"> -->
+        </a>
+        <!--end::Prebuilts toggle-->
+
+        <!--begin::Get help-->
+        <a href="https://www.instagram.com/charina.studio" target="_blank" class="app-engage-btn hover-primary">
+            <!-- <i class="ki-duotone ki-like-shapes fs-1 pt-1 mb-2"><span class="path1"></span><span class="path2"></span></i> Get Help -->
+            <!-- <i class="ki-duotone ki-instagram fs-1 pt-1 mb-2"><span class="path1"></span><span class="path2"></span></i> Instagram -->
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" width="50px" alt="Instagram">
+        </a>
+        <!--end::Get help-->
+
+        <!--begin::Prebuilts toggle-->
+        <a href="https://wa.me/628138709777?text=Halo,%20saya%20tertarik%20dengan%20dress%20Anda." target="_blank" class="app-engage-btn hover-success">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="Chat via WhatsApp">
+            <!-- <i class="ki-duotone ki-whatsapp fs-1 pt-1 mb-2"><span class="path1"></span><span class="path2"></span></i>WhatsApp -->
+        </a>
+        <!--end::Prebuilts toggle-->
+
+    </div>
+    <!--end::Engage-->
 
     <!--begin::Scrolltop-->
     <div id="kt_scrolltop" class="scrolltop" data-kt-scrolltop="true">
@@ -146,15 +160,7 @@
     <!--begin::Custom Javascript(used for this page only)-->
     <!--end::Custom Javascript-->
     <!--end::Javascript-->
-     <!--begin::Engage-->
-     <div class="app-engage " id="kt_app_engage">
-        <!--begin::Prebuilts toggle-->
-        <a href="https://wa.me/6285117001667?text=Halo,%20saya%20tertarik%20dengan%20dress%20Anda." target="_blank" class="app-engage-btn hover-success">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="50px" alt="Chat via WhatsApp">
-        </a>
-        <!--end::Prebuilts toggle-->
-    </div>
-    <!--end::Engage-->
+    
 
 </body>
 <!--end::Body-->

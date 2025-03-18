@@ -76,7 +76,7 @@
             <div class="card-header">
                 <!--begin::Card title-->
                 <div class="card-title">
-                    <h2>Product Details</h2>
+                    <h2>Dress Details</h2>
                 </div>
                 <!--end::Card title-->
             </div>
@@ -104,13 +104,13 @@
                 <!--end::Button-->
                 <!--begin::Input group-->
                 <!--begin::Label-->
-                <label class="form-label d-block">Tags</label>
+                <!-- <label class="form-label d-block">Tags</label> -->
                 <!--end::Label-->
                 <!--begin::Input-->
-                <input id="kt_ecommerce_add_product_tags" name="kt_ecommerce_add_product_tags" class="form-control mb-2" value="" />
+                <!-- <input id="kt_ecommerce_add_product_tags" name="kt_ecommerce_add_product_tags" class="form-control mb-2" value="" /> -->
                 <!--end::Input-->
                 <!--begin::Description-->
-                <div class="text-muted fs-7">Add tags to a product.</div>
+                <!-- <div class="text-muted fs-7">Add tags to a product.</div> -->
                 <!--end::Description-->
                 <!--end::Input group-->
             </div>
@@ -154,13 +154,13 @@
                             <!--begin::Input group-->
                             <div class="mb-10 fv-row">
                                 <!--begin::Label-->
-                                <label class="required form-label">Product Name</label>
+                                <label class="required form-label">Dress Name</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
                                 <input type="text" name="product_name" class="form-control mb-2" placeholder="Product name" value="Test_<?= date('Ymdhis') ?>" />
                                 <!--end::Input-->
                                 <!--begin::Description-->
-                                <div class="text-muted fs-7">A product name is required and recommended to be unique.</div>
+                                <!-- <div class="text-muted fs-7">A product name is required and recommended to be unique.</div> -->
                                 <!--end::Description-->
                             </div>
                             <!--end::Input group-->
@@ -215,7 +215,7 @@
                             </div>
                             <!--end::Input group-->
                             <!--begin::Description-->
-                            <div class="text-muted fs-7">Set the product media gallery.</div>
+                            <!-- <div class="text-muted fs-7">Set the dress media gallery.</div> -->
                             <!--end::Description-->
                         </div>
                         <!--end::Card header-->
@@ -241,7 +241,7 @@
                                 <input type="number" name="product_price" class="form-control mb-2" placeholder="Product price" value="" />
                                 <!--end::Input-->
                                 <!--begin::Description-->
-                                <div class="text-muted fs-7">Set the product price.</div>
+                                <!-- <div class="text-muted fs-7">Set the product price.</div> -->
                                 <!--end::Description-->
                             </div>
                             <!--end::Input group-->
@@ -260,7 +260,7 @@
                         <!--begin::Card header-->
                         <div class="card-header">
                             <div class="card-title">
-                                <h2>Inventory</h2>
+                                <h2>Attributes</h2>
                             </div>
                         </div>
                         <!--end::Card header-->
@@ -277,7 +277,7 @@
                                         <!--begin::Input-->
                                         <div class="d-flex gap-3">
                                             <select class="form-select" name="product_colour" data-placeholder="Select a variation" data-kt-ecommerce-catalog-add-product="product_option">
-                                                <option>-- Pilih Warna --</option>
+                                                <option>-- Choose Colour --</option>
                                                 <?php foreach ($colours as $colour): ?>
                                                     <option value="<?= $colour['colour_id'] ?>"><?= $colour['colour_name'] ?></option>
                                                 <?php endforeach ?>
@@ -297,7 +297,7 @@
                                         <!--begin::Input-->
                                         <div class="d-flex gap-3">
                                             <select class="form-select" name="product_size" data-placeholder="Select a variation" data-kt-ecommerce-catalog-add-product="product_option">
-                                                <option>-- Pilih Size --</option>
+                                                <option>-- Choose Size --</option>
                                                 <?php foreach ($sizes as $size): ?>
                                                     <option value="<?= $size['size_id'] ?>"><?= $size['size_name'] ?></option>
                                                 <?php endforeach ?>
@@ -328,13 +328,13 @@
                             <!--begin::Input group-->
                             <div class="mb-10">
                                 <!--begin::Label-->
-                                <label class="form-label">Masa Sewa (/hari)</label>
+                                <label class="form-label">Days for Rents</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
                                 <input type="number" class="form-control mb-2" name="product_rental_period" />
                                 <!--end::Input-->
                                 <!--begin::Description-->
-                                <div class="text-muted fs-7">Set a meta tag title. Recommended to be simple and precise keywords.</div>
+                                <!-- <div class="text-muted fs-7">Set a meta tag title. Recommended to be simple and precise keywords.</div> -->
                                 <!--end::Description-->
                             </div>
                             <!--end::Input group-->
@@ -342,15 +342,15 @@
                             <!--begin::Input group-->
                             <div>
                                 <!--begin::Label-->
-                                <label class="form-label">Extra Days</label>
+                                <label class="form-label">Extra Days Charge</label>
                                 <!--end::Label-->
                                 <!--begin::Editor-->
                                 <input id="kt_ecommerce_add_product_meta_keywords" name="product_extra_days_price" class="form-control mb-2" />
                                 <!--end::Editor-->
                                 <!--begin::Description-->
-                                <div class="text-muted fs-7">Set a list of keywords that the product is related to. Separate the keywords by adding a comma
+                                <!-- <div class="text-muted fs-7">Set a list of keywords that the product is related to. Separate the keywords by adding a comma
                                     <code>,</code>between each keyword.
-                                </div>
+                                </div> -->
                                 <!--end::Description-->
                             </div>
                             <!--end::Input group-->

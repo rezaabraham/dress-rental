@@ -7,14 +7,14 @@
     <div class="card-header align-items-center py-5 gap-2 gap-md-5">
         <!--begin::Card title-->
         <div class="card-title">
-            <form action="<?= site_url('admin/product') ?>" method="get">
+            <form action="<?= site_url('brand') ?>" method="get">
                 <!--begin::Search-->
                 <div class="d-flex align-items-center position-relative my-1">
                     <i class="ki-duotone ki-magnifier fs-3 position-absolute ms-4">
                         <span class="path1"></span>
                         <span class="path2"></span>
                     </i>
-                    <input type="text" data-kt-ecommerce-product-filter="search" class="form-control form-control-solid w-250px ps-12" placeholder="Cari brand" name="keyword" />
+                    <input type="text" data-kt-ecommerce-product-filter="search" class="form-control form-control-solid w-250px ps-12" placeholder="Search Brands..." name="keyword" />
                 </div>
                 <!--end::Search-->
             </form>
@@ -43,7 +43,10 @@
             </thead>
             <tbody class="fw-semibold text-gray-600">
                 <?php if (empty($brands)): ?>
-                    <?= 'Belum ada data.' ?>
+                    <tr>
+                    <td colspan="3" class="text-center"> <?= 'Belum ada data.' ?> </td>
+                        
+                    </tr>
                 <?php else: ?>
                     <?php foreach ($brands as $brand): ?>
                         <tr>

@@ -37,7 +37,7 @@
     <p class="mt-3"><strong>Fit:</strong> <?= $product['size_name'] ?></p>
     <p><?= $product['product_desc'] ?></p>
 
-    <button class="btn btn-primary mt-3">Rent Now</button>
+    <!-- <button class="btn btn-primary mt-3">Rent Now</button> -->
 </div>
 
 <?= $this->endSection() ?>

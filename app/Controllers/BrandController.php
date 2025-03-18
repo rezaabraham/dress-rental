@@ -19,7 +19,15 @@ class BrandController extends BaseController
 
     public function index()
     {
-        $brands = $this->brandModel->findAll();
+        $keyword = esc($this->request->getGet('keyword'));
+
+        $query = $this->brandModel;
+
+        if (!empty($keyword)) {
+            $query->like('master_brands.brand_name', $keyword)->orLike('master_brands.brand_code',$keyword);
+        }
+
+        $brands = $query->findAll();
 
         return view('brands/list',['brands' => $brands]);
     }
@@ -73,26 +81,4 @@ class BrandController extends BaseController
 
         return $this->response->setStatusCode(400);
     }
-
-    /* public function store()
-    {
-        if($this->request->isAJAX())
-        {
-            $brandModel = new BrandModel();
-
-            $brandName = $this->request->getJSON()->brand_name;
-
-            if (empty($brandName)) {
-                return $this->response->setJSON(['success' => false, 'message' => 'Nama brand tidak boleh kosong']);
-            }
-    
-            $brandId = $brandModel->insert(['brand_name' => $brandName]);
-    
-            return $this->response->setJSON(['success' => true, 'brand_id' => $brandId, 'brand_name' => $brandName]);
-        }
-
-        return $this->response->setStatusCode(400);
-
-       
-    } */
 }

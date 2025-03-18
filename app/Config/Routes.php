@@ -9,6 +9,8 @@ use CodeIgniter\Router\RouteCollection;
 
 //$routes->get('product', 'ProductsController::show');
 
+$routes->get('home', 'Home::index');
+
 $routes->get('/', 'CatalogController::index');
 
 $routes->get('dashboard', 'DashboardController::index');

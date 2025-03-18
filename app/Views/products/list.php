@@ -14,7 +14,7 @@
                     <span class="path1"></span>
                     <span class="path2"></span>
                 </i>
-                <input type="text" data-kt-ecommerce-product-filter="search" class="form-control form-control-solid w-250px ps-12" placeholder="Search Product" name="keyword" />
+                <input type="text" data-kt-ecommerce-product-filter="search" class="form-control form-control-solid w-250px ps-12" placeholder="Search dress..." name="keyword" />
             </div>
             <!--end::Search-->
             </form>
@@ -24,7 +24,7 @@
         <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
             
             <!--begin::Add product-->
-            <a href="<?= site_url('admin/product/create') ?>" class="btn btn-primary">Add Product</a>
+            <a href="<?= site_url('admin/product/create') ?>" class="btn btn-primary">+ Dress</a>
             <!--end::Add product-->
         </div>
         <!--end::Card toolbar-->
@@ -36,7 +36,7 @@
         <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_ecommerce_products_table">
             <thead>
                 <tr class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
-                    <th class="min-w-200px">Product</th>
+                    <th class="min-w-200px">Dress Name</th>
                     <th class="min-w-100px">Code</th>
                     <th class="min-w-100px">Colour</th>
                     <th class="min-w-100px">Size</th>
@@ -53,13 +53,13 @@
                             <td>
                                 <div class="d-flex align-items-center">
                                     <!--begin::Thumbnail-->
-                                    <a href="apps/ecommerce/catalog/edit-product.html" class="symbol symbol-50px">
+                                    <a href="#" class="symbol symbol-50px">
                                         <span class="symbol-label" style="background-image:url(assets/<?= $product['product_thumbnail'] ?>);"></span>
                                     </a>
                                     <!--end::Thumbnail-->
                                     <div class="ms-5">
                                         <!--begin::Title-->
-                                        <a href="apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name"><?= $product['product_name'] ?></a>
+                                        <a href="#" class="text-gray-800 text-hover-primary fs-5 fw-bold" data-kt-ecommerce-product-filter="product_name"><?= $product['product_name'] ?></a>
                                         <!--end::Title-->
                                     </div>
                                 </div>
