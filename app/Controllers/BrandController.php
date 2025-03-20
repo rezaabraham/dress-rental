@@ -206,7 +206,7 @@ class BrandController extends BaseController
 
             return $this->response->setJSON([
                 'success' => true,
-                'message' => 'Brand berhasil dinonaktifkan.'
+                'message' => 'Brand berhasil dihapus.'
             ]);
         }
 

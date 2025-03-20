@@ -50,7 +50,7 @@ class AdminProductsController extends BaseController
 
     public function create()
     {
-        $brands = $this->brandModel->findAll();
+        $brands = $this->brandModel->where('brand_isactive','y')->findAll();
         $colours = $this->colourModel->findAll();
         $sizes = $this->sizeModel->findAll();
 
