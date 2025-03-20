@@ -8,5 +8,5 @@ class BrandModel extends Model
 {
     protected $table      = 'master_brands';
     protected $primaryKey = 'brand_id';
-    protected $allowedFields = ['brand_name', 'brand_code'];
+    protected $allowedFields = ['brand_name', 'brand_code','brand_isactive'];
 }

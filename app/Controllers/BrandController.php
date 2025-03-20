@@ -21,7 +21,7 @@ class BrandController extends BaseController
     {
         $keyword = esc($this->request->getGet('keyword'));
 
-        $query = $this->brandModel;
+        $query = $this->brandModel->where('brand_isactive','y');
 
         if (!empty($keyword)) {
             $query->like('master_brands.brand_name', $keyword)->orLike('master_brands.brand_code',$keyword);
@@ -185,5 +185,31 @@ class BrandController extends BaseController
         }
 
         return redirect()->to('/brands')->with('error', 'Permintaan tidak valid.');
+    }
+
+    public function delete($id)
+    {
+        if ($this->request->isAJAX()) {
+            $brandModel = new \App\Models\BrandModel();
+
+            // Cek apakah brand dengan ID ini ada
+            $brand = $brandModel->find($id);
+            if (!$brand) {
+                return $this->response->setJSON([
+                    'success' => false,
+                    'message' => 'Brand tidak ditemukan.'
+                ]);
+            }
+
+            // Update isactive menjadi 'n'
+            $brandModel->update($id, ['brand_isactive' => 'n']);
+
+            return $this->response->setJSON([
+                'success' => true,
+                'message' => 'Brand berhasil dinonaktifkan.'
+            ]);
+        }
+
+        return redirect()->to('brand')->with('error', 'Permintaan tidak valid.');
     }
 }

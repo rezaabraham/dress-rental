@@ -72,7 +72,7 @@
                                     data-brand-code="<?= esc($brand['brand_code']) ?>">
                                     Edit
                                 </button>
-                                <button class="btn btn-sm btn-light-danger" onclick="alert('Belum Tersedia');return false;">Hapus</button>
+                                <button class="btn btn-sm btn-light-danger" onclick="confirmDelete(<?= $brand['brand_id'] ?>)">Hapus</button>
                             </td>
                         </tr>
                     <?php endforeach ?>
@@ -84,33 +84,6 @@
     <!--end::Card body-->
 </div>
 
-<!-- Modal Tambah Brand -->
-<!-- <div class="modal fade" id="addBrandModal" tabindex="-1" aria-labelledby="addBrandModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="addBrandModalLabel">Tambah Brand Baru</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-
-                <div>
-                    <label for="brandName">Nama Brand</label>
-                    <input type="text" id="brandName" class="form-control" placeholder="Masukkan nama brand baru">
-                </div>
-                <div>
-                    <label for="brandName">Kode Brand</label>
-                    <input type="text" id="brandCode" class="form-control" placeholder="Masukkan kode brand baru">
-                </div>
-                <div id="brandError" class="text-danger mt-2"></div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                <button type="button" class="btn btn-primary" id="saveBrand">Simpan</button>
-            </div>
-        </div>
-    </div>
-</div> -->
 
 <div class="modal fade" id="brandModal" tabindex="-1" aria-labelledby="addBrandModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -190,10 +163,46 @@
         brandModal.show();
     }
 
+    function confirmDelete(brandId) {
+        Swal.fire({
+            title: 'Apakah Anda yakin?',
+            text: 'Brand ini akan dihapus!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Ya',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch("<?= site_url('brand/delete/') ?>" + brandId, {
+                        method: "POST",
+                        headers: {
+                            "X-Requested-With": "XMLHttpRequest"
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            Swal.fire('Dinonaktifkan!', data.message, 'success').then(() => {
+                                location.reload();
+                            });
+                        } else {
+                            Swal.fire('Gagal!', data.message, 'error');
+                        }
+                    })
+                    .catch(error => {
+                        Swal.fire('Error!', 'Terjadi kesalahan saat memproses.', 'error');
+                    });
+            }
+        });
+    }
+
+
     document.getElementById("brandForm").addEventListener("submit", function(event) {
         event.preventDefault();
         let form = event.target;
-        
+
         //let brandId = document.getElementById("brandId").value;
 
         // Reset validasi
@@ -214,7 +223,7 @@
 
         if (hasError) return;
 
-        
+
         fetch(form.getAttribute("action"), {
                 method: "POST",
                 headers: {

@@ -34,5 +34,6 @@ $routes->post('admin/do-login', 'AuthController::doLogin');
 $routes->get('brand', 'BrandController::index');
 $routes->post('brand/store', 'BrandController::store');
 $routes->post('brand/update/(:num)', 'BrandController::update/$1');
+$routes->post('brand/delete/(:num)', 'BrandController::delete/$1');
 
 $routes->post('products/delete/(:num)', 'ProductsController::delete/$1');
