@@ -24,7 +24,8 @@
         <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
 
             <!--begin::Add product-->
-            <a href="<?= site_url('brand/create') ?>" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addBrandModal">Add Brand</a>
+            <!-- <a href="<?= site_url('brand/create') ?>" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addBrandModal">Add Brand</a> -->
+            <button type="button" class="btn btn-primary" onclick="openModal()">+ Brand</button>
             <!--end::Add product-->
         </div>
         <!--end::Card toolbar-->
@@ -44,8 +45,8 @@
             <tbody class="fw-semibold text-gray-600">
                 <?php if (empty($brands)): ?>
                     <tr>
-                    <td colspan="3" class="text-center"> <?= 'Belum ada data.' ?> </td>
-                        
+                        <td colspan="3" class="text-center"> <?= 'Belum ada data.' ?> </td>
+
                     </tr>
                 <?php else: ?>
                     <?php foreach ($brands as $brand): ?>
@@ -65,7 +66,12 @@
                             </td>
 
                             <td class="text-end">
-                                <button class="btn btn-sm btn-light-primary me-5" onclick="alert('Belum Tersedia');return false;">Edit</button>
+                                <button class="btn btn-sm btn-light-primary me-5 editBrandBtn"
+                                    data-brand-id="<?= $brand['brand_id'] ?>"
+                                    data-brand-name="<?= esc($brand['brand_name']) ?>"
+                                    data-brand-code="<?= esc($brand['brand_code']) ?>">
+                                    Edit
+                                </button>
                                 <button class="btn btn-sm btn-light-danger" onclick="alert('Belum Tersedia');return false;">Hapus</button>
                             </td>
                         </tr>
@@ -79,7 +85,7 @@
 </div>
 
 <!-- Modal Tambah Brand -->
-<div class="modal fade" id="addBrandModal" tabindex="-1" aria-labelledby="addBrandModalLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="addBrandModal" tabindex="-1" aria-labelledby="addBrandModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -104,74 +110,152 @@
             </div>
         </div>
     </div>
+</div> -->
+
+<div class="modal fade" id="brandModal" tabindex="-1" aria-labelledby="addBrandModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="brandModalLabel">Tambah Brand Baru</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="brandForm" method="post" action="">
+                    <input type="hidden" name="brandId" id="brandId">
+                    <div>
+                        <label for="brandName">Nama Brand</label>
+                        <input type="text" id="brandName" class="form-control" placeholder="Masukkan nama brand baru">
+                        <div class="invalid-feedback">Nama brand tidak boleh kosong.</div>
+                    </div>
+                    <div>
+                        <label for="brandName">Kode Brand</label>
+                        <input type="text" id="brandCode" class="form-control" placeholder="Masukkan kode brand baru">
+                        <div class="invalid-feedback">Kode brand tidak boleh kosong.</div>
+                    </div>
+                    <div id="brandError" class="text-danger mt-2"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                <button type="submit" class="btn btn-primary" id="saveBrand">Simpan</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 
-<script>
-    document.getElementById("saveBrand").addEventListener("click", function() {
-        let brandName = document.getElementById("brandName").value.trim();
-        let brandCode = document.getElementById("brandCode").value.trim();
-        let errorDiv = document.getElementById("brandError");
 
-        if (brandName === "" || brandCode === "") {
-            errorDiv.textContent = "Nama dan kode brand tidak boleh kosong!";
-            //return;
-            return false;
+<script>
+    var brandID = document.getElementById("brandId");
+    var brandName = document.getElementById("brandName");
+    var brandCode = document.getElementById("brandCode");
+
+    document.addEventListener("DOMContentLoaded", function() {
+        let editButtons = document.querySelectorAll(".editBrandBtn");
+        editButtons.forEach(function(button) {
+            button.addEventListener("click", function() {
+                let brandIdValue = this.getAttribute("data-brand-id");
+                let brandNameValue = this.getAttribute("data-brand-name");
+                let brandCodeValue = this.getAttribute("data-brand-code");
+
+
+                // Isi nilai di dalam modal
+                brandID.value = brandIdValue;
+                brandName.value = brandNameValue;
+                brandCode.value = brandCodeValue;
+                document.getElementById("brandForm").setAttribute("action", "<?= site_url('brand/update') ?>/" + brandIdValue);
+
+                // Ubah title modal
+                document.getElementById("brandModalLabel").textContent = "Edit Brand";
+
+                // Tampilkan modal Edit
+                let brandModal = new bootstrap.Modal(document.getElementById("brandModal"));
+                brandName.classList.remove("is-invalid");
+                brandCode.classList.remove("is-invalid");
+                brandModal.show();
+            });
+        });
+    });
+
+    function openModal() {
+        brandID.value = "";
+        brandName.value = "";
+        brandCode.value = "";
+        document.getElementById("brandForm").setAttribute("action", "<?= site_url('brand/store') ?>");
+
+        document.getElementById("brandModalLabel").textContent = "Tambah Brand";
+
+        let brandModal = new bootstrap.Modal(document.getElementById("brandModal"));
+        brandName.classList.remove("is-invalid");
+        brandCode.classList.remove("is-invalid");
+        brandModal.show();
+    }
+
+    document.getElementById("brandForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        let form = event.target;
+        
+        //let brandId = document.getElementById("brandId").value;
+
+        // Reset validasi
+        brandName.classList.remove("is-invalid");
+        brandCode.classList.remove("is-invalid");
+
+        let hasError = false;
+
+        if (brandName.value.trim() === "") {
+            brandName.classList.add("is-invalid");
+            hasError = true;
         }
 
-        Swal.fire({
-            title: 'Menyimpan...',
-            text: 'Mohon tunggu sebentar',
-            allowOutsideClick: false,
-            didOpen: () => {
-                Swal.showLoading();
-            }
-        });
+        if (brandCode.value.trim() === "") {
+            brandCode.classList.add("is-invalid");
+            hasError = true;
+        }
 
-        fetch("<?= site_url('brand/store') ?>", {
+        if (hasError) return;
+
+        
+        fetch(form.getAttribute("action"), {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json",
+                    "Content-Type": "application/x-www-form-urlencoded",
                     "X-Requested-With": "XMLHttpRequest"
                 },
-                body: JSON.stringify({
-                    brand_name: brandName,
-                    brand_code: brandCode
-                })
+                body: "brand_name=" + brandName.value + "&brand_code=" + brandCode.value,
+
             })
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                   /*  document.getElementById("brandName").value = "";
-                    document.getElementById("brandCode").value = "";
-                    errorDiv.textContent = ""; */
-
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Brand Ditambahkan',
-                        text: 'Brand berhasil ditambahkan ke daftar!',
-                        timer: 2000,
-                        showConfirmButton: false
+                    Swal.fire('Sukses!', data.message, 'success').then(() => {
+                        location.reload();
                     });
-
-                    let modal = bootstrap.Modal.getInstance(document.getElementById("addBrandModal"));
-                    modal.hide();
-                    location.reload()
-                } else {
-                    errorDiv.textContent = "";
+                } else if (data.errors) {
+                    let errorMessages = Object.values(data.errors).join("<br>");
                     Swal.fire({
                         icon: 'error',
-                        title: 'Gagal Menambahkan Brand',
-                        html: Object.values(data.message).join("<br>"),
+                        title: 'Validasi Gagal!',
+                        html: errorMessages // Menampilkan semua error dengan format HTML
                     });
+
+                    // Tandai input yang error dengan border merah
+                    // if (data.errors.brand_name) {
+                    //     brandName.classList.add("is-invalid");
+                    // }
+                    // if (data.errors.brand_code) {
+                    //     brandCode.classList.add("is-invalid");
+                    // }
+                } else {
+                    Swal.fire('Gagal!', 'Brand gagal disimpan.', 'error');
                 }
             })
             .catch(error => {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Terjadi Kesalahan',
-                    text: 'Gagal terhubung ke server!',
-                });
+                Swal.fire('Error!', 'Terjadi kesalahan saat menyimpan data.', 'error');
             });
+
+
     });
 </script>
+
+
 <?= $this->endSection() ?>
