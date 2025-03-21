@@ -33,7 +33,7 @@
     <h2><?= $product['product_name'] ?></h2>
     <p class="text-muted">By <?= $product['brand_name'] ?></p>
     <h4 class="text-primary"><?= 'Rp. ' . number_format($product['product_price'], 0, ',', '.') ?> <small class="text-muted">/ <?= $product['product_rental_period'].' Days'?></small></h4>
-    <span class="badge bg-success">Hijab Friendly</span>
+    <!-- <span class="badge bg-success">Hijab Friendly</span> -->
     <p class="mt-3"><strong>Fit:</strong> <?= $product['size_name'] ?></p>
     <p><?= $product['product_desc'] ?></p>
 
