@@ -50,7 +50,7 @@
                                     <!--begin::Input-->
                                     <div>
                                         <select name="brand" class="form-select form-select-solid" data-kt-select2="true">
-                                            <option disabled>-- Pilih brand --</option>
+                                            <option value="">All</option>
                                             <?php if(! empty($brands)):?>
                                                 <?php foreach($brands as $brand):?>
                                                     <option value="<?=$brand['brand_id']?>"><?=$brand['brand_name']?></option>

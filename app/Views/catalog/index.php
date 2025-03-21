@@ -12,7 +12,7 @@
 					<!--begin::Overlay-->
 					<a class="d-block overlay" data-fslightbox="lightbox-hot-sales" href="<?=base_url('product/' . $product['product_code'])?>">
 						<!--begin::Image-->
-						<div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded mb-7" style="height: 450px;background-image:url('assets/<?= ($product['product_thumbnail']?? 'products/no-image-svgrepo-com.svg') ?>')"></div>
+						<div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded mb-7" style="height: 500px;background-image:url('assets/<?= ($product['product_thumbnail']?? 'products/no-image-svgrepo-com.svg') ?>')"></div>
 						<!--end::Image-->
 					</a>
 					<!--end::Overlay-->
