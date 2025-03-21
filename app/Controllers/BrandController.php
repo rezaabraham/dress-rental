@@ -17,7 +17,7 @@ class BrandController extends BaseController
         $this->brandModel = new BrandModel();
     }
 
-    public function index()
+    /* public function index()
     {
         $keyword = esc($this->request->getGet('keyword'));
 
@@ -30,6 +30,23 @@ class BrandController extends BaseController
         $brands = $query->findAll();
 
         return view('brands/list',['brands' => $brands]);
+    } */
+
+    public function index()
+    {
+        $brandModel = new \App\Models\BrandModel();
+
+        $keyword = $this->request->getGet('keyword');
+
+        $perPage = 5; // Jumlah data per halaman
+
+        $data = [
+            'brands' => $brandModel->getPaginatedBrands($perPage, $keyword),
+            'pager'  => $brandModel->pager,
+            'keyword' => $keyword
+        ];
+
+        return view('brands/list', $data);
     }
 
     /* public function store()

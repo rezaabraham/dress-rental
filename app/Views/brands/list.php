@@ -14,7 +14,7 @@
                         <span class="path1"></span>
                         <span class="path2"></span>
                     </i>
-                    <input type="text" data-kt-ecommerce-product-filter="search" class="form-control form-control-solid w-250px ps-12" placeholder="Search Brands..." name="keyword" />
+                    <input type="text" data-kt-ecommerce-product-filter="search" class="form-control form-control-solid w-250px ps-12" placeholder="Search Brands..." name="keyword" value="<?= esc($keyword ?? '') ?>" />
                 </div>
                 <!--end::Search-->
             </form>
@@ -80,8 +80,13 @@
             </tbody>
         </table>
         <!--end::Table-->
+        
     </div>
     <!--end::Card body-->
+    <!-- Tampilkan Pagination -->
+    <div class="d-flex card-footer justify-content-center">
+            <?= $pager->links('default', 'custom_pagination') ?>
+    </div>
 </div>
 
 
