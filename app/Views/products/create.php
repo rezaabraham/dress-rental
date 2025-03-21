@@ -430,13 +430,10 @@
         fetch("<?= site_url('brand/store') ?>", {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json",
+                    "Content-Type": "application/x-www-form-urlencoded",
                     "X-Requested-With": "XMLHttpRequest"
                 },
-                body: JSON.stringify({
-                    brand_name: brandName,
-                    brand_code: brandCode
-                })
+                body: "brand_name=" + brandName + "&brand_code=" + brandCode,
             })
             .then(response => response.json())
             .then(data => {
