@@ -157,7 +157,7 @@
                                 <label class="required form-label">Dress Name</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
-                                <input type="text" name="product_name" class="form-control mb-2" placeholder="Product name" value="Test_<?= date('Ymdhis') ?>" />
+                                <input type="text" name="product_name" class="form-control mb-2" placeholder="Dress name" value="" />
                                 <!--end::Input-->
                                 <!--begin::Description-->
                                 <!-- <div class="text-muted fs-7">A product name is required and recommended to be unique.</div> -->
