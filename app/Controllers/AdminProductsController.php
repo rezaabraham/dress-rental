@@ -57,7 +57,8 @@ class AdminProductsController extends BaseController
         $viewData = [
             'brands' => $brands,
             'colours' => $colours,
-            'sizes' => $sizes
+            'sizes' => $sizes,
+            'formCode' => date('Ymdhis')
         ];
 
         return view('products/create',$viewData);
@@ -65,6 +66,7 @@ class AdminProductsController extends BaseController
 
     public function store()
     {
+        if($this->request->isAJAX())
         $validation = $this->validate([
             'product_name'          => 'required',
             'product_thumbnail'     => 'uploaded[product_thumbnail]|max_size[product_thumbnail,2048]|is_image[product_thumbnail]',
@@ -103,7 +105,8 @@ class AdminProductsController extends BaseController
             'product_brand'         => $this->request->getPost('product_brand'),
             'product_desc'          => $this->request->getPost('product_description'),
             'product_colour'        => $this->request->getPost('product_colour'),
-            'product_size'          => $this->request->getPost('product_size'),
+            //'product_size'          => $this->request->getPost('product_size'),
+            'product_size'          => implode(',', $this->request->getPost('product_size')),
             'product_price'         => $this->request->getPost('product_price'),
             'product_extra_days_price' => $this->request->getPost('product_extra_days_price'),
             'product_rental_period' => $this->request->getPost('product_rental_period')

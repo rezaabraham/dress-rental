@@ -19,12 +19,12 @@ $routes->get('/catalog/(:num)', 'CatalogController::show/$1');
 
 $routes->get('/product/(:segment)', 'ProductsController::show/$1');
 
-$routes->get('admin/product/', 'AdminProductsController::index');
+// $routes->get('admin/product/', 'AdminProductsController::index');
 
-$routes->get('admin/product/create', 'AdminProductsController::create');
+//$routes->get('admin/product/create', 'AdminProductsController::create');
 
 $routes->post('admin/product/store', 'AdminProductsController::store');
-$routes->post('admin/product/upload-gallery/(:num)', 'AdminProductsController::uploadGallery/$1');
+//$routes->post('admin/product/upload-gallery/(:num)', 'AdminProductsController::uploadGallery/$1');
 
 
 $routes->get('admin', 'AuthController::index');
@@ -36,4 +36,12 @@ $routes->post('brand/store', 'BrandController::store');
 $routes->post('brand/update/(:num)', 'BrandController::update/$1');
 $routes->post('brand/delete/(:num)', 'BrandController::delete/$1');
 
+
+
+$routes->get('product/', 'ProductsController::index');
+$routes->get('product-create', 'ProductsController::create');
+$routes->post('product/store', 'ProductsController::store');
 $routes->post('products/delete/(:num)', 'ProductsController::delete/$1');
+$routes->post('product-upload/(:num)', 'ProductsController::upload/$1');
+
+$routes->get('media/show/(:segment)/(:any)', 'MediaController::show/$1/$2');

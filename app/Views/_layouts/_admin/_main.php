@@ -61,7 +61,7 @@
         <!--begin::Page-->
         <div class="app-page flex-column flex-column-fluid" id="kt_app_page">
             <!--begin::Header-->
-            <?= $this->include('_layouts/_admin/_header');?>
+            <?= $this->include('_layouts/_admin/_header'); ?>
             <!--end::Header-->
             <!--begin::Wrapper-->
             <div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
@@ -146,16 +146,8 @@
     <script src="<?= base_url() ?>assets/plugins/custom/ckeditor/ckeditor-classic.bundle.js"></script>
     <!--end::Vendors Javascript-->
     <!--begin::Custom Javascript(used for this page only)-->
-    <script>
-        ClassicEditor
-            .create(document.querySelector('#product_description'))
-            .then(editor => {
-                console.log(editor);
-            })
-            .catch(error => {
-                console.error(error);
-            });
-    </script>
+    <?= $this->renderSection('custom_js') ?>
+    
     <script>
         <?php if (session()->has('success')): ?>
             Swal.fire({
@@ -180,7 +172,7 @@
             });
         <?php endif ?>
     </script>
-    <script>
+    <!-- <script>
         Dropzone.autoDiscover = false;
 
         var galleryDropzone = new Dropzone("#gallery", {
@@ -231,7 +223,7 @@
                 });
             }
         });
-    </script>
+    </script> -->
     <!--end::Custom Javascript-->
     <!--end::Javascript-->
 </body>

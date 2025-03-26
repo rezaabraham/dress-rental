@@ -1,6 +1,6 @@
 <?= $this->extend('_layouts/_admin/_main') ?>
 <?= $this->section('content') ?>
-<form id="form-product" class="form d-flex flex-column flex-lg-row" action="<?= site_url('product/store') ?>" method="post" enctype="multipart/form-data">
+<form id="form-product" class="form d-flex flex-column flex-lg-row" action="<?= site_url('admin/product/store') ?>" method="post" enctype="multipart/form-data">
     <!--begin::Aside column-->
     <div class="d-flex flex-column gap-7 gap-lg-10 w-100 w-lg-300px mb-7 me-lg-10">
         <!--begin::Thumbnail settings-->
@@ -71,12 +71,12 @@
         <!--end::Thumbnail settings-->
 
         <!--begin::Category & tags-->
-        <div class="card card-flush py-4" data-kt-sticky=true>
+        <div class="card card-flush py-4">
             <!--begin::Card header-->
             <div class="card-header">
                 <!--begin::Card title-->
                 <div class="card-title">
-                    <h2>Item Attribute</h2>
+                    <h2>Dress Details</h2>
                 </div>
                 <!--end::Card title-->
             </div>
@@ -85,26 +85,11 @@
             <div class="card-body pt-0">
                 <!--begin::Input group-->
                 <!--begin::Label-->
-                <label class="form-label">Kategori</label>
-                <!--end::Label-->
-                <!--begin::Select2-->
-                <select class="form-select mb-2" id="productBrand" name="product_category" data-placeholder="Select an option">
-                    <option disabled selected>Pilih Kategori</option>
-                    <option value="1">Dresses</option>
-                    <option value="2">Clutch</option>
-                </select>
-                <!--end::Select2-->
-                <!--begin::Description-->
-                <div class="text-muted fs-7 mb-7"></div>
-                <!--end::Description-->
-                <!--end::Input group-->
-                <!--begin::Input group-->
-                <!--begin::Label-->
                 <label class="form-label">Brand</label>
                 <!--end::Label-->
                 <!--begin::Select2-->
                 <select class="form-select mb-2" id="productBrand" name="product_brand" data-placeholder="Select an option">
-                    <option disabled selected>Pilih Brand</option>
+                    <option disabled selected>-- Pilih Brand --</option>
                     <?php foreach ($brands as $brand): ?>
                         <option value=<?= $brand['brand_id'] ?>><?= $brand['brand_name'] ?></option>
                     <?php endforeach ?>
@@ -131,14 +116,14 @@
                 <!--begin::Input group-->
                 <div class="mb-10 fv-row">
                     <!--begin::Label-->
-                    <label class="required form-label">Warna</label>
+                    <label class="required form-label">Color</label>
                     <!--end::Label-->
                     <!--begin::Input-->
                     <div class="d-flex gap-3">
-                        <select class="form-select" name="product_colour[]" data-control="select2" data-close-on-select="false" data-placeholder="Pilih warna" data-allow-clear="true" multiple="multiple">
-                            <option></option>
+                        <select class="form-select" name="product_colour" data-placeholder="Select a variation" data-kt-ecommerce-catalog-add-product="product_option">
+                            <option>-- Choose Colour --</option>
                             <?php foreach ($colours as $colour): ?>
-                                <option value="<?= $colour['colour_name'] ?>"><?= $colour['colour_name'] ?></option>
+                                <option value="<?= $colour['colour_id'] ?>"><?= $colour['colour_name'] ?></option>
                             <?php endforeach ?>
                         </select>
 
@@ -146,29 +131,24 @@
                     <!--end::Input-->
                 </div>
                 <!--end::Input group-->
-
-                <!--begin::Row-->
-                <!--begin::Label-->
-                <label class="required form-label">Ukuran</label>
-                <!--end::Label-->
-                <div class="row mw-500px mb-5">
-                    <?php foreach ($sizes as $size): ?>
-
-                        <!--begin::Col-->
-                        <div class="col-4">
-                            <label class="form-check-image active">
-                                <div class="form-check form-check-custom form-check-solid">
-                                    <input class="form-check-input" type="checkbox" value="<?= $size['size_name'] ?>" name="product_size[]" />
-                                    <div class="form-check-label">
-                                        <?= $size['size_name'] ?>
-                                    </div>
-                                </div>
-                            </label>
-                        </div>
-                        <!--end::Col-->
-                    <?php endforeach; ?>
+                
+                <!--begin::Input group-->
+                <div class="mb-10 fv-row col">
+                    <!--begin::Label-->
+                    <label class="required form-label">Size</label>
+                    <!--end::Label-->
+                    <!--begin::Input-->
+                    <div class="row">
+                        <?php foreach ($sizes as $size): ?>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="product_size[]" value="<?= $size['size_id'] ?>" id="size_<?= $size['size_id'] ?>">
+                                <label class="form-check-label" for="size_<?= $size['size_id'] ?>"><?= $size['size_name'] ?></label>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                    <!--end::Input-->
                 </div>
-                <!--end::Row-->
+                <!--end::Input group-->
             </div>
             <!--end::Card body-->
         </div>
@@ -187,7 +167,8 @@
                         <!--begin::Card header-->
                         <div class="card-header">
                             <div class="card-title">
-                                <h2>Data Item</h2>
+                                <h2>General</h2>
+                                <?= $formCode ?>
                             </div>
                         </div>
                         <!--end::Card header-->
@@ -196,7 +177,7 @@
                             <!--begin::Input group-->
                             <div class="mb-10 fv-row">
                                 <!--begin::Label-->
-                                <label class="required form-label">Nama Item</label>
+                                <label class="required form-label">Dress Name</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
                                 <input type="text" name="product_name" class="form-control mb-2" placeholder="Dress name" value="" />
@@ -209,7 +190,7 @@
                             <!--begin::Input group-->
                             <div>
                                 <!--begin::Label-->
-                                <label class="form-label">Deskripsi</label>
+                                <label class="form-label">Description</label>
                                 <!--end::Label-->
                                 <!--begin::Editor-->
                                 <!-- <div id="product_description" name="product_description" class="min-h-200px mb-2"></div> -->
@@ -222,7 +203,6 @@
                         <!--end::Card header-->
                     </div>
                     <!--end::General options-->
-
                     <!--begin::Media-->
                     <div class="card card-flush py-4">
                         <!--begin::Card header-->
@@ -234,10 +214,29 @@
                         <!--end::Card header-->
                         <!--begin::Card body-->
                         <div class="card-body pt-0">
-                            <div class="mb-3">
-                                <label for="formFile" class="form-label">Buat Galeri Foto Item</label>
-                                <input class="form-control" type="file" id="formFile" name="product_images[]" accept=".png, .jpg, .jpeg" multiple>
+                            <!--begin::Input group-->
+                            <div class="fv-row mb-2">
+                                <!--begin::Dropzone-->
+                                <div class="dropzone" id="gallery">
+                                    <!--begin::Message-->
+                                    <div class="dz-message needsclick">
+                                        <!--begin::Icon-->
+                                        <i class="ki-duotone ki-file-up text-primary fs-3x">
+                                            <span class="path1"></span>
+                                            <span class="path2"></span>
+                                        </i>
+                                        <!--end::Icon-->
+                                        <!--begin::Info-->
+                                        <div class="ms-4">
+                                            <h3 class="fs-5 fw-bold text-gray-900 mb-1">Drop files here or click to upload.</h3>
+                                            <span class="fs-7 fw-semibold text-gray-500">Upload up to 10 files</span>
+                                        </div>
+                                        <!--end::Info-->
+                                    </div>
+                                </div>
+                                <!--end::Dropzone-->
                             </div>
+                            <!--end::Input group-->
                             <!--begin::Description-->
                             <!-- <div class="text-muted fs-7">Set the dress media gallery.</div> -->
                             <!--end::Description-->
@@ -250,31 +249,31 @@
                         <!--begin::Card header-->
                         <div class="card-header">
                             <div class="card-title">
-                                <h2>Biaya</h2>
+                                <h2>Pricing</h2>
                             </div>
                         </div>
                         <!--end::Card header-->
                         <!--begin::Card body-->
                         <div class="card-body pt-0">
-                            <div class="row">
-                                <!--begin::Input group-->
-                                <div class="col fv-row">
-                                    <!--begin::Label-->
-                                    <label class="required form-label">Biaya Sewa</label>
-                                    <!--end::Label-->
-                                    <!--begin::Input-->
-                                    <input type="number" name="product_price" class="form-control mb-2" placeholder="Product price" value="0" />
-                                    <!--end::Input-->
-                                    <!--begin::Description-->
-                                    <!-- <div class="text-muted fs-7">Set the product price.</div> -->
-                                    <!--end::Description-->
-                                </div>
-                                <!--end::Input group-->
-
+                        <div class="row">
+                            <!--begin::Input group-->
+                            <div class="col fv-row">
+                                <!--begin::Label-->
+                                <label class="required form-label">Base Price</label>
+                                <!--end::Label-->
+                                <!--begin::Input-->
+                                <input type="number" name="product_price" class="form-control mb-2" placeholder="Product price" value="0" />
+                                <!--end::Input-->
+                                <!--begin::Description-->
+                                <!-- <div class="text-muted fs-7">Set the product price.</div> -->
+                                <!--end::Description-->
+                            </div>
+                            <!--end::Input group-->
+                            
                                 <!--begin::Input group-->
                                 <div class="col mb-10">
                                     <!--begin::Label-->
-                                    <label class="form-label">Masa Sewa (Hari)</label>
+                                    <label class="form-label">Days for Rents</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
                                     <input type="number" class="form-control mb-2" name="product_rental_period" value="1" />
@@ -287,10 +286,10 @@
                                 <!--begin::Input group-->
                                 <div class="col">
                                     <!--begin::Label-->
-                                    <label class="form-label">Biaya Extra</label>
+                                    <label class="form-label">Extra Days Charge</label>
                                     <!--end::Label-->
                                     <!--begin::Editor-->
-                                    <input id="kt_ecommerce_add_product_meta_keywords" type="number" name="product_extra_days_price" class="form-control mb-2" value="0" />
+                                    <input id="kt_ecommerce_add_product_meta_keywords" type="number" name="product_extra_days_price" class="form-control mb-2" value="0"/>
                                     <!--end::Editor-->
                                     <!--begin::Description-->
                                     <!-- <div class="text-muted fs-7">Set a list of keywords that the product is related to. Separate the keywords by adding a comma
@@ -313,12 +312,12 @@
         <!--end::Tab content-->
         <div class="d-flex justify-content-end">
             <!--begin::Button-->
-            <a href="<?= site_url('product') ?>" id="kt_ecommerce_add_product_cancel" class="btn btn-secondary me-5">Batal</a>
+            <a href="<?= site_url('admin/product') ?>" id="kt_ecommerce_add_product_cancel" class="btn btn-light me-5">Cancel</a>
             <!--end::Button-->
             <!--begin::Button-->
             <button type="submit" id="kt_ecommerce_add_product_submit" class="btn btn-primary">
-                <span class="indicator-label">Simpan</span>
-                <span class="indicator-progress">Mohon tunggu...
+                <span class="indicator-label">Save</span>
+                <span class="indicator-progress">Please wait...
                     <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
             </button>
             <!--end::Button-->
@@ -355,17 +354,71 @@
     </div>
 </div>
 
-<?= $this->endSection() ?>
+<!-- <script>
+    document.getElementById("saveBrand").addEventListener("click", function() {
+        let brandName = document.getElementById("brandName").value.trim();
+        let brandCode = document.getElementById("brandCode").value.trim();
+        let errorDiv = document.getElementById("brandError");
 
-<?= $this->section('custom_js') ?>
-<script>
-    ClassicEditor
-        .create(document.querySelector('#product_description'))
-        .then(editor => {
-            console.log(editor);
-        })
-        .catch(error => {
-            console.error(error);
+        Swal.fire({
+            title: 'Menyimpan...',
+            text: 'Mohon tunggu sebentar',
+            allowOutsideClick: false,
+            didOpen: () => {
+                Swal.showLoading();
+            }
         });
-</script>
+
+        if (brandName === "" || brandCode === "") {
+            errorDiv.textContent = "Nama dan kode brand tidak boleh kosong!";
+            return;
+        }
+
+        fetch("<?= site_url('brand/store') ?>", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "X-Requested-With": "XMLHttpRequest"
+                },
+                body: "brand_name=" + brandName + "&brand_code=" + brandCode,
+            })
+            .then(response => response.text())
+            .then(data => {
+                if (data.success) {
+                    let newOption = document.createElement("option");
+                    newOption.value = data.brand_id;
+                    newOption.textContent = brandName;
+                    document.getElementById("productBrand").appendChild(newOption);
+                    document.getElementById("productBrand").value = data.brand_id;
+                    document.getElementById("brandName").value = "";
+                    document.getElementById("brandCode").value = "";
+                    errorDiv.textContent = "";
+
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Brand Ditambahkan',
+                        text: 'Brand berhasil ditambahkan ke daftar!',
+                        timer: 2000,
+                        showConfirmButton: false
+                    });
+
+                    let modal = bootstrap.Modal.getInstance(document.getElementById("addBrandModal"));
+                    modal.hide();
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Gagal Menambahkan Brand',
+                        html: Object.values(data.message).join("<br>"),
+                    });
+                }
+            })
+            .catch(error => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Terjadi Kesalahan',
+                    text: 'Gagal terhubung ke server!',
+                });
+            });
+    });
+</script> -->
 <?= $this->endSection() ?>
