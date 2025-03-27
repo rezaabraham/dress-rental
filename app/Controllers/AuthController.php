@@ -30,7 +30,7 @@ class AuthController extends BaseController
                 'role'     => $user['user_role'],
                 'logged_in' => true
             ]);
-            return redirect()->to('/admin/product');
+            return redirect()->to('/product');
         } else {
             return redirect()->back()->with('error', 'Username atau password salah.');
         }

@@ -40,8 +40,10 @@ $routes->post('brand/delete/(:num)', 'BrandController::delete/$1');
 
 $routes->get('product/', 'ProductsController::index');
 $routes->get('product-create', 'ProductsController::create');
+$routes->get('product/edit/(:num)', 'ProductsController::edit/$1');
 $routes->post('product/store', 'ProductsController::store');
 $routes->post('products/delete/(:num)', 'ProductsController::delete/$1');
 $routes->post('product-upload/(:num)', 'ProductsController::upload/$1');
+$routes->post('product/update/(:num)', 'ProductsController::update/$1');
 
 $routes->get('media/show/(:segment)/(:any)', 'MediaController::show/$1/$2');

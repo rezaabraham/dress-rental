@@ -23,6 +23,7 @@ class ProductModel extends Model
         'master_product_rental_period',
         'master_product_isactive'
     ];
+    protected $returnType = 'array';
 
     public function generateProductCode()
     {
