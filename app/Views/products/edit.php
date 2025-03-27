@@ -149,6 +149,23 @@
                 </div>
                 <!--end::Input group-->
 
+                <!--begin::Input group-->
+                <!--begin::Label-->
+                <label class="form-label">Tag</label>
+                <!--end::Label-->
+                <!--begin::Select2-->
+                <select class="form-select mb-2"  name="product_tag" data-placeholder="Select an option">
+                    <option disabled selected>Pilih Tag</option>
+                    <?php foreach($tags as $tag):?>
+                        <option value="<?=$tag['master_tag_name']?>" <?=($tag['master_tag_name']==$product['master_product_tag']?'selected':'')?>><?=$tag['master_tag_name']?></option>
+                    <?php endforeach?>
+                </select>
+                <!--end::Select2-->
+                <!--begin::Description-->
+                <div class="text-muted fs-7 mb-7"></div>
+                <!--end::Description-->
+                <!--end::Input group-->
+
                 <!--begin::Row-->
                 <!--begin::Label-->
                 <label class="required form-label">Ukuran</label>

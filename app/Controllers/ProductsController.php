@@ -8,6 +8,7 @@ use App\Models\BrandModel;
 use App\Models\SizeModel;
 use App\Models\ColourModel;
 use App\Models\CategoryModel;
+use App\Models\TagModel;
 
 
 
@@ -22,6 +23,7 @@ class ProductsController extends BaseController
     protected $sizeModel;
     protected $colourModel;
     protected $categoryModel;
+    protected $tagModel;
     
 
 
@@ -33,6 +35,7 @@ class ProductsController extends BaseController
         $this->sizeModel = new SizeModel();
         $this->colourModel = new ColourModel();
         $this->categoryModel = new CategoryModel();
+        $this->tagModel = new TagModel();
     }
 
     public function index()
@@ -59,12 +62,14 @@ class ProductsController extends BaseController
         $colours = $this->colourModel->findAll();
         $sizes = $this->sizeModel->findAll();
         $categories = $this->categoryModel->findAll();
+        $tags = $this->tagModel->findAll();
 
         $viewData = [
             'brands' => $brands,
             'colours' => $colours,
             'sizes' => $sizes,
-            'categories' => $categories
+            'categories' => $categories,
+            'tags' => $tags
         ];
 
         return view('products/create',$viewData);
@@ -119,6 +124,7 @@ class ProductsController extends BaseController
             'master_product_desc'          => $this->request->getPost('product_description'),
             'master_product_colour'        => implode(',', $this->request->getPost('product_colour')),
             'master_product_size'          => implode(',', $this->request->getPost('product_size')),
+            'master_product_tag'           => $this->request->getPost('product_tag'),
             'master_product_price'         => $this->request->getPost('product_price'),
             'master_product_extra_days_price' => $this->request->getPost('product_extra_days_price'),
             'master_product_rental_period' => $this->request->getPost('product_rental_period')
@@ -191,6 +197,7 @@ class ProductsController extends BaseController
         $colours = $this->colourModel->findAll();
         $sizes = $this->sizeModel->findAll();
         $categories = $this->categoryModel->findAll();
+        $tags = $this->tagModel->findAll();
 
         $productColours = explode(',',$product['master_product_colour']);
         $productSizes = explode(',',$product['master_product_size']);
@@ -204,7 +211,8 @@ class ProductsController extends BaseController
             'sizes' => $sizes,
             'categories' => $categories,
             'productColours' => $productColours,
-            'productSizes' => $productSizes
+            'productSizes' => $productSizes,
+            'tags' => $tags
         ];
 
         //dd($viewData);

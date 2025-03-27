@@ -21,7 +21,8 @@ class ProductModel extends Model
         'master_product_thumbnail',
         'master_product_extra_days_price',
         'master_product_rental_period',
-        'master_product_isactive'
+        'master_product_isactive',
+        'master_product_tag'
     ];
     protected $returnType = 'array';
 
