@@ -177,7 +177,7 @@ class ProductsController extends BaseController
         $productModel = new ProductModel();
 
         if ($productModel->find($id)) {
-            $productModel->update($id, ['product_isactive' => 'n']);
+            $productModel->update($id, ['master_product_isactive' => 'n']);
             return $this->response->setJSON(['success' => true, 'message' => 'Produk berhasil dinonaktifkan.']);
         }
 
