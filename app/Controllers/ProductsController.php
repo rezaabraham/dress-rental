@@ -334,6 +334,7 @@ class ProductsController extends BaseController
         'master_product_desc'              => $this->request->getPost('product_description'),
         'master_product_colour'            => implode(',', $this->request->getPost('product_colour')),
         'master_product_size'              => implode(',', $this->request->getPost('product_size')),
+        'master_product_tag'           => $this->request->getPost('product_tag'),
         'master_product_price'             => $this->request->getPost('product_price'),
         'master_product_extra_days_price'  => $this->request->getPost('product_extra_days_price'),
         'master_product_rental_period'     => $this->request->getPost('product_rental_period')
