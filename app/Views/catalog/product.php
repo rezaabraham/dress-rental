@@ -9,7 +9,7 @@
             <?php if (!empty($product['images'])): ?>
                 <?php foreach ($product['images'] as $index => $image): ?>
                     <div class="carousel-item <?= $index === 0 ? 'active' : '' ?>">
-                        <img src="<?= base_url('assets/').$image ?>" class="d-block w-100 rounded" alt="<?= esc($product['product_name']) ?>">
+                        <img src="<?= base_url('media/show/'.$product['master_product_code'].'/'.$image) ?>" class="d-block w-100 rounded" alt="<?= esc($product['master_product_name']) ?>">
                     </div>
                 <?php endforeach; ?>
             <?php else: ?>
@@ -30,12 +30,12 @@
 </div>
 <!-- Detail Produk -->
 <div class="col-md-8">
-    <h2><?= $product['product_name'] ?></h2>
+    <h2><?= $product['master_product_name'] ?></h2>
     <p class="text-muted">By <?= $product['brand_name'] ?></p>
-    <h4 class="text-primary"><?= 'Rp. ' . number_format($product['product_price'], 0, ',', '.') ?> <small class="text-muted">/ <?= $product['product_rental_period'].' Days'?></small></h4>
+    <h4 class="text-primary"><?= 'Rp. ' . number_format($product['master_product_price'], 0, ',', '.') ?> <small class="text-muted">/ <?= $product['master_product_rental_period'].' Days'?></small></h4>
     <!-- <span class="badge bg-success">Hijab Friendly</span> -->
-    <p class="mt-3"><strong>Fit:</strong> <?= $product['size_name'] ?></p>
-    <p><?= $product['product_desc'] ?></p>
+    <p class="mt-3"><strong>Fit:</strong> <?= $product['master_product_size'] ?></p>
+    <p><?= $product['master_product_desc'] ?></p>
 
     <!-- <button class="btn btn-primary mt-3">Rent Now</button> -->
 </div>

@@ -162,18 +162,23 @@ class ProductsController extends BaseController
 
     public function show($code = null)
     {
-        $product = $this->productModel
+        /* $product = $this->productModel
         ->select('master_products.*, master_brands.brand_name,master_sizes.size_name')
         ->join('master_brands', 'master_products.product_brand = master_brands.brand_id', 'left')
             ->join('master_sizes', 'master_products.product_size = master_sizes.size_id', 'left')
-            ->where('product_code', $code)->first();
+            ->where('product_code', $code)->first(); */
+
+        $product = $this->productModel
+        ->join('master_brands', 'master_product.master_product_brand = master_brands.brand_id', 'left')
+        ->where('master_product_code', $code)->first();
+
         if (!$product) {
             return redirect()->to('/products')->with('error', 'Produk tidak ditemukan.');
         }
 
         $product['images'] = $this->productImageModel
-            ->where('product_id', $product['product_id'])
-            ->findColumn('image_url') ?? [];
+            ->where('master_product_image_productid', $product['master_product_id'])
+            ->findColumn('master_product_image_name') ?? [];
 
         return view('catalog/product', ['product' => $product]);
     }
