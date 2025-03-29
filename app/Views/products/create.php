@@ -85,13 +85,14 @@
             <div class="card-body pt-0">
                 <!--begin::Input group-->
                 <!--begin::Label-->
-                <label class="form-label">Kategori</label>
+                <label class="form-label">Tipe</label>
                 <!--end::Label-->
                 <!--begin::Select2-->
-                <select class="form-select mb-2" id="productBrand" name="product_category" data-placeholder="Select an option">
-                    <option disabled selected>Pilih Kategori</option>
-                    <option value="1">Dresses</option>
-                    <option value="2">Clutch</option>
+                <select class="form-select mb-2" name="product_type" data-placeholder="Select an option">
+                    <option disabled selected>Pilih Tipe</option>
+                    <?php foreach($types as $type):?>
+                        <option value="<?=$type['master_attire_type_id']?>"><?=$type['master_attire_type_name']?></option>
+                    <?php endforeach?>
                 </select>
                 <!--end::Select2-->
                 <!--begin::Description-->

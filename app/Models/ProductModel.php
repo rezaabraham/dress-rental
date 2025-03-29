@@ -13,7 +13,7 @@ class ProductModel extends Model
         'master_product_code', 
         'master_product_colour', 
         'master_product_size',
-        'master_product_category',
+        'master_product_type',
         'master_product_brand', 
         'master_product_price', 
         'master_product_rent_days', 

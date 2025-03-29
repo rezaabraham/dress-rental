@@ -7,7 +7,7 @@ use App\Models\ProductImageModel;
 use App\Models\BrandModel;
 use App\Models\SizeModel;
 use App\Models\ColourModel;
-use App\Models\CategoryModel;
+use App\Models\TypeModel;
 use App\Models\TagModel;
 
 
@@ -22,7 +22,7 @@ class ProductsController extends BaseController
     protected $brandModel;
     protected $sizeModel;
     protected $colourModel;
-    protected $categoryModel;
+    protected $typeModel;
     protected $tagModel;
     
 
@@ -34,7 +34,7 @@ class ProductsController extends BaseController
         $this->brandModel = new BrandModel();
         $this->sizeModel = new SizeModel();
         $this->colourModel = new ColourModel();
-        $this->categoryModel = new CategoryModel();
+        $this->typeModel = new TypeModel();
         $this->tagModel = new TagModel();
     }
 
@@ -61,14 +61,16 @@ class ProductsController extends BaseController
         $brands = $this->brandModel->where('brand_isactive','y')->findAll();
         $colours = $this->colourModel->findAll();
         $sizes = $this->sizeModel->findAll();
-        $categories = $this->categoryModel->findAll();
+        // $categories = $this->categoryModel->findAll();
         $tags = $this->tagModel->findAll();
+        $types = $this->typeModel->findAll();
+        
 
         $viewData = [
             'brands' => $brands,
             'colours' => $colours,
             'sizes' => $sizes,
-            'categories' => $categories,
+            'types' => $types,
             'tags' => $tags
         ];
 
@@ -79,7 +81,7 @@ class ProductsController extends BaseController
     {
         $validation = $this->validate([
             'product_thumbnail' => 'uploaded[product_thumbnail]|max_size[product_thumbnail,2048]|is_image[product_thumbnail]',
-            'product_category' => 'required|integer',
+            'product_type' => 'required',
             'product_brand' => 'required|integer',
             'product_colour' => 'required',
             'product_size' => 'required',
@@ -119,7 +121,7 @@ class ProductsController extends BaseController
             'master_product_name'          => $this->request->getPost('product_name'),
             'master_product_thumbnail'     => $newName,
             'master_product_code'          => $product_code,
-            'master_product_category'      => $this->request->getPost('product_category'),
+            'master_product_type'          => $this->request->getPost('product_type'),
             'master_product_brand'         => $this->request->getPost('product_brand'),
             'master_product_desc'          => $this->request->getPost('product_description'),
             'master_product_colour'        => implode(',', $this->request->getPost('product_colour')),
@@ -201,8 +203,8 @@ class ProductsController extends BaseController
         $brands = $this->brandModel->where('brand_isactive','y')->findAll();
         $colours = $this->colourModel->findAll();
         $sizes = $this->sizeModel->findAll();
-        $categories = $this->categoryModel->findAll();
         $tags = $this->tagModel->findAll();
+        $types = $this->typeModel->findAll();
 
         $productColours = explode(',',$product['master_product_colour']);
         $productSizes = explode(',',$product['master_product_size']);
@@ -214,7 +216,7 @@ class ProductsController extends BaseController
             'brands' => $brands,
             'colours' => $colours,
             'sizes' => $sizes,
-            'categories' => $categories,
+            'types' => $types,
             'productColours' => $productColours,
             'productSizes' => $productSizes,
             'tags' => $tags

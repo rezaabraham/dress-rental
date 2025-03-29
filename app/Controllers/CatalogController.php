@@ -36,7 +36,7 @@ class CatalogController extends BaseController
         $query = $this->productModel
         ->where('master_product.master_product_isactive','y')
         ->join('master_brands', 'master_product.master_product_brand = master_brands.brand_id', 'left')
-        ->join('master_category', 'master_product.master_product_category = master_category.master_category_id', 'left')
+        ->join('master_attire_type', 'master_product.master_product_type = master_attire_type.master_attire_type_id', 'left')
         ->join('master_tag', 'master_product.master_product_tag = master_tag.master_tag_id', 'left');
 
         if (!empty($keyword)) {
