@@ -77,7 +77,7 @@ class ProductsController extends BaseController
         return view('products/create',$viewData);
     }
 
-    public function store()
+   /*  public function store()
     {
         $validation = $this->validate([
             'product_thumbnail' => 'uploaded[product_thumbnail]|max_size[product_thumbnail,2048]|is_image[product_thumbnail]',
@@ -140,7 +140,74 @@ class ProductsController extends BaseController
         $this->createNewColour($this->request->getPost('product_colour'));
 
         return redirect()->back()->with('success','Item berhasil ditambahkan.');
+    } */
+
+    public function store()
+    {
+        $validation = $this->validate([
+            'product_thumbnail' => 'uploaded[product_thumbnail]|max_size[product_thumbnail,2048]|is_image[product_thumbnail]',
+            'product_type' => 'required',
+            'product_brand' => 'required|integer',
+            'product_colour' => 'required',
+            'product_size' => 'required',
+            'product_name' => 'required',
+            'product_description' => 'required',
+            'product_images' => 'uploaded[product_images]|max_size[product_images,2048]|is_image[product_images]',
+            'product_price' => 'required|decimal',
+            'product_rental_period' => 'required|integer',
+            'product_extra_days_price' => 'required|decimal'
+        ]);
+
+        if(!$validation)
+        {
+            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        }
+
+        $product_code = $this->request->getPost('product_code');;
+
+        $thumbnail = $this->request->getFile('product_thumbnail');
+
+        if (isset($thumbnail)) 
+        {
+            if($thumbnail->isValid() && !$thumbnail->hasMoved())
+            {
+                $folder = 'assets/userdata/products/'.$product_code;
+
+                if (!is_dir($folder)) {
+                    mkdir($folder, 0755, true);
+                }
+
+                $newName = $thumbnail->getRandomName();
+                $thumbnail->move($folder, $newName);
+            }
+        }
+
+        $productData = [
+            'master_product_name'          => $this->request->getPost('product_name'),
+            'master_product_thumbnail'     => $newName,
+            'master_product_code'          => $product_code,
+            'master_product_type'          => $this->request->getPost('product_type'),
+            'master_product_brand'         => $this->request->getPost('product_brand'),
+            'master_product_desc'          => $this->request->getPost('product_description'),
+            'master_product_colour'        => implode(',', $this->request->getPost('product_colour')),
+            'master_product_size'          => implode(',', $this->request->getPost('product_size')),
+            'master_product_tag'           => implode(',', $this->request->getPost('product_tag')),
+            'master_product_price'         => $this->request->getPost('product_price'),
+            'master_product_extra_days_price' => $this->request->getPost('product_extra_days_price'),
+            'master_product_rental_period' => $this->request->getPost('product_rental_period')
+        ];
+
+        $this->productModel->insert($productData);
+        $productID = $this->productModel->getInsertID();
+
+        $this->uploadMedia($folder,$productID);
+
+        $this->createNewColour($this->request->getPost('product_colour'));
+
+        return redirect()->back()->with('success','Item berhasil ditambahkan.');
     }
+
+  
 
     private function uploadMedia($folder,$productID)
     {

@@ -219,7 +219,20 @@
                                 <label class="required form-label">Nama Item</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
-                                <input type="text" name="product_name" class="form-control mb-2" placeholder="Dress name" value="" />
+                                <input type="text" name="product_name" class="form-control mb-2" placeholder="Nama item baru" value="" />
+                                <!--end::Input-->
+                                <!--begin::Description-->
+                                <!-- <div class="text-muted fs-7">A product name is required and recommended to be unique.</div> -->
+                                <!--end::Description-->
+                            </div>
+                            <!--end::Input group-->
+                            <!--begin::Input group-->
+                            <div class="mb-10 fv-row">
+                                <!--begin::Label-->
+                                <label class="required form-label">Kode Item</label>
+                                <!--end::Label-->
+                                <!--begin::Input-->
+                                <input type="text" name="product_code" class="form-control mb-2" placeholder="000" value="" />
                                 <!--end::Input-->
                                 <!--begin::Description-->
                                 <!-- <div class="text-muted fs-7">A product name is required and recommended to be unique.</div> -->
