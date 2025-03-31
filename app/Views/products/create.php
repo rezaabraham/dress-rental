@@ -90,9 +90,9 @@
                 <!--begin::Select2-->
                 <select class="form-select mb-2" name="product_type" data-placeholder="Select an option">
                     <option disabled selected>Pilih Tipe</option>
-                    <?php foreach($types as $type):?>
-                        <option value="<?=$type['master_attire_type_id']?>"><?=$type['master_attire_type_name']?></option>
-                    <?php endforeach?>
+                    <?php foreach ($types as $type): ?>
+                        <option value="<?= $type['master_attire_type_id'] ?>"><?= $type['master_attire_type_name'] ?></option>
+                    <?php endforeach ?>
                 </select>
                 <!--end::Select2-->
                 <!--begin::Description-->
@@ -134,17 +134,19 @@
                     <!--begin::Label-->
                     <label class="required form-label">Warna</label>
                     <!--end::Label-->
+                    
                     <!--begin::Input-->
                     <div class="d-flex gap-3">
-                        <select class="form-select" name="product_colour[]" data-control="select2" data-close-on-select="false" data-placeholder="Pilih warna" data-allow-clear="true" multiple="multiple">
+                        <select class="form-select create-tag" name="product_colour[]" data-control="select2" multiple="multiple">
                             <option></option>
                             <?php foreach ($colours as $colour): ?>
                                 <option value="<?= $colour['colour_name'] ?>"><?= $colour['colour_name'] ?></option>
                             <?php endforeach ?>
                         </select>
-
                     </div>
                     <!--end::Input-->
+
+
                 </div>
                 <!--end::Input group-->
 
@@ -153,11 +155,11 @@
                 <label class="form-label">Tag</label>
                 <!--end::Label-->
                 <!--begin::Select2-->
-                <select class="form-select mb-2"  name="product_tag" data-placeholder="Select an option">
-                    <option disabled selected>Pilih Tag</option>
-                    <?php foreach($tags as $tag):?>
-                        <option value="<?=$tag['master_tag_name']?>"><?=$tag['master_tag_name']?></option>
-                    <?php endforeach?>
+                <select class="form-select create-tag mb-2" name="product_tag[]" data-control="select2" multiple="multiple" data-placeholder="Pilih tag">
+                    <option>Pilih Tag</option>
+                    <?php foreach ($tags as $tag): ?>
+                        <option value="<?= $tag['master_tag_name'] ?>"><?= $tag['master_tag_name'] ?></option>
+                    <?php endforeach ?>
                 </select>
                 <!--end::Select2-->
                 <!--begin::Description-->
@@ -385,5 +387,15 @@
         .catch(error => {
             console.error(error);
         });
+</script>
+<script>
+$(document).ready(function() {
+    $('.create-tag').select2({
+        tags: true,
+        tokenSeparators: [','],
+       //placeholder: "Pilih atau tambahkan warna",
+       allowClear: true
+    });
+});
 </script>
 <?= $this->endSection() ?>
