@@ -1,82 +1,56 @@
-<div id="kt_app_header" class="app-header" data-kt-sticky="true" data-kt-sticky-activate="{default: true, lg: true}" data-kt-sticky-name="app-header-minimize" data-kt-sticky-offset="{default: '200px', lg: '0'}" data-kt-sticky-animation="false">
-    <!--begin::Header container-->
-    <div class="app-container container-xxl d-flex align-items-stretch justify-content-between" id="kt_app_header_container">
-        <!--begin::Logo-->
-        <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0 me-lg-15">
-            <a href="<?= base_url('/') ?>">
-                <img alt="Logo" src="assets/media/logos/rent-a-dress-logo-v2.png" class="h-40px h-lg-50px app-sidebar-logo-default theme-light-show" />
-                <img alt="Logo" src="assets/media/logos/rent-a-dress-logo-v2.png" class="h-40px h-lg-50px app-sidebar-logo-default theme-dark-show" />
-            </a>
-        </div>
-        <!--end::Logo-->
-        <!--begin::Header wrapper-->
-        <div class="d-flex align-items-stretch justify-content-between flex-lg-grow-1" id="kt_app_header_wrapper">
-            <!--begin::Menu wrapper-->
-            <div class="app-header-menu app-header-mobile-drawer align-items-stretch" data-kt-drawer="true" data-kt-drawer-name="app-header-menu" data-kt-drawer-activate="{default: true, lg: false}" data-kt-drawer-overlay="true" data-kt-drawer-width="250px" data-kt-drawer-direction="end" data-kt-drawer-toggle="#kt_app_header_menu_toggle" data-kt-swapper="true" data-kt-swapper-mode="{default: 'append', lg: 'prepend'}" data-kt-swapper-parent="{default: '#kt_app_body', lg: '#kt_app_header_wrapper'}">
-                <!--begin::Menu-->
-                <div class="menu menu-rounded menu-column menu-lg-row my-5 my-lg-0 align-items-stretch fw-semibold px-2 px-lg-0" id="kt_app_header_menu" data-kt-menu="true">
-                    <!--begin:Menu item-->
-                    <div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="bottom-start" class="menu-item menu-here-bg menu-lg-down-accordion me-0 me-lg-2">
-                        <!--begin:Menu link-->
-                        <span class="menu-link">
-                            <span class="menu-title">Cara Sewa</span>
-                            <span class="menu-arrow d-lg-none"></span>
-                        </span>
-                        <!--end:Menu link-->
+<div class="d-flex flex-column flex-root app-root" id="kt_app_root">
+    <div class="app-page flex-column flex-column-fluid" id="kt_app_page">
+        <div id="kt_app_header" class="app-header" data-kt-sticky="true" data-kt-sticky-activate-="true" data-kt-sticky-name="app-header-sticky" data-kt-sticky-offset="{default: '200px', lg: '300px'}">
+            <div class="app-container  container-xxl d-flex align-items-stretch justify-content-between " id="kt_app_header_container">
+                <div class="app-header-wrapper d-flex flex-grow-1 align-items-stretch justify-content-between" id="kt_app_header_wrapper">
+                    <div class="app-header-logo d-flex flex-shrink-0 align-items-center justify-content-between justify-content-lg-center">
+                        <a href="">
+                            <img alt="Logo" src="assets/media/logos/rent-a-dress-logo-v2.png" class="h-60px h-lg-70px theme-light-show" />
+                            <img alt="Logo" src="assets/media/logos/rent-a-dress-logo-v2.png" class="h-60px h-lg-70px theme-dark-show" />
+                        </a>
                     </div>
-                    <!--end:Menu item-->
-                    <!--begin:Menu item-->
-                    <div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="bottom-start" class="menu-item menu-lg-down-accordion me-0 me-lg-2">
-                        <!--begin:Menu link-->
-                        <span class="menu-link">
-                            <span class="menu-title">Panduan Masa Sewa</span>
-                            <span class="menu-arrow d-lg-none"></span>
-                        </span>
-                        <!--end:Menu link-->
+                    <div id="kt_app_header_menu_wrapper" class="d-flex align-items-center w-100">
+                        <div class="app-header-menu app-header-mobile-drawer align-items-start align-items-lg-center w-100" data-kt-drawer="true" data-kt-drawer-name="app-header-menu" data-kt-drawer-activate="{default: true, lg: false}" data-kt-drawer-overlay="true" data-kt-drawer-width="250px" data-kt-drawer-direction="end" data-kt-drawer-toggle="#kt_app_header_menu_toggle" data-kt-swapper="true" data-kt-swapper-mode="{default: 'append', lg: 'prepend'}" data-kt-swapper-parent="{default: '#kt_app_body', lg: '#kt_app_header_menu_wrapper'}">
+                            <div class="menu menu-rounded menu-column menu-lg-row menu-active-bg menu-state-primary menu-title-gray-700 menu-arrow-gray-500 menu-bullet-gray-500 my-5 my-lg-0 align-items-stretch fw-semibold px-2 px-lg-0" id="#kt_header_menu" data-kt-menu="true">
+                                <div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="bottom-start" data-kt-menu-offset="-100,0" class="menu-item here show menu-here-bg menu-lg-down-accordion me-0 me-lg-2">
+                                    <span class="menu-link">
+                                        <span class="menu-title">Cara Sewa</span>
+                                        <span class="menu-arrow d-lg-none"></span>
+                                    </span>
+                                </div>
+                                <div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="bottom-start" data-kt-menu-offset="-100,0" class="menu-item menu-lg-down-accordion me-0 me-lg-2">
+                                    <span class="menu-link">
+                                        <span class="menu-title">Masa Sewa</span>
+                                        <span class="menu-arrow d-lg-none"></span>
+                                    </span>
+                                </div>
+                                <div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="bottom-start" data-kt-menu-offset="-100,0" class="menu-item menu-lg-down-accordion me-0 me-lg-2">
+                                    <span class="menu-link">
+                                        <span class="menu-title">Syarat & Ketentuan</span>
+                                        <span class="menu-arrow d-lg-none"></span>
+                                    </span>
+                                </div>
+                                <div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="bottom-start" data-kt-menu-offset="-100,0" class="menu-item menu-lg-down-accordion me-0 me-lg-2">
+                                    <span class="menu-link">
+                                        <span class="menu-title">Hubungi Kami</span>
+                                        <span class="menu-arrow d-lg-none"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <!--end:Menu item-->
-
-                    <!--begin:Menu item-->
-                    <div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="bottom-start" class="menu-item menu-lg-down-accordion menu-sub-lg-down-indention me-0 me-lg-2">
-                        <!--begin:Menu link-->
-                        <span class="menu-link">
-                            <span class="menu-title">Terms & Condition</span>
-                            <span class="menu-arrow d-lg-none"></span>
-                        </span>
-                        <!--end:Menu link-->
-                    </div>
-                    <!--end:Menu item-->
-
-                    <!--begin:Menu item-->
-                    <div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="bottom-start" class="menu-item here show">
-                        <!--begin:Menu link-->
-                        <span class="menu-link">
-                            <span class="menu-title">Contact Us</span>
-                            <span class="menu-arrow d-lg-none"></span>
-                        </span>
-                        <!--end:Menu link-->
-                    </div>
-                    <!--end:Menu item-->
-
                 </div>
-                <!--end::Menu-->
-            </div>
-            <!--end::Menu wrapper-->
-            <!--begin::Navbar-->
-            <div class="app-navbar flex-shrink-0">
-                <!--begin::Theme mode-->
-                <div class="app-navbar-item ms-1 ms-md-4">
-                    <!--begin::Menu toggle-->
-                    <button class="btn btn-primary" onclick="alert('Fitur belum tersedia');return false;">Check Jadwal</button>
-                    <!--begin::Menu toggle-->
+                <div class="app-navbar flex-shrink-0">
+                    <div class="app-navbar-item">
+                        <a href="#" class="btn btn-sm btn-outline btn-outline-dark btn-active-light-dark"><i class="ki-outline ki-calendar-tick fs-5 me-1"></i>Jadwal</a>
+                    </div>
+                    <div class="app-navbar-item d-lg-none ms-2" title="Tampilkan Menu">
+                        <div class="btn btn-icon btn-sm btn-outline btn-outline-dark btn-active-light-dark" id="kt_app_header_menu_toggle">
+                            <i class="ki-outline ki-burger-menu-4 fs-2"></i>
+                        </div>
+                    </div>
                 </div>
-                <!--end::Theme mode-->
-                <!--begin::Aside toggle-->
-                <!--end::Header menu toggle-->
             </div>
-            <!--end::Navbar-->
         </div>
-        <!--end::Header wrapper-->
     </div>
-    <!--end::Header container-->
 </div>

@@ -1,85 +1,46 @@
-<div id="kt_app_toolbar" class="app-toolbar py-3 py-lg-6">
-    <?php if (service('uri')->getSegment(1) === ''): ?>
-        <!--begin::Toolbar container-->
-        <div id="kt_app_toolbar_container" class="app-container container-xxl d-flex flex-stack">
-            <!--begin::Page title-->
-            <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
-                <!--begin::Title-->
-                <h1 class="page-heading d-flex text-gray-900 fw-bold fs-3 flex-column justify-content-center my-0">Catalog Overview</h1>
-                <!--end::Title-->
-                <!--begin::Breadcrumb-->
-                <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
-                </ul>
-                <!--end::Breadcrumb-->
-            </div>
-            <!--end::Page title-->
-            <!--begin::Actions-->
-            <div class="d-flex align-items-center gap-2 gap-lg-3">
-                
-                    <!--begin::Filter menu-->
-                    <div class="m-0">
-                        <!--begin::Menu toggle-->
-                        <form method="get" action="<?= site_url('/') ?>">
-                        <input type="text" class="form-control form-control-sm" name="keyword" placeholder="Cari...">
-                        <!--end::Menu toggle-->
-                    </div>
-                    <!--end::Filter menu-->
-                    <!--begin::Filter menu-->
-                    <div class="m-0">
-                        <!--begin::Menu toggle-->
-                        <a href="#" class="btn btn-sm btn-flex btn-secondary fw-bold" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                            <i class="ki-outline ki-filter fs-6 text-muted me-1"></i>Filter</a>
-                        <!--end::Menu toggle-->
-                        <!--begin::Menu 1-->
-                        <div class="menu menu-sub menu-sub-dropdown w-250px w-md-300px" data-kt-menu="true" id="kt_menu_673c0c93de9e8">
-                            <!--begin::Header-->
-                            <div class="px-7 py-5">
-                                <div class="fs-5 text-gray-900 fw-bold">Filter Options</div>
-                            </div>
-                            <!--end::Header-->
-                            <!--begin::Menu separator-->
-                            <div class="separator border-gray-200"></div>
-                            <!--end::Menu separator-->
-                            <!--begin::Form-->
-                            <div class="px-7 py-5">
-                                <!--begin::Input group-->
-                                <div class="mb-10">
-                                    <!--begin::Label-->
-                                    <label class="form-label fw-semibold">Brand:</label>
-                                    <!--end::Label-->
-                                    <!--begin::Input-->
-                                    <div>
-                                        <select name="brand" class="form-select form-select-solid" data-kt-select2="true">
-                                            <option value="">All</option>
-                                            <?php if(! empty($brands)):?>
-                                                <?php foreach($brands as $brand):?>
-                                                    <option value="<?=$brand['brand_id']?>"><?=$brand['brand_name']?></option>
-                                                <?php endforeach?>
-                                            <?php endif?>
-                                        </select>
-                                    </div>
-                                    <!--end::Input-->
-                                </div>
-                                <!--end::Input group-->
-                                <!--begin::Actions-->
-                                <div class="d-flex justify-content-end">
-                                    <button type="reset" class="btn btn-sm btn-light btn-active-light-primary me-2" data-kt-menu-dismiss="true">Reset</button>
-                                    <button type="submit" class="btn btn-sm btn-primary" data-kt-menu-dismiss="true">Apply</button>
-                                    </form>
-                                </div>
-                                <!--end::Actions-->
-                            </div>
-                            <!--end::Form-->
-                        </div>
-                        <!--end::Menu 1-->
-                    </div>
-                    <!--end::Filter menu-->
-                
-
-            </div>
-            <!--end::Actions-->
+<div id="kt_app_toolbar" class="d-flex flex-wrap flex-stack mb-2">
+    <div class="d-flex flex-column flex-row-fluid">
+        <div class="page-title d-flex align-items-center me-3">
+            <h1 class="page-heading d-flex flex-column justify-content-center text-gray-900 fw-bold fs-lg-2x gap-2">
+                <span><span class="fw-light">Selamat</span> Datang</span>
+                <span class="page-desc text-gray-600 fs-base fw-light">Tersedia banyak pilihan, yang bisa kamu dapatkan.</span>
+            </h1>
         </div>
-
-        <!--end::Toolbar container-->
-    <?php endif ?>
+    </div>
+    <div class="d-flex flex-wrap my-2">
+        <form method="get" action="<?= site_url('/') ?>">
+            <div class="d-flex align-items-center position-relative me-4">
+                <i class="ki-outline ki-magnifier fs-3 position-absolute ms-3"></i> <input type="text" class="form-control border-body bg-body ps-10" placeholder="Cari" name="keyword">
+            </div>
+        </form>
+        <a href="#" class="btn btn-flex btn-dark fw-bold" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+            <i class="ki-outline ki-filter fs-6 me-1"></i>Filter
+        </a>
+        <div class="menu menu-sub menu-sub-dropdown w-250px w-md-300px" data-kt-menu="true" id="kt_menu_673c0c93de9e8">
+            <div class="px-7 py-5">
+                <div class="fs-5 text-gray-900 fw-bold">Filter Options</div>
+            </div>
+            <div class="separator border-gray-200"></div>
+            <div class="px-7 py-5">
+                <div class="mb-10">
+                    <label class="form-label fw-semibold">Brand:</label>
+                    <div>
+                        <select name="brand" class="form-select form-select-solid" data-kt-select2="true">
+                            <option value="">All</option>
+                            <?php if (! empty($brands)): ?>
+                                <?php foreach ($brands as $brand): ?>
+                                    <option value="<?= $brand['brand_id'] ?>"><?= $brand['brand_name'] ?></option>
+                                <?php endforeach ?>
+                            <?php endif ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <button type="reset" class="btn btn-sm btn-light btn-active-light-primary me-2" data-kt-menu-dismiss="true">Reset</button>
+                    <button type="submit" class="btn btn-sm btn-primary" data-kt-menu-dismiss="true">Apply</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

@@ -112,6 +112,10 @@
                                     <button type="submit" id="kt_sign_in_submit" class="btn btn-primary">Masuk</button>
                                 </div>
                             </form>
+                            <div class="text-center fw-semibold fs-5">
+                                <span class="text-muted me-1">Kembali ke halaman Katalog ?</span>
+                                <a href="<?= base_url() ?>" class="link-primary fs-5 me-1">Kembali</a>
+                            </div>
                         </div>
                     </div>
                 </div>
