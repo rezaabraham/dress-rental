@@ -354,7 +354,7 @@
             <a href="<?= site_url('product') ?>" id="kt_ecommerce_add_product_cancel" class="btn btn-secondary me-5">Batal</a>
             <!--end::Button-->
             <!--begin::Button-->
-            <button type="submit" id="kt_ecommerce_add_product_submit" class="btn btn-primary">
+            <button type="submit" id="kt_ecommerce_add_product_submit" class="btn btn-primary tg-load">
                 <span class="indicator-label">Simpan</span>
                 <span class="indicator-progress">Mohon tunggu...
                     <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
@@ -415,5 +415,17 @@ $(document).ready(function() {
        allowClear: true
     });
 });
+</script>
+<script>
+    $('.tg-load').on('click',function(){
+        Swal.fire({
+            title: 'Menyimpan...',
+            text: 'Mohon tunggu sebentar',
+            allowOutsideClick: false,
+            didOpen: () => {
+                Swal.showLoading();
+            }
+        });
+    });
 </script>
 <?= $this->endSection() ?>
