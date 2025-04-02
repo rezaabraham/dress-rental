@@ -20,13 +20,13 @@
 							</a>
 							<div class="text-start">
 								<span class="badge badge-light-warning fs-base mb-2 px-5">
-									Hijab Friendly
+									<?= $product['master_product_tag'] ?>
 								</span>
 							</div>
 							<div class="d-flex align-items-end flex-stack mb-1">
 								<div class="text-start">
 									<span class="fw-bold text-gray-800 cursor-pointer text-hover-primary fs-6 d-block"><?= $product['master_product_name'] ?></span>
-									<span class="text-gray-500 mt-0 fw-bold fs-5"><?= 'Rp. ' . number_format($product['master_product_price'], 0, ',', '.') .' <span class="fw-light">/ 1-3 hari</span>' ?></span>
+									<span class="text-gray-500 mt-0 fw-bold fs-5"><?= 'Rp. ' . number_format($product['master_product_price'], 0, ',', '.') . ' <span class="fw-light">/ 1-' . $product['master_product_rental_period'] . ' hari</span>' ?></span>
 								</div>
 							</div>
 						</div>
