@@ -11,15 +11,15 @@
 								New Arrival
 								<span class="ribbon-inner bg-success"></span>
 							</div>
-							<a class="d-block overlay" data-fslightbox="lightbox-hot-sales" href="<?= site_url('media/show/' . $product['master_product_code'] . '/' . $product['master_product_thumbnail']) ?>">
-								<div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded mb-7" style="height: 266px;background-image:url('assets/media/stock/600x600/img-47.jpg')">
+							<a class="d-block overlay" data-fslightbox="lightbox-hot-sales" href="#">
+								<div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded mb-7" style="height: 266px;background-image:url('<?= site_url('media/show/' . $product['master_product_code'] . '/' . $product['master_product_thumbnail']) ?>')">
 								</div>
 								<div class="overlay-layer card-rounded bg-dark bg-opacity-25">
 									<i class="ki-duotone ki-eye fs-3x text-white"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
 								</div>
 							</a>
 							<div class="text-start">
-								<span class="badge badge-light-info fs-base mb-2 px-2">
+								<span class="badge badge-light-warning fs-base mb-2 px-5">
 									Hijab Friendly
 								</span>
 							</div>
@@ -31,8 +31,8 @@
 							</div>
 						</div>
 						<div class="card-footer d-flex flex-stack pt-0">
-							<a class="btn btn-sm btn-primary flex-shrink-0 me-2" data-bs-target="#kt_modal_bidding" data-bs-toggle="modal">Pesan Sekarang</a>
-							<a class="btn btn-sm btn-light flex-shrink-0" href="#">Lihat Detail</a>
+							<a class="btn btn-sm btn-danger flex-shrink-0 me-2" data-bs-target="#kt_modal_bidding" data-bs-toggle="modal">Pesan Sekarang</a>
+							<a class="btn btn-sm btn-primary flex-shrink-0" href="#">Lihat Detail</a>
 						</div>
 					</div>
 				</div>

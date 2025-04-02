@@ -17,7 +17,7 @@
     <link href="assets/plugins/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
     <link href="assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
     <link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/style.bundle_public.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body id="kt_app_body" data-kt-app-toolbar-enabled="true" class="app-default">
