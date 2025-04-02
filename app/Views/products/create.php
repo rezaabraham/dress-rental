@@ -92,9 +92,9 @@
                     <option disabled selected>Pilih Tipe</option>
                     <?php
 
-                                                                            use Kint\Renderer\PlainRenderer;
+                    use Kint\Renderer\PlainRenderer;
 
- foreach ($types as $type): ?>
+                    foreach ($types as $type): ?>
                         <option value="<?= $type['master_attire_type_id'] ?>"><?= $type['master_attire_type_name'] ?></option>
                     <?php endforeach ?>
                 </select>
@@ -138,7 +138,7 @@
                     <!--begin::Label-->
                     <label class="required form-label">Warna</label>
                     <!--end::Label-->
-                    
+
                     <!--begin::Input-->
                     <div class="d-flex gap-3">
                         <select class="form-select create-tag" name="product_colour[]" data-control="select2" multiple="multiple" required>
@@ -223,7 +223,7 @@
                                 <label class="required form-label">Nama Item</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
-                                <input type="text" name="product_name" class="form-control mb-2" placeholder="Nama item baru" value="<?=old('product_name')?>" required/>
+                                <input type="text" name="product_name" class="form-control mb-2" placeholder="Nama item baru" value="<?= old('product_name') ?>" required />
                                 <!--end::Input-->
                                 <!--begin::Description-->
                                 <!-- <div class="text-muted fs-7">A product name is required and recommended to be unique.</div> -->
@@ -236,7 +236,7 @@
                                 <label class="required form-label">Kode Item</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
-                                <input type="text" name="product_code" class="form-control mb-2" placeholder="000" value="<?=old('product_code')?>" required/>
+                                <input type="text" name="product_code" class="form-control mb-2" placeholder="000" value="<?= old('product_code') ?>" required />
                                 <!--end::Input-->
                                 <!--begin::Description-->
                                 <!-- <div class="text-muted fs-7">A product name is required and recommended to be unique.</div> -->
@@ -251,7 +251,7 @@
                                 <!--begin::Editor-->
                                 <!-- <div id="product_description" name="product_description" class="min-h-200px mb-2"></div> -->
                                 <textarea id="product_description" name="product_description" class="form-control" required>
-                                <?=old('product_desc')?>
+                                <?= old('product_desc') ?>
                                 </textarea>
                                 <!--end::Editor-->
                             </div>
@@ -301,7 +301,7 @@
                                     <label class="required form-label">Biaya Sewa</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
-                                    <input type="number" name="product_price" class="form-control mb-2" placeholder="Product price" value="0" required/>
+                                    <input type="number" name="product_price" class="form-control mb-2" placeholder="Product price" value="0" required />
                                     <!--end::Input-->
                                     <!--begin::Description-->
                                     <!-- <div class="text-muted fs-7">Set the product price.</div> -->
@@ -315,7 +315,7 @@
                                     <label class="form-label">Masa Sewa (Hari)</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
-                                    <input type="number" class="form-control mb-2" name="product_rental_period" value="1" required/>
+                                    <input type="number" class="form-control mb-2" name="product_rental_period" value="1" required />
                                     <!--end::Input-->
                                     <!--begin::Description-->
                                     <!-- <div class="text-muted fs-7">Set a meta tag title. Recommended to be simple and precise keywords.</div> -->
@@ -328,7 +328,7 @@
                                     <label class="form-label">Biaya Extra</label>
                                     <!--end::Label-->
                                     <!--begin::Editor-->
-                                    <input id="kt_ecommerce_add_product_meta_keywords" type="number" name="product_extra_days_price" class="form-control mb-2" value="0" required/>
+                                    <input id="kt_ecommerce_add_product_meta_keywords" type="number" name="product_extra_days_price" class="form-control mb-2" value="0" required />
                                     <!--end::Editor-->
                                     <!--begin::Description-->
                                     <!-- <div class="text-muted fs-7">Set a list of keywords that the product is related to. Separate the keywords by adding a comma
@@ -387,7 +387,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                <button type="button" class="btn btn-primary" id="saveBrand">Simpan</button>
+                <button type="button" class="btn btn-primary tg-load" id="saveBrand">Simpan</button>
             </div>
         </div>
     </div>
@@ -407,23 +407,64 @@
         });
 </script>
 <script>
-$(document).ready(function() {
-    $('.create-tag').select2({
-        tags: true,
-        tokenSeparators: [','],
-       //placeholder: "Pilih atau tambahkan warna",
-       allowClear: true
+    $(document).ready(function() {
+        $('.create-tag').select2({
+            tags: true,
+            tokenSeparators: [','],
+            //placeholder: "Pilih atau tambahkan warna",
+            allowClear: true
+        });
     });
-});
 </script>
 <script>
-    $('.tg-load').on('click',function(){
+    $('.tg-load').on('click', function() {
         Swal.fire({
             title: 'Menyimpan...',
             text: 'Mohon tunggu sebentar',
             allowOutsideClick: false,
             didOpen: () => {
                 Swal.showLoading();
+            }
+        });
+    });
+
+    $('#saveBrand').on('click', function() {
+        let name = $('#brandName').val();
+        let code = $('#brandName').val();
+
+        if (name === '' || code === '') {
+            alert('nama atau kode brand tidak boleh kosong');
+            return false;
+        }
+
+        $.ajax({
+            type: "post",
+            url: "brand/store",
+            data: {
+                brand_name: name,
+                brand_code: code
+            },
+            success: function(response) {
+              
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Berhasil menambahkan brand.',
+                });
+
+                $('#addBrandModal').modal('hide');
+
+                $('#productBrand').append(
+                    $('<option>',{
+                       value: response.brand_id,
+                       text: name
+                    })
+                );
+            },
+            error: function(xhr) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal menambahkan brand.',
+                });
             }
         });
     });

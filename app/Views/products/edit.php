@@ -387,4 +387,57 @@
             console.error(error);
         });
 </script>
+<script>
+    $('.tg-load').on('click', function() {
+        Swal.fire({
+            title: 'Menyimpan...',
+            text: 'Mohon tunggu sebentar',
+            allowOutsideClick: false,
+            didOpen: () => {
+                Swal.showLoading();
+            }
+        });
+    });
+
+    $('#saveBrand').on('click', function() {
+        let name = $('#brandName').val();
+        let code = $('#brandName').val();
+
+        if (name === '' || code === '') {
+            alert('nama atau kode brand tidak boleh kosong');
+            return false;
+        }
+
+        $.ajax({
+            type: "post",
+            url: "brand/store",
+            data: {
+                brand_name: name,
+                brand_code: code
+            },
+            success: function(response) {
+              
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Berhasil menambahkan brand.',
+                });
+
+                $('#addBrandModal').modal('hide');
+
+                $('#productBrand').append(
+                    $('<option>',{
+                       value: response.brand_id,
+                       text: name
+                    })
+                );
+            },
+            error: function(xhr) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal menambahkan brand.',
+                });
+            }
+        });
+    });
+</script>
 <?= $this->endSection() ?>
