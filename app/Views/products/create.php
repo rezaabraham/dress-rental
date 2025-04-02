@@ -88,7 +88,7 @@
                 <label class="form-label">Tipe</label>
                 <!--end::Label-->
                 <!--begin::Select2-->
-                <select class="form-select mb-2" name="product_type" data-placeholder="Select an option">
+                <select class="form-select mb-2" name="product_type" data-placeholder="Select an option" required>
                     <option disabled selected>Pilih Tipe</option>
                     <?php foreach ($types as $type): ?>
                         <option value="<?= $type['master_attire_type_id'] ?>"><?= $type['master_attire_type_name'] ?></option>
@@ -104,7 +104,7 @@
                 <label class="form-label">Brand</label>
                 <!--end::Label-->
                 <!--begin::Select2-->
-                <select class="form-select mb-2" id="productBrand" name="product_brand" data-placeholder="Select an option">
+                <select class="form-select mb-2" id="productBrand" name="product_brand" data-placeholder="Select an option" required>
                     <option disabled selected>Pilih Brand</option>
                     <?php foreach ($brands as $brand): ?>
                         <option value=<?= $brand['brand_id'] ?>><?= $brand['brand_name'] ?></option>
@@ -137,7 +137,7 @@
                     
                     <!--begin::Input-->
                     <div class="d-flex gap-3">
-                        <select class="form-select create-tag" name="product_colour[]" data-control="select2" multiple="multiple">
+                        <select class="form-select create-tag" name="product_colour[]" data-control="select2" multiple="multiple" required>
                             <option></option>
                             <?php foreach ($colours as $colour): ?>
                                 <option value="<?= $colour['colour_name'] ?>"><?= $colour['colour_name'] ?></option>
@@ -155,7 +155,7 @@
                 <label class="form-label">Tag</label>
                 <!--end::Label-->
                 <!--begin::Select2-->
-                <select class="form-select create-tag mb-2" name="product_tag[]" data-control="select2" multiple="multiple" data-placeholder="Pilih tag">
+                <select class="form-select create-tag mb-2" name="product_tag[]" data-control="select2" multiple="multiple" data-placeholder="Pilih tag" required>
                     <option>Pilih Tag</option>
                     <?php foreach ($tags as $tag): ?>
                         <option value="<?= $tag['master_tag_name'] ?>"><?= $tag['master_tag_name'] ?></option>
@@ -219,7 +219,7 @@
                                 <label class="required form-label">Nama Item</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
-                                <input type="text" name="product_name" class="form-control mb-2" placeholder="Nama item baru" value="" />
+                                <input type="text" name="product_name" class="form-control mb-2" placeholder="Nama item baru" value="" required/>
                                 <!--end::Input-->
                                 <!--begin::Description-->
                                 <!-- <div class="text-muted fs-7">A product name is required and recommended to be unique.</div> -->
@@ -232,7 +232,7 @@
                                 <label class="required form-label">Kode Item</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
-                                <input type="text" name="product_code" class="form-control mb-2" placeholder="000" value="" />
+                                <input type="text" name="product_code" class="form-control mb-2" placeholder="000" value="" required/>
                                 <!--end::Input-->
                                 <!--begin::Description-->
                                 <!-- <div class="text-muted fs-7">A product name is required and recommended to be unique.</div> -->
@@ -246,7 +246,7 @@
                                 <!--end::Label-->
                                 <!--begin::Editor-->
                                 <!-- <div id="product_description" name="product_description" class="min-h-200px mb-2"></div> -->
-                                <textarea id="product_description" name="product_description" class="form-control">
+                                <textarea id="product_description" name="product_description" class="form-control" required>
                                 </textarea>
                                 <!--end::Editor-->
                             </div>
@@ -296,7 +296,7 @@
                                     <label class="required form-label">Biaya Sewa</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
-                                    <input type="number" name="product_price" class="form-control mb-2" placeholder="Product price" value="0" />
+                                    <input type="number" name="product_price" class="form-control mb-2" placeholder="Product price" value="0" required/>
                                     <!--end::Input-->
                                     <!--begin::Description-->
                                     <!-- <div class="text-muted fs-7">Set the product price.</div> -->
@@ -310,7 +310,7 @@
                                     <label class="form-label">Masa Sewa (Hari)</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
-                                    <input type="number" class="form-control mb-2" name="product_rental_period" value="1" />
+                                    <input type="number" class="form-control mb-2" name="product_rental_period" value="1" required/>
                                     <!--end::Input-->
                                     <!--begin::Description-->
                                     <!-- <div class="text-muted fs-7">Set a meta tag title. Recommended to be simple and precise keywords.</div> -->
@@ -323,7 +323,7 @@
                                     <label class="form-label">Biaya Extra</label>
                                     <!--end::Label-->
                                     <!--begin::Editor-->
-                                    <input id="kt_ecommerce_add_product_meta_keywords" type="number" name="product_extra_days_price" class="form-control mb-2" value="0" />
+                                    <input id="kt_ecommerce_add_product_meta_keywords" type="number" name="product_extra_days_price" class="form-control mb-2" value="0" required/>
                                     <!--end::Editor-->
                                     <!--begin::Description-->
                                     <!-- <div class="text-muted fs-7">Set a list of keywords that the product is related to. Separate the keywords by adding a comma
