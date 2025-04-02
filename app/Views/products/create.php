@@ -90,7 +90,11 @@
                 <!--begin::Select2-->
                 <select class="form-select mb-2" name="product_type" data-placeholder="Select an option" required>
                     <option disabled selected>Pilih Tipe</option>
-                    <?php foreach ($types as $type): ?>
+                    <?php
+
+                                                                            use Kint\Renderer\PlainRenderer;
+
+ foreach ($types as $type): ?>
                         <option value="<?= $type['master_attire_type_id'] ?>"><?= $type['master_attire_type_name'] ?></option>
                     <?php endforeach ?>
                 </select>
@@ -219,7 +223,7 @@
                                 <label class="required form-label">Nama Item</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
-                                <input type="text" name="product_name" class="form-control mb-2" placeholder="Nama item baru" value="" required/>
+                                <input type="text" name="product_name" class="form-control mb-2" placeholder="Nama item baru" value="<?=old('product_name')?>" required/>
                                 <!--end::Input-->
                                 <!--begin::Description-->
                                 <!-- <div class="text-muted fs-7">A product name is required and recommended to be unique.</div> -->
@@ -232,7 +236,7 @@
                                 <label class="required form-label">Kode Item</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
-                                <input type="text" name="product_code" class="form-control mb-2" placeholder="000" value="" required/>
+                                <input type="text" name="product_code" class="form-control mb-2" placeholder="000" value="<?=old('product_code')?>" required/>
                                 <!--end::Input-->
                                 <!--begin::Description-->
                                 <!-- <div class="text-muted fs-7">A product name is required and recommended to be unique.</div> -->
@@ -247,6 +251,7 @@
                                 <!--begin::Editor-->
                                 <!-- <div id="product_description" name="product_description" class="min-h-200px mb-2"></div> -->
                                 <textarea id="product_description" name="product_description" class="form-control" required>
+                                <?=old('product_desc')?>
                                 </textarea>
                                 <!--end::Editor-->
                             </div>

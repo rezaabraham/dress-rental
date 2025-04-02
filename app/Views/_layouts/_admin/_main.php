@@ -147,7 +147,7 @@
     <!--end::Vendors Javascript-->
     <!--begin::Custom Javascript(used for this page only)-->
     <?= $this->renderSection('custom_js') ?>
-    
+
     <script>
         <?php if (session()->has('success')): ?>
             Swal.fire({
@@ -172,58 +172,17 @@
             });
         <?php endif ?>
     </script>
-    <!-- <script>
-        Dropzone.autoDiscover = false;
 
-        var galleryDropzone = new Dropzone("#gallery", {
-            url: "#", // di-set dinamis setelah produk dibuat
-            autoProcessQueue: false,
-            uploadMultiple: true,
-            parallelUploads: 10,
-            maxFilesize: 2, // MB
-            acceptedFiles: "image/*",
-            addRemoveLinks: true,
-            init: function() {
-                var dz = this;
-                document.getElementById("form-product").addEventListener("submit", function(e) {
-                    e.preventDefault();
-                    var formData = new FormData(this);
-
-                    fetch("<?= site_url('admin/product/store') ?>", {
-                            method: "POST",
-                            body: formData
-                        })
-                        .then(response => response.json())
-                        .then(data => {
-                            if (data.success) {
-                                if (dz.getQueuedFiles().length > 0) {
-                                    dz.options.url = "<?= site_url('admin/product/upload-gallery') ?>/" + data.product_id;
-                                    dz.processQueue();
-                                } else {
-                                    alert("Produk berhasil disimpan.");
-                                    window.location.reload();
-                                }
-                            } else {
-                                alert("Gagal menyimpan produk.");
-                            }
-                        });
-                });
-
-                dz.on('sending', function(file, xhr, formData) {
-                    formData.append("product_id", dz.options.url.split('/').pop());
-                });
-
-                // dz.on("uploadprogress", function(file, progress) {
-                //     document.getElementById("progress-bar").style.width = progress + "%";
-                // });
-
-                dz.on("queuecomplete", function() {
-                    alert("Galeri berhasil diupload.");
-                    window.location.reload();
-                });
-            }
-        });
-    </script> -->
+    <?php if (session()->getFlashdata('errors')): ?>
+        <?php $errors = session()->getFlashdata('errors'); ?>
+        <script>
+            let errorList = `<?php foreach ($errors as $error): ?> <li> <?= esc($error) ?> <?php endforeach; ?> </li>`;
+            Swal.fire({
+                icon: 'error',
+                title: errorList,
+            });
+        </script>
+    <?php endif ?>
     <!--end::Custom Javascript-->
     <!--end::Javascript-->
 </body>

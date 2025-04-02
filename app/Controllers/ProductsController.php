@@ -146,6 +146,12 @@ class ProductsController extends BaseController
     {
         $validation = $this->validate([
             'product_thumbnail' => 'uploaded[product_thumbnail]|max_size[product_thumbnail,2048]|is_image[product_thumbnail]',
+            'product_code' =>[
+                'rules'=>'required|is_unique[master_product.master_product_code]',
+                'errors'=>[
+                    'is_unique'=> 'Kode Item telah dipakai.'
+                ]
+            ] ,
             'product_type' => 'required',
             'product_brand' => 'required|integer',
             'product_colour' => 'required',
