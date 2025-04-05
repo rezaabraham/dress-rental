@@ -1,15 +1,14 @@
 <div id="kt_app_toolbar" class="d-flex flex-wrap flex-stack mb-2">
     <div class="d-flex flex-column flex-row-fluid">
-        <div class="page-title d-flex align-items-center me-3">
-            <h1 class="page-heading d-flex flex-column justify-content-center text-gray-900 fw-bold fs-lg-2x gap-2">
-                <span><span class="fw-light">Selamat</span> Datang</span>
-                <span class="page-desc text-gray-600 fs-base fw-light">Tersedia banyak pilihan, yang bisa kamu dapatkan.</span>
+        <div class="page-title d-flex align-items-center">
+            <h1 class="page-heading d-flex flex-column text-primary fw-bold fs-lg-2x gap-2">
+                <span><span class="fw-light text-dark">Katalog</span> Pilihan</span>
             </h1>
         </div>
     </div>
-    <div class="d-flex flex-wrap my-2">
+    <div class="d-flex gap-3 my-3">
         <form method="get" action="<?= site_url('/') ?>">
-            <div class="d-flex align-items-center position-relative me-4">
+            <div class="d-flex align-items-center position-relative">
                 <i class="ki-outline ki-magnifier fs-3 position-absolute ms-3"></i> <input type="text" class="form-control border-body bg-body ps-10" placeholder="Cari" name="keyword">
             </div>
         </form>

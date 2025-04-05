@@ -4,23 +4,30 @@
 	<div class="row g-5 g-xl-10 mb-5 mb-xl-0">
 		<?php if (!empty($products)): ?>
 			<?php foreach ($products as $product): ?>
-				<div class="col-md-4 col-6">
-					<div class="card card-flush h-100">
-						<div class="card-header ribbon ribbon-top p-0">
-							<div class="ribbon-label bg-success px-3 py-1">New Arrival</div>
-							<div class="ratio ratio-1x1 position-relative">
-								<img src="https://charinastudio.com/media/show/062/1743752954_6a75cd748183545dce4b.jpg" class="rounded object-fit-cover" style="object-position: top;" alt="Barang A">
+				<div class="col-md-4 mb-xl-10 col-6">
+					<div class="card card-flush">
+						<div class="card-body ribbon ribbon-end ribbon-clip p-0">
+							<div class="ribbon-label" style="top: 12% !important;">
+								New Arrival
+								<span class="ribbon-inner bg-success"></span>
 							</div>
-						</div>
-						<div class="card-body p-3 gap-3 d-flex flex-column justify-content-between">
+							<a class="d-block overlay" data-fslightbox="lightbox-hot-sales" href="#">
+								<div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded mb-7" style="height: background-image:url('<?= site_url('media/show/' . $product['master_product_code'] . '/' . $product['master_product_thumbnail']) ?>')">
+								</div>
+								<div class="overlay-layer card-rounded bg-dark bg-opacity-25">
+									<i class="ki-duotone ki-eye fs-3x text-white"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
+								</div>
+							</a>
 							<div class="text-start">
-								<span class="badge badge-light-warning fs-7 px-3">
+								<span class="badge badge-light-warning fs-base mb-2 px-5">
 									<?= $product['master_product_tag'] ?>
 								</span>
 							</div>
-							<div class="text-start">
-								<span class="fw-bold text-gray-800 cursor-pointer text-hover-primary fs-7 d-block lh-1"><?= strlen($product['master_product_name']) < 20 ? $product['master_product_name'] : substr($product['master_product_name'], 0, 17) . '...' ?></span>
-								<span class="text-gray-600 mt-0 fw-bold fs-7"><?= 'Rp. ' . number_format($product['master_product_price'], 0, ',', '.') . ' <span class="fw-light">/ 1-' . $product['master_product_rental_period'] . ' hari</span>' ?></span>
+							<div class="d-flex align-items-end flex-stack mb-1">
+								<div class="text-start">
+									<span class="fw-bold text-gray-800 cursor-pointer text-hover-primary fs-6 d-block"><?= $product['master_product_name'] ?></span>
+									<span class="text-gray-500 mt-0 fw-bold fs-5"><?= 'Rp. ' . number_format($product['master_product_price'], 0, ',', '.') . ' <span class="fw-light">/ 1-' . $product['master_product_rental_period'] . ' hari</span>' ?></span>
+								</div>
 							</div>
 						</div>
 					</div>
