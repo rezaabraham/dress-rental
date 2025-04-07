@@ -1,20 +1,20 @@
 <?= $this->extend('_layouts/_catalog/_main') ?>
 <?= $this->section('content') ?>
 <div id="kt_app_content" class="app-content  flex-column-fluid ">
-	<div class="row g-5 g-xl-10 mb-5 mb-xl-0">
+	<div class="row g-5 g-lg-10 mb-5">
 		<?php if (!empty($products)): ?>
 			<?php foreach ($products as $product): ?>
-				<div class="col-md-4 col-6">
+				<div class="col-lg-3 col-6 mb-2">
 					<div class="card card-flush h-100">
 						<div class="card-header ribbon ribbon-start p-0">
-							<?= date_diff(date_create(), date_create($product['master_product_created_at']))->d <= 7 ? '<div class="ribbon-label bg-success px-3 py-1 fs-9 fs-lg-4" style="top:0%;">New Arrival</div>' : null ?>
+							<?= date_diff(date_create(), date_create($product['master_product_created_at']))->d <= 5 ? '<div class="ribbon-label bg-success ps-3 pe-4 py-1 fs-9 fs-lg-5" style="top:0%;">New Arrival</div>' : null ?>
 							<div class="ratio ratio-1x1 position-relative">
 								<img src="<?= site_url('media/show/' . $product['master_product_code'] . '/' . $product['master_product_thumbnail']) ?>" class="rounded object-fit-cover" style="object-position: top;" alt="<?= $product['master_product_name'] ?>">
 							</div>
 						</div>
-						<div class="card-body p-3 gap-3 p-lg-5 d-flex flex-column justify-content-between">
+						<div class="card-body px-3 pb-3 pt-1 gap-3 p-lg-5 d-flex flex-column justify-content-between">
 							<div class="text-start">
-								<span class="badge badge-light-warning fs-9 fs-lg-5 px-3">
+								<span class="badge badge-light-warning fs-9 fs-lg-6 px-3 fw-normal">
 									<?= $product['master_product_tag'] ?>
 								</span>
 							</div>
@@ -53,5 +53,12 @@
 			</div>
 		<?php endif ?>
 	</div>
+	<ul class="pagination pagination-circle mt-10">
+		<li class="page-item previous disabled"><a href="#" class="page-link"><i class="previous"></i></a></li>
+		<li class="page-item active"><a href="#" class="page-link">1</a></li>
+		<li class="page-item "><a href="#" class="page-link">2</a></li>
+		<li class="page-item "><a href="#" class="page-link">3</a></li>
+		<li class="page-item next"><a href="#" class="page-link"><i class="next"></i></a></li>
+	</ul>
 </div>
 <?= $this->endSection() ?>

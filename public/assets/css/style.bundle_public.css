@@ -28594,11 +28594,11 @@ textarea.form-control-lg {
   --bs-border-color: #F1F1F4;
   --bs-border-dashed-color: #DBDFE9;
   --bs-component-active-color: #ffffff;
-  --bs-component-active-bg: #3a2300;
-  --bs-component-hover-color: #3a2300;
+  --bs-component-active-bg: #f08080;
+  --bs-component-hover-color: #f08080;
   --bs-component-hover-bg: #F9F9F9;
   --bs-component-checked-color: #ffffff;
-  --bs-component-checked-bg: #3a2300;
+  --bs-component-checked-bg: #f08080;
   --bs-box-shadow-xs: 0 0.1rem 0.75rem 0.25rem rgba(0, 0, 0, 0.05);
   --bs-box-shadow-sm: 0 0.1rem 1rem 0.25rem rgba(0, 0, 0, 0.05);
   --bs-box-shadow: 0 0.5rem 1.5rem 0.5rem rgba(0, 0, 0, 0.075);

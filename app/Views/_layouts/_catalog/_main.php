@@ -48,11 +48,8 @@
                         <a href="#" target="_blank" class="text-gray-800 text-hover-primary">Charina Studio</a>
                     </div>
                     <ul class="menu menu-gray-600 menu-hover-primary fw-semibold order-1">
-                        <li class="menu-item"><a href="#" target="_blank" class="menu-link px-2">About</a></li>
-
-                        <li class="menu-item"><a href="#" target="_blank" class="menu-link px-2">Support</a></li>
-
-                        <li class="menu-item"><a href="#" target="_blank" class="menu-link px-2">Purchase</a></li>
+                        <li class="menu-item"><a href="#" target="_blank" class="menu-link px-2">Tentang</a></li>
+                        <li class="menu-item"><a href="#" target="_blank" class="menu-link px-2">Layanan</a></li>
                     </ul>
                 </div>
             </div>
