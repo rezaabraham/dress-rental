@@ -6,21 +6,21 @@
 			<?php foreach ($products as $product): ?>
 				<div class="col-md-4 col-6">
 					<div class="card card-flush h-100">
-						<div class="card-header ribbon ribbon-top p-0">
-							<div class="ribbon-label bg-success px-3 py-1">New Arrival</div>
+						<div class="card-header ribbon ribbon-start p-0">
+							<?= date_diff(date_create(), date_create($product['master_product_created_at']))->d <= 7 ? '<div class="ribbon-label bg-success px-3 py-1 fs-9 fs-lg-4" style="top:0%;">New Arrival</div>' : null ?>
 							<div class="ratio ratio-1x1 position-relative">
-								<img src="https://charinastudio.com/media/show/062/1743752954_6a75cd748183545dce4b.jpg" class="rounded object-fit-cover" style="object-position: top;" alt="Barang A">
+								<img src="<?= site_url('media/show/' . $product['master_product_code'] . '/' . $product['master_product_thumbnail']) ?>" class="rounded object-fit-cover" style="object-position: top;" alt="<?= $product['master_product_name'] ?>">
 							</div>
 						</div>
-						<div class="card-body p-3 gap-3 d-flex flex-column justify-content-between">
+						<div class="card-body p-3 gap-3 p-lg-5 d-flex flex-column justify-content-between">
 							<div class="text-start">
-								<span class="badge badge-light-warning fs-7 px-3">
+								<span class="badge badge-light-warning fs-9 fs-lg-5 px-3">
 									<?= $product['master_product_tag'] ?>
 								</span>
 							</div>
 							<div class="text-start">
-								<span class="fw-bold text-gray-800 cursor-pointer text-hover-primary fs-7 d-block lh-1"><?= strlen($product['master_product_name']) < 20 ? $product['master_product_name'] : substr($product['master_product_name'], 0, 17) . '...' ?></span>
-								<span class="text-gray-600 mt-0 fw-bold fs-7"><?= 'Rp. ' . number_format($product['master_product_price'], 0, ',', '.') . ' <span class="fw-light">/ 1-' . $product['master_product_rental_period'] . ' hari</span>' ?></span>
+								<span class="fw-bold text-gray-800 cursor-pointer text-hover-primary fs-7 fs-lg-4 d-block lh-1"><?= strlen($product['master_product_name']) < 20 ? $product['master_product_name'] : substr($product['master_product_name'], 0, 17) . '...' ?></span>
+								<span class="text-gray-600 mt-0 fw-bold fs-7 fs-lg-4"><?= 'Rp. ' . number_format($product['master_product_price'], 0, ',', '.') . ' <span class="fw-light">/ 1-' . $product['master_product_rental_period'] . ' hari</span>' ?></span>
 							</div>
 						</div>
 					</div>
