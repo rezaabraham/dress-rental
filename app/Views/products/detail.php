@@ -188,7 +188,7 @@
         document.getElementById("btn-wa").addEventListener("click", function() {
             const code = this.getAttribute("data-item-code");
             const name = this.getAttribute("data-item-name");
-            const message = `APAKAH ${itemCode} - ${itemName} MASIH TERSEDIA?`;
+            const message = `APAKAH ${code} - ${name} MASIH TERSEDIA?`;
             const encodedMessage = encodeURIComponent(message);
             //const encodedMessage = message;
             const phone = "6281387097774";
