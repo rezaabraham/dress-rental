@@ -5,25 +5,30 @@
 		<?php if (!empty($products)): ?>
 			<?php foreach ($products as $product): ?>
 				<div class="col-lg-3 col-6 mb-2">
-					<div class="card card-flush h-100">
-						<div class="card-header ribbon ribbon-start p-0">
-							<?= date_diff(date_create(), date_create($product['master_product_created_at']))->d <= 5 ? '<div class="ribbon-label bg-success ps-3 pe-4 py-1 fs-9 fs-lg-5" style="top:0%;">New Arrival</div>' : null ?>
-							<div class="ratio ratio-1x1 position-relative">
-								<img src="<?= site_url('media/show/' . $product['master_product_code'] . '/' . $product['master_product_thumbnail']) ?>" class="rounded object-fit-cover" style="object-position: top;" alt="<?= $product['master_product_name'] ?>">
+					<a href="<?= site_url('product/' . $product['master_product_code']) ?>" class="text-decoration-none text-dark">
+						<div class="card card-flush h-100">
+							<div class="card-header ribbon ribbon-start p-0">
+								<?= date_diff(date_create(), date_create($product['master_product_created_at']))->d <= 5 ? '<div class="ribbon-label bg-success ps-3 pe-4 py-1 fs-9 fs-lg-5" style="top:0%;">New Arrival</div>' : null ?>
+								<div class="ratio ratio-1x1 position-relative">
+									<img src="<?= site_url('media/show/' . $product['master_product_code'] . '/' . $product['master_product_thumbnail']) ?>" class="rounded object-fit-cover" style="object-position: top;" alt="<?= $product['master_product_name'] ?>">
+								</div>
+							</div>
+							<div class="card-body px-3 pb-3 pt-1 gap-3 p-lg-5 d-flex flex-column justify-content-between">
+								<?php if ($product['master_attire_type_name'] == 'Hijab'): ?>
+									<div class="text-start">
+
+										<span class="badge badge-light-warning fs-9 fs-lg-6 px-3 fw-normal">
+											Hijab Friendly
+										</span>
+									</div>
+								<?php endif ?>
+								<div class="text-start">
+									<span class="fw-bold text-gray-800 cursor-pointer text-hover-primary fs-7 fs-lg-4 d-block lh-1"><?= strlen($product['master_product_name']) < 20 ? $product['master_product_name'] : substr($product['master_product_name'], 0, 17) . '...' ?></span>
+									<span class="text-gray-600 mt-0 fw-bold fs-7 fs-lg-4"><?= 'Rp. ' . number_format($product['master_product_price'], 0, ',', '.') . ' <span class="fw-light">/ 1-' . $product['master_product_rental_period'] . ' hari</span>' ?></span>
+								</div>
 							</div>
 						</div>
-						<div class="card-body px-3 pb-3 pt-1 gap-3 p-lg-5 d-flex flex-column justify-content-between">
-							<div class="text-start">
-								<span class="badge badge-light-warning fs-9 fs-lg-6 px-3 fw-normal">
-									<?= $product['master_product_tag'] ?>
-								</span>
-							</div>
-							<div class="text-start">
-								<span class="fw-bold text-gray-800 cursor-pointer text-hover-primary fs-7 fs-lg-4 d-block lh-1"><?= strlen($product['master_product_name']) < 20 ? $product['master_product_name'] : substr($product['master_product_name'], 0, 17) . '...' ?></span>
-								<span class="text-gray-600 mt-0 fw-bold fs-7 fs-lg-4"><?= 'Rp. ' . number_format($product['master_product_price'], 0, ',', '.') . ' <span class="fw-light">/ 1-' . $product['master_product_rental_period'] . ' hari</span>' ?></span>
-							</div>
-						</div>
-					</div>
+					</a>
 				</div>
 			<?php endforeach ?>
 		<?php else: ?>
