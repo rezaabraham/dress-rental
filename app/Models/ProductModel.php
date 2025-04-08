@@ -33,4 +33,27 @@ class ProductModel extends Model
         
         return $query ? $query['new_code'] : '001';
     }
+
+    public function getPaginatedProducts($perPage, $keyword = null, $brand = null)
+    {
+        $query = $this->where('master_product_isactive', 'y')
+        ->join('master_brands', 'master_product.master_product_brand = master_brands.brand_id', 'left')
+        ->join('master_attire_type', 'master_product.master_product_type = master_attire_type.master_attire_type_id', 'left')
+        ->join('master_tag', 'master_product.master_product_tag = master_tag.master_tag_id', 'left');
+
+        if (!empty($keyword)) {
+            $query->like('master_product.master_product_name', $keyword);
+        }
+
+        if (!empty($brand)) {
+            $query->where('master_product.master_product_brand', $brand);
+        }
+
+        // if (!empty($search)) {
+        //     $query->like('brand_name', $search)
+        //           ->orLike('brand_code', $search);
+        // }
+
+        return $query->paginate($perPage);
+    }
 }
