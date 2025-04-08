@@ -145,15 +145,22 @@ class ProductsController extends BaseController
     public function store()
     {
         $validation = $this->validate([
-            'product_thumbnail' => 'uploaded[product_thumbnail]|max_size[product_thumbnail,2048]|is_image[product_thumbnail]',
-            'product_code' =>[
-                'rules'=>'required|is_unique[master_product.master_product_code]',
-                'errors'=>[
-                    'is_unique'=> 'Kode Item telah dipakai.'
+            'product_thumbnail' => [
+                'rules' => 'uploaded[product_thumbnail]|max_size[product_thumbnail,2048]|is_image[product_thumbnail]',
+                'errors' => [
+                    'uploaded' => 'Mohon upload gambar.',
+                    'max_size' => 'Ukuran gambar maks. 2 MB',
+                    'is_image' => 'File gambar tidak valid',
                 ]
-            ] ,
+            ],
+            'product_code' => [
+                'rules' => 'required|is_unique[master_product.master_product_code]',
+                'errors' => [
+                    'is_unique' => 'Kode Item telah dipakai.'
+                ]
+            ],
             'product_type' => 'required',
-            'product_brand' => 'required|integer',
+            'product_brand' => 'required',
             'product_colour' => 'required',
             'product_size' => 'required',
             'product_name' => 'required',
@@ -210,7 +217,8 @@ class ProductsController extends BaseController
 
         $this->createNewColour($this->request->getPost('product_colour'));
 
-        return redirect()->back()->with('success','Item berhasil ditambahkan.');
+        //return redirect()->back()->with('success','Item berhasil ditambahkan.');
+        return redirect()->to('product-create')->with('success','Item berhasil ditambahkan.');
     }
 
   
@@ -268,7 +276,8 @@ class ProductsController extends BaseController
             ->where('master_product_image_productid', $product['master_product_id'])
             ->findColumn('master_product_image_name') ?? [];
 
-        return view('catalog/product', ['product' => $product]);
+        // return view('catalog/product', ['product' => $product]);
+        return view('products/detail', ['product' => $product]);
     }
 
     public function delete($id = null)
@@ -381,7 +390,7 @@ class ProductsController extends BaseController
     $validation = $this->validate([
         'product_thumbnail' => 'if_exist|max_size[product_thumbnail,2048]|is_image[product_thumbnail]',
         'product_category' => 'required|integer',
-        'product_brand' => 'required|integer',
+        'product_brand' => 'required',
         'product_colour' => 'required',
         'product_size' => 'required',
         'product_name' => 'required',

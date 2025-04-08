@@ -430,7 +430,7 @@
 
     $('#saveBrand').on('click', function() {
         let name = $('#brandName').val();
-        let code = $('#brandName').val();
+        let code = $('#brandCode').val();
 
         if (name === '' || code === '') {
             alert('nama atau kode brand tidak boleh kosong');
@@ -445,20 +445,24 @@
                 brand_code: code
             },
             success: function(response) {
-              
+                //console.log(response)
+
+                const brandID = parseInt(response.brand_id);
+
+                $('#productBrand').append(
+                    $('<option>', {
+                        value: brandID,
+                        text: name,
+                        selected: true
+                    })
+                ).trigger('change');
+
                 Swal.fire({
                     icon: 'success',
                     title: 'Berhasil menambahkan brand.',
                 });
 
                 $('#addBrandModal').modal('hide');
-
-                $('#productBrand').append(
-                    $('<option>',{
-                       value: response.brand_id,
-                       text: name
-                    })
-                );
             },
             error: function(xhr) {
                 Swal.fire({

@@ -26,6 +26,7 @@ class CatalogController extends BaseController
     {
         $keyword = $this->request->getGet('keyword',FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $brand = $this->request->getGet('brand');
+        $perPage = 6; 
 
         /* $query = $this->productModel
         ->select('master_products.*, master_brands.brand_name,master_sizes.size_name')

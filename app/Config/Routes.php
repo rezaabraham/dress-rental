@@ -47,3 +47,5 @@ $routes->post('product-upload/(:num)', 'ProductsController::upload/$1');
 $routes->post('product/update/(:num)', 'ProductsController::update/$1');
 
 $routes->get('media/show/(:segment)/(:any)', 'MediaController::show/$1/$2');
+
+$routes->get('mockup/product/detail', 'Mockup::productDetail3w');

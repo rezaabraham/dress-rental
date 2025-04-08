@@ -61,4 +61,17 @@
 		<li class="page-item next"><a href="#" class="page-link"><i class="next"></i></a></li>
 	</ul>
 </div>
+ <!-- Begin::Links Sosmed -->
+  <div class="floating-social">
+    <a href="https://wa.me/6281387097774" target="_blank" title="WhatsApp" class="whatsapp">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="https://instagram.com/charina.studio" target="_blank" title="Instagram" class="instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://tiktok.com/@charina.studio" target="_blank" title="TikTok" class="tiktok">
+      <i class="fab fa-tiktok"></i>
+    </a>
+  </div>
+  <!-- End::Links Sosmed -->
 <?= $this->endSection() ?>
