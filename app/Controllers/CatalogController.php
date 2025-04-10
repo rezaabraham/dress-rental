@@ -27,11 +27,6 @@ class CatalogController extends BaseController
         $keyword = $this->request->getGet('keyword',FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $brand = $this->request->getGet('brand');
 
-        /* $query = $this->productModel
-        ->select('master_products.*, master_brands.brand_name,master_sizes.size_name')
-        ->where('master_products.product_isactive','y')
-        ->join('master_brands', 'master_products.product_brand = master_brands.brand_id', 'left')
-        ->join('master_sizes', 'master_products.product_size = master_sizes.size_id', 'left'); */
 
         $query = $this->productModel
         ->where('master_product.master_product_isactive','y')
@@ -59,11 +54,5 @@ class CatalogController extends BaseController
             'pager' => $pager
         ]);
 
-        /* $products = $query->findAll();
-
-        $brands = $this->brandModel->findAll();
-
-
-        return view('catalog/index', ['products' => $products,'brands' => $brands]); */
     }
 }

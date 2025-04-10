@@ -46,6 +46,10 @@ $routes->post('products/delete/(:num)', 'ProductsController::delete/$1');
 $routes->post('product-upload/(:num)', 'ProductsController::upload/$1');
 $routes->post('product/update/(:num)', 'ProductsController::update/$1');
 
+$routes->get('order', 'OrderController::index');
+
+$routes->get('ajax/products/get', 'OrderController::ajaxGetProducts');
+
 $routes->get('media/show/(:segment)/(:any)', 'MediaController::show/$1/$2');
 
 $routes->get('mockup/product/detail', 'Mockup::productDetail3w');
