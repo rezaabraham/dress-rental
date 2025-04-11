@@ -105,7 +105,7 @@
                 <label class="form-label">Brand</label>
                 <!--end::Label-->
                 <!--begin::Select2-->
-                <select class="form-select mb-2" id="productBrand" name="product_brand" data-placeholder="Select an option">
+                <select class="form-select mb-2" id="productBrand" data-control="select2" name="product_brand" data-placeholder="Select an option">
                     <option disabled selected>Pilih Brand</option>
                     <?php foreach ($brands as $brand): ?>
                         <option value=<?= $brand['brand_id'] ?> <?= ($brand['brand_id'] == $product['master_product_brand']) ? 'selected' : '' ?>><?= $brand['brand_name'] ?></option>

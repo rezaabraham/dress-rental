@@ -389,7 +389,7 @@ class ProductsController extends BaseController
 {
     $validation = $this->validate([
         'product_thumbnail' => 'if_exist|max_size[product_thumbnail,2048]|is_image[product_thumbnail]',
-        'product_category' => 'required|integer',
+        //'product_category' => 'required|integer',
         'product_brand' => 'required',
         'product_colour' => 'required',
         'product_size' => 'required',
