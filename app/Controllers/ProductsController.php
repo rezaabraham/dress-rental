@@ -450,7 +450,8 @@ class ProductsController extends BaseController
         $this->uploadMedia($folder, $id);
     }
 
-    return redirect()->back()->with('success', 'Item berhasil diperbarui.');
+
+    return redirect()->to('product')->with('success', 'Item berhasil diperbarui.');
 }
 
 

@@ -6,8 +6,10 @@
                     <i class="ki-duotone ki-arrow-left fs-2"><span class="path1"></span><span class="path2"></span></i>
                 </a>
                 <a href="">
-                    <img alt="Logo" src="../assets/media/logos/logo_charina.png" class="h-45px h-lg-60px theme-light-show" />
-                    <img alt="Logo" src="../assets/media/logos/logo_charina.png" class="h-45px h-lg-60px theme-dark-show" />
+                    <!-- <img alt="Logo" src="../assets/media/logos/logo_charina.png" class="h-45px h-lg-60px theme-light-show" />
+                    <img alt="Logo" src="../assets/media/logos/logo_charina.png" class="h-45px h-lg-60px theme-dark-show" /> -->
+                    <img alt="Logo" src="<?=base_url()?>assets/userdata/logo/logo.PNG" class="h-45px h-lg-60px theme-light-show" />
+                    <img alt="Logo" src="<?=base_url()?>assets/userdata/logo/logo.PNG" class="h-45px h-lg-60px theme-dark-show" />
                 </a>
             </div>
             <!-- <div id="kt_app_header_menu_wrapper" class="d-flex align-items-center w-100">
