@@ -76,23 +76,27 @@
             document.documentElement.setAttribute("data-bs-theme", themeMode);
         }
     </script>
-    <?= $this->include('_layouts/_catalog/_header'); ?>
-    <div class="app-wrapper  flex-column flex-row-fluid " id="kt_app_wrapper">
-        <div class="app-container  container-xxl d-flex flex-row-fluid ">
-            <div class="app-main flex-column flex-row-fluid " id="kt_app_main">
-                <div class="d-flex flex-column flex-column-fluid">
-                    <?= $this->include('_layouts/_catalog/_toolbar'); ?>
-                    <?= $this->renderSection('content') ?>
-                </div>
-                <div id="kt_app_footer" class="app-footer  d-flex flex-column flex-md-row align-items-center flex-center flex-md-stack py-2 py-lg-4 ">
-                    <div class="text-gray-900 order-2 order-md-1">
-                        <span class="text-muted fw-semibold me-1">2025&copy;</span>
-                        <a href="#" target="_blank" class="text-gray-800 text-hover-primary">Charina Studio</a>
+    <div class="d-flex flex-column flex-root app-root" id="kt_app_root">
+        <div class="app-page flex-column flex-column-fluid" id="kt_app_page">
+            <?= $this->include('_layouts/_catalog/_header'); ?>
+            <div class="app-wrapper  flex-column flex-row-fluid " id="kt_app_wrapper">
+                <div class="app-container  container-xxl d-flex flex-row-fluid ">
+                    <div class="app-main flex-column flex-row-fluid " id="kt_app_main">
+                        <div class="d-flex flex-column flex-column-fluid">
+                            <?= $this->include('_layouts/_catalog/_toolbar'); ?>
+                            <?= $this->renderSection('content') ?>
+                        </div>
+                        <div id="kt_app_footer" class="app-footer  d-flex flex-column flex-md-row align-items-center flex-center flex-md-stack py-2 py-lg-4 ">
+                            <div class="text-gray-900 order-2 order-md-1">
+                                <span class="text-muted fw-semibold me-1">2025&copy;</span>
+                                <a href="#" target="_blank" class="text-gray-800 text-hover-primary">Charina Studio</a>
+                            </div>
+                            <ul class="menu menu-gray-600 menu-hover-primary fw-semibold order-1">
+                                <li class="menu-item"><a href="#" target="_blank" class="menu-link px-2">Tentang</a></li>
+                                <li class="menu-item"><a href="#" target="_blank" class="menu-link px-2">Layanan</a></li>
+                            </ul>
+                        </div>
                     </div>
-                    <ul class="menu menu-gray-600 menu-hover-primary fw-semibold order-1">
-                        <li class="menu-item"><a href="#" target="_blank" class="menu-link px-2">Tentang</a></li>
-                        <li class="menu-item"><a href="#" target="_blank" class="menu-link px-2">Layanan</a></li>
-                    </ul>
                 </div>
             </div>
         </div>

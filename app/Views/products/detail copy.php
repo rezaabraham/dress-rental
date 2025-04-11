@@ -2,14 +2,19 @@
 <html lang="en">
 
 <head>
+    <meta charset="UTF-8">
     <title>Detail Produk</title>
-    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="../assets/media/logos/favicon.png" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700" />
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Swiper.js CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-    <link href="../assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
-    <link href="../assets/css/style.bundle_public.css" rel="stylesheet" type="text/css" />
+
+    <!-- Metronic Style -->
+    <link href="<?= base_url() ?>assets/plugins/global/plugins.bundle.css" rel="stylesheet">
+    <link href="<?= base_url() ?>assets/css/style.bundle.css" rel="stylesheet">
 
     <style>
         .swiper {
@@ -65,39 +70,27 @@
     </style>
 </head>
 
-<body id="kt_app_body" data-kt-app-toolbar-enabled="true" class="app-default">
-    <script>
-        var defaultThemeMode = "light";
-        var themeMode;
+<body class="bg-light">
 
-        if (document.documentElement) {
-            if (document.documentElement.hasAttribute("data-bs-theme-mode")) {
-                themeMode = document.documentElement.getAttribute("data-bs-theme-mode");
-            } else {
-                if (localStorage.getItem("data-bs-theme") !== null) {
-                    themeMode = localStorage.getItem("data-bs-theme");
-                } else {
-                    themeMode = defaultThemeMode;
-                }
-            }
+    <!-- Header -->
+    <header class="header-custom">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <!-- Kembali -->
+                <a href="<?= site_url('/') ?>" class="btn btn-outline-secondary btn-sm btn-back">
+                    <i class="ki-duotone ki-arrow-left fs-2"><span class="path1"></span><span class="path2"></span></i>
+                </a>
 
-            if (themeMode === "system") {
-                themeMode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-            }
+                <!-- Logo -->
+                <div class="text-center flex-grow-1">
+                    <img src="<?= base_url() ?>assets/userdata/logo/logo.png" alt="Logo" class="header-logo">
+                </div>
 
-            document.documentElement.setAttribute("data-bs-theme", themeMode);
-        }
-    </script>
-    <div class="d-flex flex-column flex-root app-root" id="kt_app_root">
-        <div class="app-page flex-column flex-column-fluid" id="kt_app_page">
-        <?= $this->include('_layouts/_catalog/_headerdetail'); ?>
+                <!-- Spacer -->
+                <div style="width: 120px;"></div>
+            </div>
         </div>
-    </div>
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-bottom d-lg-none">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Fixed bottom</a>
-        </div>
-    </nav>
+    </header>
 
     <!-- Konten Utama -->
     <div class="container pb-10">
@@ -142,15 +135,16 @@
                         <span class="fw-semibold fs-4 text-gray-600 mb-2">Tags : <i><?= $product['master_product_tag'] ?></i></span>
                     </div>
                     <button id="btn-wa" class="btn btn-success btn-lg text-white" data-item-code="<?= $product['master_product_code'] ?>"
-                        data-item-name="<?= $product['master_product_name'] ?>">
+                    data-item-name="<?= $product['master_product_name'] ?>">
                         Tanya Admin
                     </button>
                 </div>
             </div>
         </div>
     </div>
-    <script src="../assets/plugins/global/plugins.bundle.js"></script>
-    <script src="../assets/js/scripts.bundle.js"></script>
+
+    <!-- JS Library -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 
     <!-- Swiper Config -->

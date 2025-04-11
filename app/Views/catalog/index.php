@@ -8,7 +8,7 @@
 					<a href="<?= site_url('product/' . $product['master_product_code']) ?>" class="text-decoration-none text-dark">
 						<div class="card card-flush h-100">
 							<div class="card-header ribbon ribbon-start p-0">
-								<?= date_diff(date_create(), date_create($product['master_product_created_at']))->d <= 5 ? '<div class="ribbon-label bg-success ps-3 pe-4 py-1 fs-9 fs-lg-5" style="top:0%;">New Arrival</div>' : null ?>
+								<?= date_diff(date_create(), date_create($product['master_product_created_at']))->d <= 5 ? '<div class="ribbon-label ps-3 pe-4 py-1 fs-9 fs-lg-5" style="top:0%; background-color: #d0a77c;">New Arrival</div>' : null ?>
 								<div class="ratio ratio-1x1 position-relative">
 									<img src="<?= site_url('media/show/' . $product['master_product_code'] . '/' . $product['master_product_thumbnail']) ?>" class="rounded object-fit-cover" style="object-position: top;" alt="<?= $product['master_product_name'] ?>">
 								</div>
@@ -16,7 +16,6 @@
 							<div class="card-body px-3 pb-3 pt-1 gap-3 p-lg-5 d-flex flex-column justify-content-between">
 								<?php if ($product['master_attire_type_name'] == 'Hijab'): ?>
 									<div class="text-start">
-
 										<span class="badge badge-light-warning fs-9 fs-lg-6 px-3 fw-normal">
 											Hijab Friendly
 										</span>
