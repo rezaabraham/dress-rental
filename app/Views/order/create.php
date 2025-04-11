@@ -47,12 +47,12 @@
         <h2 class="card-title fw-bold">🔍 Cari dan Pilih Item</h2>
       </div>
       <div class="card-body">
-        <form id="searchForm">
+        <form id="createOrder" method="post" action="<?=site_url('order/store')?>">
           <!-- Pencarian Item -->
 
           <div class="mb-7 position-relative">
             <label class="form-label fs-4">Item</label>
-            <select class="form-select" id="select-item" name="selected_item"></select>
+            <select class="form-select" id="select-item" name="selectedItem"></select>
           </div>
 
 
@@ -65,15 +65,23 @@
           <!-- Lainnya -->
           <div class="mb-5 mt-10">
             <label class="form-label fs-4">Nama Pemesan</label>
-            <input type="text" class="form-control form-control-lg" name="nama_pemesan" required />
+            <input type="text" class="form-control form-control-lg" name="name" required />
+          </div>
+          <div class="mb-5 mt-10">
+            <label class="form-label fs-4">Alamat</label>
+            <input type="text" class="form-control form-control-lg" name="address" required />
           </div>
           <div class="mb-5">
             <label class="form-label fs-4">Tanggal Pesan</label>
-            <input type="date" class="form-control form-control-lg" name="tanggal_pesan" required />
+            <input type="date" class="form-control form-control-lg" name="orderDate" required />
           </div>
           <div class="mb-5">
-            <label class="form-label fs-4">Tanggal Pakai</label>
-            <input type="date" class="form-control form-control-lg" name="tanggal_pakai" required />
+            <label class="form-label fs-4">Tanggal Ambil</label>
+            <input type="date" class="form-control form-control-lg" name="takenDate" required />
+          </div>
+          <div class="mb-5">
+            <label class="form-label fs-4">Tanggal Kembali</label>
+            <input type="date" class="form-control form-control-lg" name="returnDate" required />
           </div>
           <div class="mb-5">
             <label class="form-label fs-4">Upload Gambar KTP</label>
@@ -83,7 +91,7 @@
             </div>
           </div>
           <div class="text-end mt-7">
-            <button type="submit" id="testBtn" class="btn btn-primary btn-lg">💾 Simpan Pemesanan</button>
+            <button type="submit" id="testBtn" class="btn btn-primary btn-lg">Simpan Pemesanan</button>
           </div>
         </form>
       </div>

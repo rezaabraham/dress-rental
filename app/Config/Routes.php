@@ -47,6 +47,8 @@ $routes->post('product-upload/(:num)', 'ProductsController::upload/$1');
 $routes->post('product/update/(:num)', 'ProductsController::update/$1');
 
 $routes->get('order', 'OrderController::index');
+$routes->get('order/create', 'OrderController::create');
+$routes->post('order/store', 'OrderController::store');
 
 $routes->get('ajax/products/get', 'OrderController::ajaxGetProducts');
 
