@@ -7,8 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="shortcut icon" href="assets/media/logos/favicon.png" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700" />
-    <link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/style.bundle_public.css" rel="stylesheet" type="text/css" />
+    <link href="<?=base_url()?>assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="<?=base_url()?>assets/css/style.bundle_public.css" rel="stylesheet" type="text/css" />
+    
     <style>
         .floating-social {
             position: fixed;
@@ -120,8 +121,9 @@
     </div>
     <!-- End::Links Sosmed -->
 
-    <script src="assets/plugins/global/plugins.bundle.js"></script>
-    <script src="assets/js/scripts.bundle.js"></script>
+    <script src="<?=base_url()?>assets/plugins/global/plugins.bundle.js"></script>
+    <script src="<?=base_url()?>assets/js/scripts.bundle.js"></script>
+    <script src="<?=base_url()?>assets/plugins/custom/fslightbox/fslightbox.bundle.js"></script>
 </body>
 
 </html>

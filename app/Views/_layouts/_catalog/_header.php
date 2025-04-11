@@ -12,22 +12,16 @@
                     <div class="menu menu-rounded menu-column menu-lg-row menu-active-bg menu-state-primary menu-title-gray-700 menu-arrow-gray-500 menu-bullet-gray-500 my-5 my-lg-0 align-items-stretch fw-semibold px-2 px-lg-0" id="#kt_header_menu" data-kt-menu="true">
                         <div class="menu-item here menu-here-bg me-0 me-lg-2">
                             <span class="menu-link">
-                                <a href="#" class="menu-title fw-normal">Cara Sewa</a>
-                            </span>
-                        </div>
-                        <div class="menu-item me-0 me-lg-2">
-                            <span class="menu-link">
-                                <a href="#" class="menu-title fw-normal">Masa Sewa</a>
-                            </span>
-                        </div>
-                        <div class="menu-item me-0 me-lg-2">
-                            <span class="menu-link">
-                                <a href="#" class="menu-title fw-normal">Syarat & Ketentuan</a>
-                            </span>
-                        </div>
-                        <div class="menu-item me-0 me-lg-2">
-                            <span class="menu-link">
-                                <a href="#" class="menu-title fw-normal">Hubungi Kami</a>
+                                <!-- <a href="#" class="menu-title fw-normal" onclick="openLgBox()">Terms and Conditions</a> -->
+                                <a href="<?=base_url()?>assets/userdata/termconditions/1.png" class="menu-title fw-normal" data-fslightbox="lightbox-basic">Terms and Conditions</a>
+                                <a href="<?=base_url()?>assets/userdata/termconditions/2.png" class="menu-title fw-normal" data-fslightbox="lightbox-basic" style="display: none;"></a>
+                                <a href="<?=base_url()?>assets/userdata/termconditions/3.png" class="menu-title fw-normal" data-fslightbox="lightbox-basic" style="display: none;"></a>
+                                <a href="<?=base_url()?>assets/userdata/termconditions/4.png" class="menu-title fw-normal" data-fslightbox="lightbox-basic" style="display: none;"></a>
+                                <a href="<?=base_url()?>assets/userdata/termconditions/5.png" class="menu-title fw-normal" data-fslightbox="lightbox-basic" style="display: none;"></a>
+                                <a href="<?=base_url()?>assets/userdata/termconditions/6.png" class="menu-title fw-normal" data-fslightbox="lightbox-basic" style="display: none;"></a>
+                                <a href="<?=base_url()?>assets/userdata/termconditions/7.png" class="menu-title fw-normal" data-fslightbox="lightbox-basic" style="display: none;"></a>
+                                <a href="<?=base_url()?>assets/userdata/termconditions/8.png" class="menu-title fw-normal" data-fslightbox="lightbox-basic" style="display: none;"></a>
+                                <a href="<?=base_url()?>assets/userdata/termconditions/9.png" class="menu-title fw-normal" data-fslightbox="lightbox-basic" style="display: none;"></a>
                             </span>
                         </div>
                     </div>
